@@ -1,0 +1,65 @@
+﻿@model Regasirea_Informatiei_Lab.ViewModels.CreateRoleViewModel
+
+@{
+    ViewData["Title"] = "Create Role";
+}
+
+<div class="content container-fluid">
+    <button type="button" id="sidebarCollapse" class="sidebarCollapse btn btn-outline-dark hide-on-desktop">
+        <i class="fas fa-align-left"></i>
+        Afiseaza meniu
+    </button>
+    <div class="container-fluid text-center container-content">
+        <h2 class="">
+            Creare Rol
+            <br>
+        </h2>
+    </div>
+    <div class="container-fluid text-center container-content">
+        <hr>
+        <div class="card mb-3">
+            <div class="card-header bg-custom text-white">
+                <i class="fas fa-sign-in-alt"></i> Rol utilizator
+            </div>
+            <div class="card-body mx-auto">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+
+                </p>
+                <form class="row gx-3 gy-2 align-items-center" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="col">
+                        <label asp-for="RoleName">Role Name</label>
+                        <input asp-for="RoleName" type="text" class="form-control" style="width: auto" id="roleId" placeholder="Role Name" required>
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
+                    </div>
+                    <div class="col align-self-end">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Creaza rol
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header bg-custom text-white">
+                <i class="far fa-question-circle"></i> Lista roluri
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+                    Un rol de utilizator defineste permisiunile pentru utilizatori de a efectua un grup de sarcini.
+                    <br>
+
+                    <br>
+                    <a class="btn btn-outline-dark" asp-action="ListRoles" asp-controller="Administration">
+                        <i class="fas fa-address-card"></i>
+                        Lista Roluri
+                    </a>
+                </p>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>

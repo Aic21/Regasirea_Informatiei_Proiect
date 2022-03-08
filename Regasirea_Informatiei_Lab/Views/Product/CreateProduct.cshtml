@@ -1,0 +1,82 @@
+﻿@model Regasirea_Informatiei_Lab.ViewModels.CreateProductViewModel
+
+<div class="content container-fluid">
+    <div class="container-fluid text-center container-content">
+        <h2 class="">
+            Administrare Produse
+            <br>
+            Adaugare
+        </h2>
+    </div>
+    <div class="container-fluid text-center container-content">
+        <hr>
+        <div class="card mb-3">
+            <div class="card-header bg-custom text-white">
+                <i class="fas fa-user-plus"></i> Adaugare produs
+            </div>
+            <div class="card-body mx-auto">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+                </p>
+                <form enctype="multipart/form-data" class="text-start" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">NumeProdus</span>
+                            <input asp-for="Nume" type="text" class="form-control" placeholder="Nume">
+                            <span asp-validation-for="Nume" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label asp-for="Descriere" class="form-label">Descriere</label>
+                        <textarea asp-for="Descriere" class="form-control white_bg" rows="4"></textarea>
+                        <span asp-validation-for="Descriere" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label asp-for="Pret" class="form-label">Pret</label>
+                        <input asp-for="Pret" type="number" class="form-control" placeholder="Pret" value="">
+                        <span asp-validation-for="Pret" class="text-danger"></span>
+                    </div>
+                    <div class="row mb-3">
+                        <input asp-for="Photo" type="file" class="form-control custom-file-input" id="inputGroupFile02">
+                        <label asp-for="Photo" class="input-group-text" for="inputGroupFile02">Poza</label>
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="col">
+                        <label asp-for="Category" class="form-label">Categorie</label>
+                        <select asp-for="Category" class="form-select" asp-items="@(new SelectList(Model.Categories))">
+                            <option selected>Alege...</option>
+                        </select>
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary" id="buton">
+                            <i class="fas fa-user-plus"></i>
+                            Adauga
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header bg-custom text-white">
+                <i class="far fa-question-circle"></i> Adaugare Produs
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+
+                </p>
+                <a asp-action="ListProduct" asp-controller="product" class="btn btn-outline-dark">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Lista produse
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

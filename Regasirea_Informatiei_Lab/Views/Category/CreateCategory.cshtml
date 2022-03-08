@@ -1,0 +1,56 @@
+﻿@model Regasirea_Informatiei_Lab.ViewModels.CreateCategoryViewModel
+
+@{
+    ViewData["Title"] = "Create Category";
+}
+
+<div class="content container-fluid">
+    <button type="button" id="sidebarCollapse" class="sidebarCollapse btn btn-outline-dark hide-on-desktop">
+        <i class="fas fa-align-left"></i>
+    </button>
+    <div class="container-fluid text-center container-content">
+        <h2 class="">
+            Adauga categorie
+            <br>
+        </h2>
+    </div>
+    <div class="container-fluid text-center container-content">
+        <hr>
+        <div class="card mb-3">
+            <div class="card-header bg-custom text-white">
+                <i class="fas fa-sign-in-alt"></i> Categorie
+            </div>
+            <div class="card-body mx-auto">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+
+                </p>
+                <form class="row gx-3 gy-2 align-items-center" method="post">
+                    <div class="col">
+                        <label asp-for="Nume">Nume Categorie</label>
+                        <input asp-for="Nume" type="text" class="form-control" style="width: auto" placeholder="Option Name" required>
+                        <span asp-validation-for="Nume" class="text-danger"></span>
+
+                        <div class="col">
+                            <input asp-for="ProfilePhoto" type="file" class="form-control custom-file-input" id="inputGroupFile02">
+                            <label asp-for="ProfilePhoto" class="input-group-text" for="inputGroupFile02">Poza de Profil</label>
+                            <span asp-validation-for="ProfilePhoto" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col align-self-end">
+                        <button type="submit"  class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Adauga
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+       
+        <hr>
+    </div>
+</div>
+
+
+
+

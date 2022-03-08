@@ -1,0 +1,152 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = " - Produs";
+}
+
+
+@if (Model.Any())
+{
+    int i = 1;
+    <div class="content container-fluid">
+        <div class="container-fluid text-center container-content">
+            <h2 class="">
+
+                <br>
+                Administreaza Produse
+            </h2>
+        </div>
+        <div class="container-fluid text-center container-content">
+            <hr>
+            <div class="card mb-3">
+                <div class="card-header bg-custom text-white">
+                    <i class="fas fa-sign-in-alt"></i> Lista Produse
+                </div>
+                <div class="card-body mx-auto">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                    </p>
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nume</th>
+                                <th scope="col">Categorie</th>
+                                <th scope="col">Pret</th>
+
+
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        @foreach (var product in Model)
+                        {
+                            <tbody>
+                                <tr>
+                                    <th scope="row">@i</th>
+                                    <td>@product.ProductId</td>
+                                    <td>@product.ProductName</td>
+                                    <td>@product.Category.CategoryName</td>
+                                    <td>@product.Pret</td>
+
+
+                                    <td>
+                                        <a class="btn btn-primary" asp-action="EditProduct" asp-controller="product" asp-route-id="@product.ProductId">
+                                            <i class="fas fa-edit"></i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-primary" asp-action="DeleteProduct" asp-controller="product" asp-route-id="@product.ProductId">
+                                            <i class="fas fa-edit"></i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            i++;
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header bg-custom text-white">
+                    <i class="far fa-question-circle"></i> Adaugare produs nou
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        <br>
+
+                        <br>
+                        Folositi butonul de mai jos pentru a adauga un produs nou.
+                    </p>
+                    <a class="btn btn-outline-dark" asp-action="CreateProduct" asp-controller="product">
+                        <i class="fas fa-user-plus"></i>
+                        Creaza un produs nou
+                    </a>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+}
+else
+{
+    <div class="content container-fluid">
+        <div class="container-fluid text-center container-content">
+            <hr>
+            <div class="card mb-3">
+                <div class="card-header bg-custom text-white">
+                    <i class="fas fa-sign-in-alt"></i> Lista masini
+                </div>
+                <div class="card-body mx-auto">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        In prezent nu exista masini
+                    </p>
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nume</th>
+                                <th scope="col">Pret</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header bg-custom text-white">
+                    <i class="far fa-question-circle"></i> Adaugare masina noua
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        <br>
+
+                        <br>
+                        Folositi butonul de mai jos pentru a adauga un produs nou.
+                    </p>
+                    <a class="btn btn-outline-dark" asp-action="CreateProduct" asp-controller="product">
+                        <i class="fas fa-user-plus"></i>
+                        Creaza produs nou
+                    </a>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+}

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<OrderDetail>
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<div style="height:200px;">
+
+</div>
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nume</th>
+            <th scope="col">Prenume</th>
+            <th scope="col">Adresa</th>
+            <th scope="col">Oras</th>
+            <th scope="col">Nr telefon</th>
+            <th scope="col">Suma</th>
+            <th scope="col">Cantitate</th>
+            <th scope="col">Id Produs</th>
+            <th scope="col">Nume Produs</th>
+
+
+        </tr>
+    </thead>
+    @foreach (var product in Model)
+    {
+        <tbody>
+            <tr >
+                <td>@product.OrderId</td>
+                <td>@product.Order.FirstName</td>
+                <td>@product.Order.LastName</td>
+                <td>@product.Order.Address</td>
+                <td>@product.Order.City</td>
+                <td>@product.Order.PhoneNumber</td>
+                <td>@product.Order.OrderTotal</td>
+                <td>@product.Amount</td>
+                <td>@product.ProductId</td>
+                <td>@product.Nume_Produs</td>
+
+            </tr>
+        </tbody>
+    }

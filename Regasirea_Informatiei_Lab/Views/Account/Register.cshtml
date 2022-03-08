@@ -1,0 +1,127 @@
+﻿@model Regasirea_Informatiei_Lab.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+<div class="content container-fluid">
+    <div class="container-fluid text-center container-content">
+        <h2 class="">
+            Inregistrare
+            <br>
+        </h2>
+    </div>
+    <div class="container-fluid text-center container-content">
+        <hr>
+        <div class="card mb-3">
+            <div class="card-header bg-custom text-white">
+                <i class="fas fa-user-plus"></i> Inregistrare
+            </div>
+            <div class="card-body mx-auto">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+                </p>
+                <form enctype="multipart/form-data" class="text-start" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Nume si prenume</span>
+                            <input asp-for="FirstName" type="text" aria-label="First name" class="form-control" placeholder="First name" required>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                            <input asp-for="LastName" type="text" aria-label="Last name" class="form-control" placeholder="Last name" required>
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label asp-for="Email" class="form-label" for="registerEmail">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" id="registerEmail" placeholder="name@example.com" required>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="Password" for="registerPassword" class="form-label">Parola</label>
+                            <input asp-for="Password" type="password" class="form-control" id="registerPassword" placeholder="Password" required>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label asp-for="PhoneNumber" for="phoneFacultate" class="form-label">Telefon</label>
+                            <input asp-for="PhoneNumber" type="tel" class="form-control" id="phoneFacultate" placeholder="+40">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input asp-for="DateOfBirth" type="date" class="form-control" id="dateOfBirth">
+                        <label asp-for="DateOfBirth" class="input-group-text" for="dateOfBirth">Data nasterii</label>
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label asp-for="Address" class="form-label" for="adresa">Adresa</label>
+                            <input asp-for="Address" type="text" class="form-control" id="adresa" placeholder="Address" required>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <label asp-for="County" for="county" class="form-label">Judet</label>
+                            <input asp-for="County" type="tel" class="form-control" id="county" placeholder="County" required>
+                            <span asp-validation-for="County" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <label asp-for="Country" for="country" class="form-label">Tara</label>
+                            <input asp-for="Country" type="tel" class="form-control" id="country" placeholder="Country" required>
+                            <span asp-validation-for="Country" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <label asp-for="PostalCode" for="PostalCode" class="form-label">Cod Postal</label>
+                            <input asp-for="PostalCode" type="tel" class="form-control" id="PostalCode" placeholder="Postal Code" required>
+                            <span asp-validation-for="PostalCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input asp-for="ProfilePhoto" type="file" class="form-control custom-file-input" id="inputGroupFile02">
+                        <label asp-for="ProfilePhoto" class="input-group-text" for="inputGroupFile02">Poza de Profil</label>
+                        <span asp-validation-for="ProfilePhoto" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="checkFacultate" required>
+                        <label class="form-check-label" for="checkFacultate">
+                            Sunt de acord cu termenii si conditiile de utilizare.
+                            Sunt de acord cu prelucrarea datelor cu caracter personal de catre OnlineShop.
+                        </label>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-outline-dark" id="buton">
+                            <i class="fas fa-user-plus"></i>
+                            Inregistrare
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header bg-custom text-white">
+                <i class="far fa-question-circle"></i> Ajutor Inregistrare
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+                    Parola trebuie sa contina cel putin 8 caractere, cel putin o litera mare, cel putin una mica si cel putin o cifra.
+                    <br>
+                    Daca aveti deja un cont va puteti conecta folosind optiunea de mai jos.
+                    <br>
+                    Daca ati uitat parola folositi optiunea pentru resetare.
+                </p>
+                <a asp-action="Login" asp-controller="Account" class="btn btn-outline-dark">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="#" class="btn btn-outline-dark">
+                    <i class="fas fa-unlock-alt"></i>
+                    Recuperare parola
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
