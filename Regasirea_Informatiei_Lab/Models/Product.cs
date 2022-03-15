@@ -13,6 +13,12 @@ namespace Regasirea_Informatiei_Lab.Models
        public string ProductName { get; set; }
        public string ProductDescription { get; set; }
         public string ProductPicture { get; set; }
+        public string ProductPicture2 { get; set; }
+        public string ProductPicture3 { get; set; }
+        public string ProductVideo { get; set; }
+
+
+
         public int CategoryId { get; set; }
         public int Pret { get; set; }
 

@@ -46,18 +46,20 @@
                                     </p>
 
                                 </div>
-                                <a asp-action="Details" asp-controller="Home" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
+
+                                <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
                                     <img src="https://img.icons8.com/ios/50/000000/details-pane.png" style="height:30px;width:30px" />
                                     Details
                                 </a>
                             }
                             else
                             {
-                                <a asp-action="Details" asp-controller="Home" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
+                                <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
                                     <img src="https://img.icons8.com/ios/50/000000/details-pane.png" style="height:30px;width:30px" />
                                     Details
                                 </a>
                             }
+
 
                         </div>
                     </div>

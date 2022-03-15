@@ -18,12 +18,16 @@ namespace Regasirea_Informatiei_Lab.ViewModels
 
         [DataType(DataType.Upload)]
         public IFormFile Photo { get; set; }
+
         [DataType(DataType.Upload)]
         public IFormFile Photo1 { get; set; }
+
         [DataType(DataType.Upload)]
         public IFormFile Photo2 { get; set; }
+
+
         [DataType(DataType.Upload)]
-        public IFormFile Photo3 { get; set; }
+        public IFormFile Video { get; set; }
         public int ProdusId { get; set; }
         public string Nume { get; set; }
         public string Descriere { get; set; }

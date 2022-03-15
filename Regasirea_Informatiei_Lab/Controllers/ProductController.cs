@@ -79,7 +79,39 @@ namespace Regasirea_Informatiei_Lab.Controllers
                         model.Photo.CopyTo(fs);
                     }
                 }
-                
+                string uniquePhotoFileName1 = null;
+                if (model.Photo1 != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                    uniquePhotoFileName1 = Guid.NewGuid().ToString() + "_" + model.Photo1.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniquePhotoFileName1);
+                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Photo1.CopyTo(fs);
+                    }
+                }
+                string uniquePhotoFileName2 = null;
+                if (model.Photo2 != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                    uniquePhotoFileName2 = Guid.NewGuid().ToString() + "_" + model.Photo2.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniquePhotoFileName2);
+                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Photo2.CopyTo(fs);
+                    }
+                }
+                string uniqueVideoFileName = null;
+                if (model.Video != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "video");
+                    uniqueVideoFileName = Guid.NewGuid().ToString() + "_" + model.Video.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueVideoFileName);
+                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Video.CopyTo(fs);
+                    }
+                }
 
                 Product produs = new Product
                 {
@@ -87,13 +119,10 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     ProductId = model.ProdusId,
                     ProductDescription = model.Descriere,
                     Pret = model.Pret,
-                    //Furnizor = model.Furnizor,
-                    //Stoc = model.Stoc,
-                    //Categories = productCategorie[0],
                     ProductPicture = uniquePhotoFileName,
-                    //Picture1 = uniquePhotoFileName1,
-                   // Picture2 = uniquePhotoFileName2,
-                    //Picture3 = uniquePhotoFileName3,
+                    ProductPicture2 = uniquePhotoFileName1,
+                    ProductPicture3 = uniquePhotoFileName2,
+                    ProductVideo = uniqueVideoFileName,
                     Category = cat[0]
                 };
 
@@ -205,7 +234,22 @@ namespace Regasirea_Informatiei_Lab.Controllers
             return View("ListProduct", model);
         }
 
+        public IActionResult Search(string search)
+        {
+            var catlist = productService.GetAllWhere(search);
+            return View("Details", catlist);
+        }
+        public async Task<IActionResult> Details(int id)
+        {
+            if (id == null)
+                return NotFound();
 
+            var product = await productService.GetProductByIdAsync(id);
+            if (product == null)
+                return NotFound();
+
+            return View(product);
+        }
 
     }
 }

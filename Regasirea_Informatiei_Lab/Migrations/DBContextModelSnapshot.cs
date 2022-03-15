@@ -374,6 +374,15 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Property<string>("ProductPicture")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ProductPicture2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductPicture3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductVideo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ProductId");
 
                     b.HasIndex("CategoryId");
