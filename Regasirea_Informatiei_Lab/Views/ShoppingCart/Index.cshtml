@@ -5,7 +5,9 @@
     <thead>
         <tr>
             <th>&nbsp;</th>
+            <th>&nbsp;</th>
             <th>Selected Amount</th>
+            <th>Update</th>
             <th>Product</th>
             <th class="text-right">Price</th>
             <th class="text-right">Subtotal</th>
@@ -14,21 +16,30 @@
     <tbody>
         @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
         {
-            <tr>
-                <td class="text-left"><a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-productId="@item.Produs.ProductId" alt="">Decrease Amount</a></td>
-                <td class="text-center">@item.Amount</td>
-                <td class="text-left">@item.Produs.ProductName</td>
-                <td class="text-right">@item.Produs.Pret.ToString()</td>
-                <td class="text-right">
-                    @((item.Amount * item.Produs.Pret).ToString())
-                </td>
-            </tr>
+        <tr>
+            <td class="text-left"><a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-productId="@item.Produs.ProductId" style="text-decoration:none; color:black;" alt="">Decrease Amount</a></td>
+            <td class="text-left"><a asp-controller="ShoppingCart" asp-action="Inncrease" asp-route-productId="@item.Produs.ProductId" style="text-decoration:none; color:black;" alt="">Increase Amount</a></td>
+            <td class="text-center">@item.Amount</td>
+            <td>
+                <form method="post" asp-controller="ShoppingCart" asp-action="UpdateCart" asp-route-productId="@item.Produs.ProductId">
+                    <div class="row" style="margin-left:1px; margin-right:0;">
+                        <input name="amount" placeholder="@item.Amount" value="@item.Amount" style="height:30px; width:30px;" />
+                        <button type="submit" style="height: 30px; width: 60px; background-color:#007bff;">Update</button>
+                    </div>
+                </form>
+            </td>
+            <td class="text-left">@item.Produs.ProductName</td>
+            <td class="text-right">@item.Produs.Pret.ToString() RON</td>
+            <td class="text-right">
+                @((item.Amount * item.Produs.Pret).ToString()) RON
+            </td>
+        </tr>
         }
     </tbody>
     <tfoot>
         <tr>
             <td colspan="4" class="text-right">Total</td>
-            <td class="text-right">@Model.ShoppingCartTotal.ToString("c")</td>
+            <td class="text-right">@Model.ShoppingCartTotal.ToString() RON</td>
         </tr>
     </tfoot>
 </table>

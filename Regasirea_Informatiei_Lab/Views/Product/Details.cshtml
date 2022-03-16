@@ -74,20 +74,25 @@
             <p>
                 @Html.DisplayFor(model => model.ProductDescription)
             </p>
+            <h1 style="margin-top:50px; margin-left:40px;">
+                @Html.DisplayFor(model => model.Pret) RON
+            </h1>
             <div class="row" style="margin-top: 70%; margin-left:100px; margin-right: 0;">
-                <button type="button" class="btn btn-primary" style="height: 50px; width: 130px; border-radius: 3%; margin-left: 30px; background-color: #007bff;">
-                    <span class="fa fa-solid fa-cart-plus" style="margin-right:5px ;"></span><a class="btn btn-primary" style="background-color: #007bff;"
-                                                                                                asp-controller="ShoppingCart"
-                                                                                                asp-action="AddToShoppingCart"
-                                                                                                asp-route-productId="@Model.ProductId">Add to Cart</a>
-                </button>
                 <button type="button" class="btn btn-primary" style="height: 50px; width: 160px; border-radius: 3%; margin-left: 30px; background-color: #007bff;">
-                    <span class="fa fa-solid fa-plus"></span> <a class="btn btn-primary" style="background-color: #007bff;"
-                                                                 asp-controller="Wishlist"
-                                                                 asp-action="addtoWishlist"
-                                                                 asp-route-productId="@Model.ProductId">Add to Wishlist</a>
+                    <span class="fa fa-solid fa-plus" style="margin-right:5px ;"></span><a class="btn btn-primary" style="background-color: #007bff;"
+                                                                                                asp-controller="Wishlist"
+                                                                                                asp-action="AddtoWishlist"
+                                                                                                asp-route-productId="@Model.ProductId">Add to Wishlist</a>
                 </button>
-
+                <form method="post" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@Model.ProductId">
+                    <input name="amount" placeholder="1"  style="height:45px;width:30px;margin-left:30px;padding:0;" />
+                    <button type="submit"   class="btn btn-primary" style="height: 50px; width: 160px;padding:0; border-radius: 3%;  margin-left: 0px; background-color: #007bff;">
+                        <span class="fa fa-solid fa-cart-plus"></span> <a class="btn btn-primary" style="background-color: #007bff;"
+                                                                     asp-controller="ShoppingCart"
+                                                                     asp-action="AddToShoppingCart"
+                                                                     asp-route-productId="@Model.ProductId">Add to Cart</a>
+                    </button>
+                </form>
             </div>
 
         </div>

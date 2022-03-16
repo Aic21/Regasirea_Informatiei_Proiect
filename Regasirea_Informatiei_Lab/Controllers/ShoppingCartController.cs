@@ -37,12 +37,31 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
         [Authorize(Roles = "User")]
 
-        public RedirectToActionResult AddToShoppingCart(int productId)
+        public RedirectToActionResult AddToShoppingCart(int productId,int amount)
         {
             var selectedProduct = productService.ListAllProduct().FirstOrDefault(c => c.ProductId == productId);
             if (selectedProduct != null)
             {
-                _shoppingCart.AddToCart(selectedProduct, 1);
+                if (amount > 0)
+                    _shoppingCart.AddToCart(selectedProduct, amount);
+                else
+                    _shoppingCart.AddToCart(selectedProduct,1);
+
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = "User")]
+
+        public RedirectToActionResult UpdateCart(int productId, int amount)
+        {
+            var selectedProduct = productService.ListAllProduct().FirstOrDefault(c => c.ProductId == productId);
+            if (selectedProduct != null)
+            {
+               
+                    _shoppingCart.AddToCart(selectedProduct, amount);
+                
             }
 
             return RedirectToAction("Index");
@@ -57,6 +76,18 @@ namespace Regasirea_Informatiei_Lab.Controllers
             if (selectedProduct != null)
             {
                 _shoppingCart.RemoveFromCart(selectedProduct);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult Inncrease(int productId)
+        {
+            var selectedProduct = productService.ListAllProduct().FirstOrDefault(c => c.ProductId == productId);
+
+            if (selectedProduct != null)
+            {
+                _shoppingCart.Increase(selectedProduct);
             }
 
             return RedirectToAction("Index");

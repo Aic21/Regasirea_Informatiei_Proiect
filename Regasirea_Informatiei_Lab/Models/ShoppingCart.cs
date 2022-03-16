@@ -48,7 +48,7 @@ namespace Regasirea_Informatiei_Lab.Models
             }
             else
             {
-                shoppingCartItem.Amount++;
+                shoppingCartItem.Amount += amount;
             }
 
             _appDbContext.SaveChanges();
@@ -78,7 +78,27 @@ namespace Regasirea_Informatiei_Lab.Models
 
             return localAmount;
         }
+        public int Increase(Product product)
+        {
+            var shoppingCartItem = _appDbContext.ShoppingCartItems.SingleOrDefault(
+                s => s.Produs.ProductId == product.ProductId && s.ShoppingCartId == ShoppingCartId);
 
+            var localAmount = 0;
+
+            if (shoppingCartItem != null)
+            {
+                if (shoppingCartItem.Amount > 1)
+                {
+                    shoppingCartItem.Amount++;
+                    localAmount = shoppingCartItem.Amount;
+                }
+
+            }
+
+            _appDbContext.SaveChanges();
+
+            return localAmount;
+        }
         public List<ShoppingCartItem> GetShoppingCartItems()
         {
             return ShoppingCartItems ?? (ShoppingCartItems = _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
