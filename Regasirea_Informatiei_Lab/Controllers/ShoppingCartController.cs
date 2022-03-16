@@ -43,10 +43,13 @@ namespace Regasirea_Informatiei_Lab.Controllers
             if (selectedProduct != null)
             {
                 if (amount > 0)
+                {
                     _shoppingCart.AddToCart(selectedProduct, amount);
+                }
                 else
-                    _shoppingCart.AddToCart(selectedProduct,1);
-
+                {
+                    _shoppingCart.AddToCart(selectedProduct, 1);
+                }
             }
 
             return RedirectToAction("Index");

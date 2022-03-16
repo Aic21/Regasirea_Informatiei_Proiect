@@ -87,7 +87,7 @@ namespace Regasirea_Informatiei_Lab.Models
 
             if (shoppingCartItem != null)
             {
-                if (shoppingCartItem.Amount > 1)
+                if (shoppingCartItem.Amount >= 1)
                 {
                     shoppingCartItem.Amount++;
                     localAmount = shoppingCartItem.Amount;
