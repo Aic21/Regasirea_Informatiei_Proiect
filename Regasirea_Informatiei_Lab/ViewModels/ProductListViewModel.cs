@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using X.PagedList.Mvc.Core;
+using PagedList;
 namespace Regasirea_Informatiei_Lab.ViewModels
 {
     public class ProductListViewModel

@@ -54,6 +54,31 @@ namespace Regasirea_Informatiei_Lab.Models
             _appDbContext.SaveChanges();
         }
 
+        public void Update(Product product, int amount)
+        {
+            var shoppingCartItem = _appDbContext.ShoppingCartItems.SingleOrDefault(
+                s => s.Produs.ProductId == product.ProductId && s.ShoppingCartId == ShoppingCartId);
+
+            if (shoppingCartItem == null)
+            {
+                shoppingCartItem = new ShoppingCartItem
+                {
+                    ShoppingCartId = ShoppingCartId,
+                    Produs = product,
+                    Amount = amount
+                };
+
+                _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
+            }
+            else
+            {
+                shoppingCartItem.Amount = amount;
+            }
+
+            _appDbContext.SaveChanges();
+        }
+
+
         public int RemoveFromCart(Product product)
         {
             var shoppingCartItem = _appDbContext.ShoppingCartItems.SingleOrDefault(

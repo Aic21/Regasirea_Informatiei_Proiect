@@ -6,7 +6,7 @@
 <div style="height:200px;">
 
 </div>
-<table class="table table-striped table-dark">
+<table  id="myTable" class="table table-striped table-dark">
     <thead>
         <tr>
             <th scope="col">ID</th>
@@ -26,17 +26,17 @@
     @foreach (var product in Model)
     {
         <tbody>
-            <tr >
-                <td>@product.OrderId</td>
-                <td>@product.Order.FirstName</td>
-                <td>@product.Order.LastName</td>
-                <td>@product.Order.Address</td>
-                <td>@product.Order.City</td>
-                <td>@product.Order.PhoneNumber</td>
-                <td>@product.Order.OrderTotal</td>
-                <td>@product.Amount</td>
-                <td>@product.ProductId</td>
-                <td>@product.Nume_Produs</td>
+            <tr style="background-color: white;" >
+                <td style="background-color: #007bff;">@product.OrderId</td>
+                <td style="background-color: #007bff;">@product.Order.FirstName</td>
+                <td style="background-color: #007bff;">@product.Order.LastName</td>
+                <td style="background-color: #007bff;">@product.Order.Address</td>
+                <td style="background-color: #007bff;">@product.Order.City</td>
+                <td style="background-color: #007bff;">@product.Order.PhoneNumber</td>
+                <td style="background-color: #007bff;">@product.Order.OrderTotal</td>
+                <td style="background-color: #007bff;">@product.Amount</td>
+                <td style="background-color: #007bff;">@product.ProductId</td>
+                <td style="background-color: #007bff;">@product.Nume_Produs</td>
 
             </tr>
         </tbody>

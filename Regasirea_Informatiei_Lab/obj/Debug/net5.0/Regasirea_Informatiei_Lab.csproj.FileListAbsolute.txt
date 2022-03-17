@@ -107,3 +107,7 @@ C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Shared\Components\ShoppingCartSummary\Default.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\ShoppingCart\Index.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\Details.cshtml.g.cs
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\bin\Debug\net5.0\JetBrains.Annotations.dll
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\bin\Debug\net5.0\X.PagedList.dll
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Regasirea_Informatiei_Lab.MvcApplicationPartsAssemblyInfo.cs

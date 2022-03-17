@@ -63,7 +63,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
             if (selectedProduct != null)
             {
                
-                    _shoppingCart.AddToCart(selectedProduct, amount);
+                    _shoppingCart.Update(selectedProduct, amount);
                 
             }
 

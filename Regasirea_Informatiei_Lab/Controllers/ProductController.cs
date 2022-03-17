@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Regasirea_Informatiei_Lab.DAL.Interfaces;
 using Regasirea_Informatiei_Lab.Models;
 using Regasirea_Informatiei_Lab.ViewModels;
-using PagedList.Mvc;
+using X.PagedList.Mvc.Core;
 using PagedList;
 
 namespace Regasirea_Informatiei_Lab.Controllers
