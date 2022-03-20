@@ -1,0 +1,136 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<Blog>
+
+@{
+    ViewData["Title"] = " - Categorie";
+}
+
+
+@if (Model.Any())
+{
+    int i = 1;
+    <div class="content container-fluid">
+        <div class="container-fluid text-center container-content">
+            <h2 class="">
+
+                <br>
+                Administreaza Articolele adaugate
+            </h2>
+        </div>
+        <div class="container-fluid text-center container-content">
+            <hr>
+            <div class="card mb-3">
+                <div class="card-header bg-custom text-white">
+                    <i class="fas fa-sign-in-alt"></i> Lista Categorii
+                </div>
+                <div class="card-body mx-auto">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                    </p>
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Blog Id</th>
+                                <th scope="col">Blog Name</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        @foreach (var blog in Model)
+                        {
+                            <tbody>
+                                <tr>
+                                    <th scope="row">@i</th>
+                                    <td>@blog.BlogId</td>
+                                    <td>@blog.BlogName</td>
+
+                                    <td>
+                                        <a class="btn btn-primary" asp-action="DeleteBlog" asp-controller="blog" asp-route-id="@blog.BlogId">
+                                            <i class="fas fa-delete"></i>
+                                            Delete
+                                        </a>
+                                </tr>
+                            </tbody>
+                            i++;
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header bg-custom text-white">
+                    <i class="far fa-question-circle"></i> Adaugare articol nou
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+
+                        <br>
+
+                        <br>
+                        Folositi butonul de mai jos pentru a adauga un articol nou.
+                    </p>
+                    <a class="btn btn-outline-dark" asp-action="CreateBlog" asp-controller="blog">
+                        <i class="fas fa-user-plus"></i>
+                        Creaza un articol nou
+                    </a>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+}
+else
+{
+    <div class="content container-fluid">
+        <div class="container-fluid text-center container-content">
+            <hr>
+            <div class="card mb-3">
+                <div class="card-header bg-custom text-white">
+                    <i class="fas fa-sign-in-alt"></i> Lista roluri
+                </div>
+                <div class="card-body mx-auto">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        In prezent nu exista roluri definite
+                    </p>
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Blog Id</th>
+                                <th scope="col">Blog Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header bg-custom text-white">
+                    <i class="far fa-question-circle"></i> Adaugare articol nou
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        <br>
+
+                        <br>
+                        Folositi butonul de mai jos pentru a adauga un articol nou.
+                    </p>
+                    <a class="btn btn-outline-dark" asp-action="CreateBlog" asp-controller="blog">
+                        <i class="fas fa-user-plus"></i>
+                        Creaza un articol nou
+                    </a>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+}

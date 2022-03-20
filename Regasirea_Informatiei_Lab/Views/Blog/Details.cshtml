@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Blog
+
+@{
+    ViewData["Title"] = "Details";
+    var photoPath = "/blog/" + (Model.BlogPicture ?? "img.png");
+    var videoPath = "/blog/" + (Model.BlogVideo ?? "img.png");
+}
+
+
+<div class="col">
+
+    <p style="font-size:30px; color:black; text-align:center;">@Model.BlogName</p>
+
+    <video width="900" height="900" controls>
+        <source src="@videoPath" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<div class="container" style="background-color: #007bff; width: 100%; height: 100%; padding: 0; margin-top: 40px;">
+
+    <h1 style="text-align: center; color: white; text-decoration: solid; font-size: 35px;">Informatii</h1>
+</div>
+
+<div class="col">
+    <p class="text-justify" style="font-size:20px; color:black; " >@Model.BlogDescription</p>
+</div>

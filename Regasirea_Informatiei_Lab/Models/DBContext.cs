@@ -22,5 +22,6 @@ namespace Regasirea_Informatiei_Lab.Models
         public DbSet<Contact> Contacts { get; set; }
 
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
     }
 }

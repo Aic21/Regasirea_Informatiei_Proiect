@@ -221,6 +221,30 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Blog", b =>
+                {
+                    b.Property<int>("BlogId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BlogDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BlogName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BlogPicture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BlogVideo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BlogId");
+
+                    b.ToTable("Blogs");
+                });
+
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")

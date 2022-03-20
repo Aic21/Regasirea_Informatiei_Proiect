@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<User> signInManager;
+@inject UserManager<User> userManager
+
+
+@{
+    ViewData["Title"] = "Articole";
+
+}
+
+@model IEnumerable<Blog>
+<h2 class="" style="margin-left:45%">
+    <span class="fa fa-bullhorn"></span>
+    Articole
+</h2>
+<div class="row">
+    @foreach (var blogs in Model)
+    {
+        var photoPath = "/blog/" + (blogs.BlogPicture ?? "img.png");
+
+        <div class="col-4">
+            <div class="container-fluid text-center container-content">
+
+                <div class="card mb-3">
+
+                    <div class="card-body">
+                        <h5 class="card-title">@blogs.BlogName</h5>
+                        <img src="@photoPath" alt="Alternate Text" style="width: 200px; height: 200px" />
+                        <p class="card-text">
+                            Apasa aici pentru a citi tot articolul despre @blogs.BlogName
+                        </p>
+
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                        {
+
+
+                            <a asp-action="Details" asp-controller="Blog" asp-route-id="@blogs.BlogId" class="btn btn-outline-dark">
+                                <img src="https://img.icons8.com/ios/50/000000/details-pane.png" style="height:30px;width:30px" />
+                                Citeste
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-controller="Blog" asp-route-id="@blogs.BlogId" class="btn btn-outline-dark">
+                                <img src="https://img.icons8.com/ios/50/000000/details-pane.png" style="height:30px;width:30px" />
+                                Citeste
+                            </a>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    </div>

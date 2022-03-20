@@ -111,3 +111,7 @@ C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\bin\Debug\net5.0\X.PagedList.dll
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Regasirea_Informatiei_Lab.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Blog\CreateBlog.cshtml.g.cs
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Blog\ListBlog.cshtml.g.cs
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Blog\AdminListDetails.cshtml.g.cs
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Blog\Details.cshtml.g.cs
