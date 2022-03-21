@@ -26,13 +26,13 @@
             <h1><a href="index.html" class="logo"><img src="/css/img_website/logo.png" style="height:80%;width:80%" /></a></h1>
             <ul class="list-unstyled components mb-5">
                 <li class="active">
-                    <a href="#"><span class="fa fa-home"></span> Home</a>
+                    <a asp-action="Index" asp-controller="Home"><span class="fa fa-home"></span> Home</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-user"></span> Contact</a>
+                    <a asp-action="BlogList" asp-controller="Blog"><span class="fa fa-user"></span> Artcole   </a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-cogs"></span> Services</a>
+                    <a  asp-action="CreateContact" asp-controller="Contact"><span class="fa fa-solid fa-address-book"></span> Contact</a>
                 </li>
                 @await Component.InvokeAsync("CategoryMenu")
                 @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
@@ -147,7 +147,7 @@ else
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="blog" asp-action="BlogList">Articole</a>
@@ -158,7 +158,6 @@ else
                             <li class="nav-item">
                                 <a class="nav-link" asp-action="CreateContact" asp-controller="contact">Contact</a>
                             </li>
-                            @await Component.InvokeAsync("CategoryMenu")
                             @await Component.InvokeAsync("ShoppingCartSummary")
 
 

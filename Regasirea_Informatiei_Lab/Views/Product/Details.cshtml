@@ -23,7 +23,32 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <style>
+        ul  {
+            list-style-type: none;
+            margin: 0;
+            width:100%;
+            padding: 0;
+            overflow: hidden;
+            background-color: #007bff;
+        }
 
+         li {
+            float: left;
+        }
+
+             li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                li a:hover {
+                    background-color: #111;
+                }
+    </style>
 
 </head>
 <body style="background-color: white; margin: 0; padding: 0;">
@@ -110,13 +135,45 @@
 
 
     </div>
-    <div class="container" style="background-color: #007bff; width: 100%; height: 100%; padding: 0; margin-top: 40px;">
+    <ul class="menu" >
+        <li><a href="#video" class="menu-btn">Video</a></li>
+        <li><a href="#specificatii" class="menu-btn">Specificatii</a></li>
+        <li><a href="#descriere" class="menu-btn">Descriere</a></li>
+    </ul>
 
-        <h1 style="text-align: center; color: white; text-decoration: solid; font-size: 35px;">Informatii</h1>
+    <div class="menu-content video">
+        <video width="500" height="500" controls>
+            <source src="@videoPath" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
-    <video width="500" height="500" controls>
-        <source src="@videoPath" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="menu-content descriere">
+        <p> @Model.ProductDescription</p>
+    </div>
+    <div class="menu-content misc">Misc</div>
+
+
+    <div class="menu-content specificatii">
+    </div>
+    <div class="menu-content descriere">
+    </div>
+
+
+
+    <script>
+        var $content = $('.menu-content');
+
+        function showContent(type) {
+            $content.hide().filter('.' + type).show();
+        }
+
+        $('.menu').on('click', '.menu-btn', function (e) {
+            showContent(e.currentTarget.hash.slice(1));
+            e.preventDefault();
+        });
+
+        // show 'about' content only on page load (if you want)
+        showContent('about');
+    </script>
 </body>
 </html>
