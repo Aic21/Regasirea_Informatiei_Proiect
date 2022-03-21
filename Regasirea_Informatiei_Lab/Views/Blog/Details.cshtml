@@ -12,21 +12,25 @@
 }
 
 
-<div class="col">
 
-    <p style="font-size:30px; color:black; text-align:center;">@Model.BlogName</p>
+    <div class="card">
+        <div class="card-header">
+            <p style="font-size:30px; color:black; text-align:center;">@Model.BlogName</p>
+        </div>
+        <div class="card-body">
+            <video width="900" height="600" controls style="margin-left:7%;">
+                <source src="@videoPath" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
 
-    <video width="900" height="900" controls>
-        <source src="@videoPath" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" style="background-color: #007bff;"">
+            <p style="font-size:30px; color:black; text-align:center;">Informatii</p>
+        </div>
+        <div class="card-body">
+            <p class="text-justify" style="font-size:20px; color:black; ">@Model.BlogDescription</p>
+        </div>
+    </div>
 
-<div class="container" style="background-color: #007bff; width: 100%; height: 100%; padding: 0; margin-top: 40px;">
-
-    <h1 style="text-align: center; color: white; text-decoration: solid; font-size: 35px;">Informatii</h1>
-</div>
-
-<div class="col">
-    <p class="text-justify" style="font-size:20px; color:black; " >@Model.BlogDescription</p>
-</div>

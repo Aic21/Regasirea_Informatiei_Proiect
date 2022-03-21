@@ -1,4 +1,118 @@
 ﻿@model Regasirea_Informatiei_Lab.ViewModels.HomeViewModel
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<User> signInManager;
+@inject UserManager<User> userManager
+<html>
+<head>
+    <link rel="stylesheet" href="/css/home.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-color: #95a6ff;">
+
+    <div class="container-fullwidth" style="position: relative; background-color: #95a6ff; ">
+        <img src="./css/img_website/home background.jpg" style="width:100%; " />
+        <h1 style="position: absolute; top: 30%; left: 20%; transform: translate(-30%, -20%);">Find your Product</h1>
+        <button type="button" class="btn btn-primary" style="position: absolute; top: 70%; left: 30%; transform: translate(-70%, -30%);">Products</button>
+    </div>
+
+    <div class="card" style="background-color: #95a6ff; ">
+        <div class="card-header" style="background-color: #007bff;">
+            <p style="font-size:30px; color:black; text-align:center;">Produse de top</p>
+        </div>
+        <div class="card-body" style="background-color: #95a6ff;">
+            <div class="row">
+                <div class="col-4">
+                    <div class="container-fluid text-center container-content">
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Samsung Galaxy S22</h5>
+                                <a class="rotate-link"><img src="~/PHONE/s22_1.png" class="rotate" alt="Alternate Text" style="width: 200px; height: 200px" /></a>
+                                <p class="card-text">
+
+                                </p>
 
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="container-fluid text-center container-content">
 
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Huawei P50</h5>
+                                <a class="rotate-link">
+                                    <img src="~/PHONE/huawei_p50_1.png" class="rotate" alt="Alternate Text" style="width: 200px; height: 200px" />
+                                </a>
+                                <p class="card-text">
+
+                                </p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="container-fluid text-center container-content">
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Iphone 13 Pro Max</h5>
+                                <a class="rotate-link">
+                                    <img src="~/PHONE/iphone13_1.png" class="rotate" alt="Alternate Text" style="width: 200px; height: 200px" />
+                                </a>
+                                <p class="card-text">
+
+                                </p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-header"style="background-color: #007bff;">
+            <p style="font-size:30px; color:black; text-align:center;">Unde ne gasiti</p>
+        </div>
+        <div class="card-body">
+            <div id="map"></div>
+
+        </div>
+    </div>
+    <script>
+        function initMap() {
+            // The location of Uluru
+            const uluru = { lat: 44.318378, lng: 23.796400 };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaohcMidg_jxrXcFRFtlB-yMwUoBCE8C0&callback=initMap"
+            ></script>
+
+</body>
+</html>

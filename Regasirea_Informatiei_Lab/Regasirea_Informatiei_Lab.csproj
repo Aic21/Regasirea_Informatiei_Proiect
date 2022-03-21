@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\blog\" />
+    <Folder Include="wwwroot\home_images\" />
     <Folder Include="wwwroot\video\" />
   </ItemGroup>
 
