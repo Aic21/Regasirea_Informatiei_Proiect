@@ -1,4 +1,5 @@
-﻿using Regasirea_Informatiei_Lab.DAL.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using Regasirea_Informatiei_Lab.DAL.Interfaces;
 using Regasirea_Informatiei_Lab.Models;
 using System;
 using System.Collections.Generic;
@@ -55,5 +56,8 @@ namespace Regasirea_Informatiei_Lab.Services
 		{
 			return productRepo.GetByCondition(s => s.ProductName.Contains(name));
 		}
+
+
+
 	}
 }

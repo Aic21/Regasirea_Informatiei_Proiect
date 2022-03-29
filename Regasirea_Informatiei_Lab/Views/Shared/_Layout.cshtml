@@ -160,7 +160,13 @@ else
                             </li>
                             @await Component.InvokeAsync("ShoppingCartSummary")
 
-
+                            <form asp-controller="product" asp-action="Search">
+                                <p>
+                                    <input type="text" name="SearchString" />
+                                    <input type="submit" value="Filter" />
+                                </p>
+                            </form>
+                          
                         </ul>
                     </div>
                 </div>

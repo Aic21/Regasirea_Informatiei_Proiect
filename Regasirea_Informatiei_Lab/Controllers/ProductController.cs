@@ -233,11 +233,22 @@ namespace Regasirea_Informatiei_Lab.Controllers
             }
             return View("ListProduct", model);
         }
-
-        public IActionResult Search(string search)
+        [HttpPost]
+        public IActionResult Search(string SearchString)
         {
-            var catlist = productService.GetAllWhere(search);
-            return View("Details", catlist);
+            var product =  productService.ListAllProductWith() ;
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                product = product.Where(c => c.ProductName.ToLower().Contains(SearchString) || c.Category.CategoryName.ToLower().Contains(SearchString) || c.ProductName.Contains(SearchString) || c.Category.CategoryName.Contains(SearchString)
+                || c.Category.CategoryName.ToUpper().Contains(SearchString) || c.ProductName.ToUpper().Contains(SearchString));
+            }
+
+
+            return View(new SearchListViewModel
+            {
+                Products = product
+            });
         }
         public async Task<IActionResult> Details(int id)
         {

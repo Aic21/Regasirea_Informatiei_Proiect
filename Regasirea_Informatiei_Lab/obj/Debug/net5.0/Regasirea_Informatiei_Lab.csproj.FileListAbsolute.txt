@@ -115,3 +115,4 @@ C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Blog\ListBlog.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Blog\AdminListDetails.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Blog\Details.cshtml.g.cs
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\Search.cshtml.g.cs

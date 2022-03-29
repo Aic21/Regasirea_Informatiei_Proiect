@@ -2,23 +2,25 @@
 @inject SignInManager<User> signInManager;
 @inject UserManager<User> userManager
 
+@{ 
+    ViewData["Title"] = "Search";
 
+}
 
-@model Regasirea_Informatiei_Lab.ViewModels.ProductListViewModel
+@model Regasirea_Informatiei_Lab.ViewModels.SearchListViewModel
 <h2 class="" style="margin-left:45%">
     <span class="fa fa-bullhorn"></span>
     Produse
 </h2>
-<form asp-controller="product" asp-action="Search" >
-    <p>
-        Title: <input type="text" name="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
+
+
 <div class="row">
     @foreach (var product in Model.Products)
     {
-        var photoPath = "/images/" + (product.ProductPicture ?? "img.png");
+        @if ( product.ProductName.ToLower().Contains(product.ProductName.ToLower()))
+        {
+            var photoPath = "/images/" + (product.ProductPicture ?? "img.png");
+
         <div class="col-4">
             <div class="container-fluid text-center container-content">
 
@@ -60,6 +62,7 @@
                                 Details
                             </a>
                         }
+
                         else
                         {
                             <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
@@ -72,6 +75,8 @@
                     </div>
                 </div>
             </div>
+
         </div>
+        }
     }
 </div>
