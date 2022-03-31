@@ -1,6 +1,11 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
+@using System.Net
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
 @{
 }
 @model Blog
@@ -13,24 +18,24 @@
 
 
 
-    <div class="card">
-        <div class="card-header">
-            <p style="font-size:30px; color:black; text-align:center;">@Model.BlogName</p>
-        </div>
-        <div class="card-body">
-            <video width="900" height="600" controls style="margin-left:7%;">
-                <source src="@videoPath" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+<div class="card">
+    <div class="card-header">
+        <p style="font-size:30px; color:black; text-align:center;">@Model.BlogName</p>
+    </div>
+    <div class="card-body">
+        <video width="900" height="600" controls style="margin-left:7%;">
+            <source src="@videoPath" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
-        </div>
     </div>
-    <div class="card">
-        <div class="card-header" style="background-color: #007bff;"">
-            <p style="font-size:30px; color:black; text-align:center;">Informatii</p>
-        </div>
-        <div class="card-body">
-            <p class="text-justify" style="font-size:20px; color:black; ">@Model.BlogDescription</p>
-        </div>
+</div>
+<div class="card">
+    <div class="card-header" style="background-color: #007bff;" ">
+        <p style="font-size:30px; color:black; text-align:center;">Informatii</p>
     </div>
+    <div class="card-body">
+        @Html.Raw(@WebUtility.HtmlDecode(Model.BlogDescription))
+    </div>
+</div>
 

@@ -27,6 +27,20 @@ using Regasirea_Informatiei_Lab.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 4 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\_ViewImports.cshtml"
+using X.PagedList.Mvc.Core;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\_ViewImports.cshtml"
+using X.PagedList;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\Category\ListCategory.cshtml"
 using Microsoft.AspNetCore.Identity;
 
@@ -34,7 +48,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"21869003dc690af72b44a2ff0015e7c9fd7d20d4", @"/Views/Category/ListCategory.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dcaee9f691e7a16aa32389c9d5238ae7289f9e57", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"be019ff7c5b0e9045a761d396af5d28d1b8c5fd6", @"/Views/_ViewImports.cshtml")]
     public class Views_Category_ListCategory : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Category>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -140,7 +154,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                                    \r\n                                    <td>\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21869003dc690af72b44a2ff0015e7c9fd7d20d48481", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21869003dc690af72b44a2ff0015e7c9fd7d20d48904", async() => {
                 WriteLiteral("\r\n                                            <i class=\"fas fa-edit\"></i>\r\n                                            Edit\r\n                                        ");
             }
             );
@@ -174,7 +188,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21869003dc690af72b44a2ff0015e7c9fd7d20d411254", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21869003dc690af72b44a2ff0015e7c9fd7d20d411677", async() => {
                 WriteLiteral("\r\n                                            <i class=\"fas fa-delete\"></i>\r\n                                            Delete\r\n                                        ");
             }
             );
@@ -233,7 +247,7 @@ using Microsoft.AspNetCore.Identity;
                         Folositi butonul de mai jos pentru a adauga o categorie noua.
                     </p>
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21869003dc690af72b44a2ff0015e7c9fd7d20d415015", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21869003dc690af72b44a2ff0015e7c9fd7d20d415438", async() => {
                 WriteLiteral("\r\n                        <i class=\"fas fa-user-plus\"></i>\r\n                        Creaza categorie noua\r\n                    ");
             }
             );
@@ -306,7 +320,7 @@ else
                         Folositi butonul de mai jos pentru a adauga o categorie noua.
                     </p>
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21869003dc690af72b44a2ff0015e7c9fd7d20d418881", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21869003dc690af72b44a2ff0015e7c9fd7d20d419304", async() => {
                 WriteLiteral("\r\n                        <i class=\"fas fa-user-plus\"></i>\r\n                        Creaza categorie noua\r\n                    ");
             }
             );

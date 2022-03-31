@@ -27,6 +27,20 @@ using Regasirea_Informatiei_Lab.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 4 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\_ViewImports.cshtml"
+using X.PagedList.Mvc.Core;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\_ViewImports.cshtml"
+using X.PagedList;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\Product\Search.cshtml"
 using Microsoft.AspNetCore.Identity;
 
@@ -34,7 +48,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5b5adfff3bd9898ab14ed16fdca2cf0d437133ee", @"/Views/Product/Search.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dcaee9f691e7a16aa32389c9d5238ae7289f9e57", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"be019ff7c5b0e9045a761d396af5d28d1b8c5fd6", @"/Views/_ViewImports.cshtml")]
     public class Views_Product_Search : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Regasirea_Informatiei_Lab.ViewModels.SearchListViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -149,7 +163,7 @@ WriteAttributeValue("", 893, photoPath, 893, 10, false);
 #line hidden
 #nullable disable
             WriteLiteral("                            <div class=\"addToCart\">\r\n                                <p class=\"button\">\r\n                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b5adfff3bd9898ab14ed16fdca2cf0d437133ee9664", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b5adfff3bd9898ab14ed16fdca2cf0d437133ee10087", async() => {
                 WriteLiteral("Add to Cart");
             }
             );
@@ -183,7 +197,7 @@ WriteAttributeValue("", 893, photoPath, 893, 10, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                </p>\r\n                            </div>\r\n                            <div class=\"addToWishlist\">\r\n                                <p class=\"button\">\r\n                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b5adfff3bd9898ab14ed16fdca2cf0d437133ee12414", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b5adfff3bd9898ab14ed16fdca2cf0d437133ee12838", async() => {
                 WriteLiteral("Add to wishlist");
             }
             );
@@ -218,7 +232,7 @@ WriteAttributeValue("", 893, photoPath, 893, 10, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                </p>\r\n\r\n                            </div>\r\n");
             WriteLiteral("                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b5adfff3bd9898ab14ed16fdca2cf0d437133ee15079", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b5adfff3bd9898ab14ed16fdca2cf0d437133ee15503", async() => {
                 WriteLiteral("\r\n                                <img src=\"https://img.icons8.com/ios/50/000000/details-pane.png\" style=\"height:30px;width:30px\" />\r\n                                Details\r\n                            ");
             }
             );
@@ -263,7 +277,7 @@ WriteAttributeValue("", 893, photoPath, 893, 10, false);
 #line hidden
 #nullable disable
             WriteLiteral("                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b5adfff3bd9898ab14ed16fdca2cf0d437133ee18139", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b5adfff3bd9898ab14ed16fdca2cf0d437133ee18563", async() => {
                 WriteLiteral("\r\n                                <img src=\"https://img.icons8.com/ios/50/000000/details-pane.png\" style=\"height:30px;width:30px\" />\r\n                                Details\r\n                            ");
             }
             );

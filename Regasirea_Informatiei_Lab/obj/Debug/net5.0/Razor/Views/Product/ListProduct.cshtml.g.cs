@@ -27,6 +27,20 @@ using Regasirea_Informatiei_Lab.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 4 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\_ViewImports.cshtml"
+using X.PagedList.Mvc.Core;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\_ViewImports.cshtml"
+using X.PagedList;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\Product\ListProduct.cshtml"
 using Microsoft.AspNetCore.Identity;
 
@@ -34,7 +48,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c30b55b06ac3da01a2354536f2b6d5cf1e079772", @"/Views/Product/ListProduct.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dcaee9f691e7a16aa32389c9d5238ae7289f9e57", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"be019ff7c5b0e9045a761d396af5d28d1b8c5fd6", @"/Views/_ViewImports.cshtml")]
     public class Views_Product_ListProduct : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Product>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -166,7 +180,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n\r\n\r\n                                    <td>\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c30b55b06ac3da01a2354536f2b6d5cf1e0797729584", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c30b55b06ac3da01a2354536f2b6d5cf1e07977210007", async() => {
                 WriteLiteral("\r\n                                            <i class=\"fas fa-edit\"></i>\r\n                                            Edit\r\n                                        ");
             }
             );
@@ -200,7 +214,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c30b55b06ac3da01a2354536f2b6d5cf1e07977212353", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c30b55b06ac3da01a2354536f2b6d5cf1e07977212777", async() => {
                 WriteLiteral("\r\n                                            <i class=\"fas fa-edit\"></i>\r\n                                            Delete\r\n                                        ");
             }
             );
@@ -258,7 +272,7 @@ using Microsoft.AspNetCore.Identity;
                         Folositi butonul de mai jos pentru a adauga un produs nou.
                     </p>
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c30b55b06ac3da01a2354536f2b6d5cf1e07977216118", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c30b55b06ac3da01a2354536f2b6d5cf1e07977216542", async() => {
                 WriteLiteral("\r\n                        <i class=\"fas fa-user-plus\"></i>\r\n                        Creaza un produs nou\r\n                    ");
             }
             );
@@ -335,7 +349,7 @@ else
                         <br>
                         Folositi butonul de mai jos pentru a adauga un produs nou");
             WriteLiteral(".\r\n                    </p>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c30b55b06ac3da01a2354536f2b6d5cf1e07977220236", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c30b55b06ac3da01a2354536f2b6d5cf1e07977220660", async() => {
                 WriteLiteral("\r\n                        <i class=\"fas fa-user-plus\"></i>\r\n                        Creaza produs nou\r\n                    ");
             }
             );

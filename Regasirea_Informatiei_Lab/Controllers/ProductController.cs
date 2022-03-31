@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 using Regasirea_Informatiei_Lab.DAL.Interfaces;
 using Regasirea_Informatiei_Lab.Models;
 using Regasirea_Informatiei_Lab.ViewModels;
+using X.PagedList;
 using X.PagedList.Mvc.Core;
-using PagedList;
 
 namespace Regasirea_Informatiei_Lab.Controllers
 {
@@ -152,11 +152,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 currentSubCategory = categoryService.ListAllCategory().FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
             }
 
-            return View(new ProductListViewModel
-            {
-                Products = product.ToList(),
-                CurrentCategory = currentSubCategory
-            });
+            return View(product.ToList().ToPagedList(page ?? 1 , 3) );
         }
 
         // [HttpPost, ActionName("Delete")]

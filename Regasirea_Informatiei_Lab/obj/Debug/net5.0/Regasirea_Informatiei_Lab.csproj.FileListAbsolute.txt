@@ -96,8 +96,6 @@ C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\ListProduct.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Shared\_productCard.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Shared\Components\CategoryMenu\Default.cshtml.g.cs
-C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\bin\Debug\net5.0\PagedList.dll
-C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\bin\Debug\net5.0\PagedList.Mvc.dll
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Contact\CreateContact.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Contact\ListContact.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Order\Checkout.cshtml.g.cs
@@ -116,3 +114,4 @@ C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Blog\AdminListDetails.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Blog\Details.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\Search.cshtml.g.cs
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\bin\Debug\net5.0\X.PagedList.Web.Common.dll

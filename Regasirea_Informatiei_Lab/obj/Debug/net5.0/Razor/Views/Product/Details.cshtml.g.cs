@@ -26,8 +26,22 @@ using Regasirea_Informatiei_Lab.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\_ViewImports.cshtml"
+using X.PagedList.Mvc.Core;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\Views\_ViewImports.cshtml"
+using X.PagedList;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5d54d41b6cb8aad2abd50b9fc1f2c5add4c90966", @"/Views/Product/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dcaee9f691e7a16aa32389c9d5238ae7289f9e57", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"be019ff7c5b0e9045a761d396af5d28d1b8c5fd6", @"/Views/_ViewImports.cshtml")]
     public class Views_Product_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Product>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "alb", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -85,7 +99,7 @@ using Regasirea_Informatiei_Lab.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c909668306", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c909668729", async() => {
                 WriteLiteral(@"
     <title></title>
     <meta charset=""utf-8"">
@@ -129,7 +143,7 @@ using Regasirea_Informatiei_Lab.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096610481", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096610904", async() => {
                 WriteLiteral(@"
 
     <div class=""row"">
@@ -209,7 +223,7 @@ WriteAttributeValue("", 2643, photoPath3, 2643, 11, false);
                         <h3> Culori disponibile</h3>
                         <select class=""form-select"" aria-label=""Culoarea"" style=""height:30px; width:90px;;margin-top:15px; margin-left:10px;"">
                             ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096614743", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096615166", async() => {
                     WriteLiteral("Culori:");
                 }
                 );
@@ -226,7 +240,7 @@ WriteAttributeValue("", 2643, photoPath3, 2643, 11, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096616110", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096616533", async() => {
                     WriteLiteral("Alb");
                 }
                 );
@@ -242,7 +256,7 @@ WriteAttributeValue("", 2643, photoPath3, 2643, 11, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096617359", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096617782", async() => {
                     WriteLiteral("Verde");
                 }
                 );
@@ -258,7 +272,7 @@ WriteAttributeValue("", 2643, photoPath3, 2643, 11, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096618610", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096619033", async() => {
                     WriteLiteral("Negru");
                 }
                 );
@@ -274,7 +288,7 @@ WriteAttributeValue("", 2643, photoPath3, 2643, 11, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096619861", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096620284", async() => {
                     WriteLiteral("Pink");
                 }
                 );
@@ -306,7 +320,7 @@ WriteAttributeValue("", 2643, photoPath3, 2643, 11, false);
 
                         <button type=""button"" class=""btn btn-primary"" style=""height: 50px; width: 160px; border-radius: 3%; margin-left: 30px; background-color: #007bff;"">
                             <span class=""fa fa-solid fa-plus"" style=""margin-right:5px ;""></span>");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096621976", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096622399", async() => {
                     WriteLiteral("Add to Wishlist");
                 }
                 );
@@ -341,7 +355,7 @@ WriteAttributeValue("", 2643, photoPath3, 2643, 11, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                        </button>\r\n                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096624816", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d54d41b6cb8aad2abd50b9fc1f2c5add4c9096625239", async() => {
                     WriteLiteral(@"
                             <input name=""amount"" placeholder=""1"" style=""height:45px;width:30px;margin-left:10px;padding:0;"" />
                             <button type=""submit"" class=""btn btn-primary"" style=""height: 50px; width: 160px;padding:0; border-radius: 3%;  margin-left: 0px; background-color: #007bff;"">

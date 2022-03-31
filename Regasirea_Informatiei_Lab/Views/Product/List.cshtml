@@ -1,17 +1,20 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @inject SignInManager<User> signInManager;
 @inject UserManager<User> userManager
+@using X.PagedList;
+
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common;
 
 
-
-@model Regasirea_Informatiei_Lab.ViewModels.ProductListViewModel
+@model IPagedList<Product>
 <h2 class="" style="margin-left:45%">
     <span class="fa fa-bullhorn"></span>
     Produse
 </h2>
 
 <div class="row">
-    @foreach (var product in Model.Products)
+    @foreach (var product in Model)
     {
         var photoPath = "/images/" + (product.ProductPicture ?? "img.png");
         <div class="col-4">
@@ -68,5 +71,15 @@
                 </div>
             </div>
         </div>
+
+
     }
+    @Html.PagedListPager(Model, page => Url.Action("List", new { page }), new PagedListRenderOptions
+    {
+        DisplayLinkToIndividualPages = true,
+    DisplayPageCountAndCurrentLocation = false,
+    MaximumPageNumbersToDisplay = 100,
+    LiElementClasses = new string[] { "page-item" },
+    PageClasses = new string[] { "page-link" },
+})
 </div>
