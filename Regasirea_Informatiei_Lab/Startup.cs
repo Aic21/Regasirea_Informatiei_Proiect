@@ -45,6 +45,9 @@ namespace Regasirea_Informatiei_Lab
             services.AddScoped<IGenericRepository<Blog>, GenericRepository<Blog>>();
             services.AddScoped<IBlogServices, BlogServices>();
 
+            services.AddScoped<IGenericRepository<Subcategorie>, GenericRepository<Subcategorie>>();
+            services.AddScoped<ISubcategoryServices, SubcategoryService>();
+
             //services.AddScoped<IOrderService, OrderService>();
             //services.AddScoped<ShoppingCart>(sc => ShoppingCart.GetCart(sc));
             //services.AddScoped<Wishlist>(sc => Wishlist.GetWishlist(sc));

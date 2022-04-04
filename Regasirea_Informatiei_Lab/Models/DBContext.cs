@@ -15,6 +15,8 @@ namespace Regasirea_Informatiei_Lab.Models
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Subcategorie> Subcategories { get; set; }
+
         public DbSet<User> Users { get; set; }
         public DbSet<UserAdress> UserAdresses { get; set; }
         public DbSet<Order> Orders { get; set; }

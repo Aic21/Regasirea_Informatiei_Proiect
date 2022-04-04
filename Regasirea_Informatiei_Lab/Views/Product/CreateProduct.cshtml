@@ -30,11 +30,11 @@
                             <label asp-for="Nume">Nume articol</label>
                             <input type="text" asp-for="Nume" class="form-control" id="inputAddress2" placeholder="Nume articol">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="height:500px;">
                             <label asp-for="Descriere">Descriere</label>
-                            <textarea class="form-control" asp-for="Descriere" id="exampleFormControlTextarea1" rows="7"></textarea>
+                            <textarea style="height:500px; class="form-control" asp-for="Descriere" id="exampleFormControlTextarea1" rows="7"></textarea>
                         </div>
-                        <div class="form-row">
+                        <div class="form-row" style="margin-top:60px;">
                             <div class="form-group col-md-6">
                                 <label asp-for="Pret" class="input-group-text">Pret</label>
                                 <input asp-for="Pret" type="number" class="form-control">
@@ -72,8 +72,8 @@
                             <input type="text"  class="form-control" id="inputAddress2" placeholder="Nume articol">
                         </div>
                         <div class="form-group">
-                            <label asp-for="Category" class="form-label">Categorie</label>
-                            <select asp-for="Category" class="form-select" asp-items="@(new SelectList(Model.Categories))">
+                            <label asp-for="SubCategory" class="form-label">Categorie</label>
+                            <select asp-for="SubCategory" class="form-select" asp-items="@(new SelectList(Model.Subcategories))">
                                 <option selected>Alege...</option>
                             </select>
                         </div>

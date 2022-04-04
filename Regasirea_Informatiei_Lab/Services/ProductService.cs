@@ -40,7 +40,7 @@ namespace Regasirea_Informatiei_Lab.Services
 
 		public IEnumerable<Product> ListAllProduct()
 		{
-			return productRepo.GetAll(c => c.Category);
+			return productRepo.GetAll(c => c.Subcategorie);
 		}
 
 		public IEnumerable<Product> ListAllProductWith()

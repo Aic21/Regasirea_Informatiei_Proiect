@@ -19,6 +19,6 @@ namespace Regasirea_Informatiei_Lab.ViewModels
         public string Furnizor { get; set; }
         public int Stoc { get; set; }
         public int CategoryId { get; set; }
-        public Category Categories { get; set; }
+        public Subcategorie Subcategories { get; set; }
     }
 }

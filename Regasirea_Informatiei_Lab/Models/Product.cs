@@ -16,12 +16,13 @@ namespace Regasirea_Informatiei_Lab.Models
         public string ProductPicture2 { get; set; }
         public string ProductPicture3 { get; set; }
         public string ProductVideo { get; set; }
+        public string Furnizor { get; set; }
 
-
-
-        public int CategoryId { get; set; }
         public int Pret { get; set; }
+        public bool IsOnSale { get; set; }
 
-        public virtual Category Category { get; set; }
+        public bool IsInStock { get; set; }
+        public int SubCategorieID { get; set; }
+        public virtual Subcategorie Subcategorie { get; set; }
     }
 }

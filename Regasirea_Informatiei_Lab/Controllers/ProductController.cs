@@ -20,7 +20,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
         private readonly IWebHostEnvironment hostingEnvironment;
 
         private readonly ICategoryServices categoryService;
-
+        private readonly ISubcategoryServices subcategoryService;
         private readonly IProductService productService;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<User> userManager;
@@ -28,13 +28,14 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
         public ProductController(IWebHostEnvironment _hostingEnvironment,   ICategoryServices _categoryServices, IProductService _productService,
             RoleManager<IdentityRole> _roleManager,
-               UserManager<User> _userManager)
+               UserManager<User> _userManager,ISubcategoryServices _subcategoryService)
         {
             hostingEnvironment = _hostingEnvironment;
             categoryService = _categoryServices;
             productService = _productService;
             roleManager = _roleManager;
             userManager = _userManager;
+            subcategoryService = _subcategoryService;
         }
 
         [HttpGet]
@@ -50,9 +51,9 @@ namespace Regasirea_Informatiei_Lab.Controllers
         public IActionResult CreateProduct()
         {
             CreateProductViewModel model = new CreateProductViewModel { };
-            foreach (Category cat in categoryService.ListAllCategory())
+            foreach (Subcategorie sub in subcategoryService.ListAllSubCategory())
             {
-                model.Categories.Add(cat.CategoryName);
+                model.Subcategories.Add(sub.Nume);
             }
 
             return View("CreateProduct", model);
@@ -62,7 +63,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateProduct(CreateProductViewModel model)
         {
-            var cat = categoryService.GetCategoryByName(model.Category);
+            var subcat = subcategoryService.GetSubCategoryByName(model.SubCategory);
 
             if (ModelState.IsValid)
             {
@@ -123,7 +124,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     ProductPicture2 = uniquePhotoFileName1,
                     ProductPicture3 = uniquePhotoFileName2,
                     ProductVideo = uniqueVideoFileName,
-                    Category = cat[0]
+                    Subcategorie = subcat[0]
                 };
 
                 await productService.AddProductAsync(produs);
@@ -135,26 +136,42 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
         [AllowAnonymous]
 
-        public ViewResult List(string category,int? page)
+        public ViewResult ListProducts(string subcategory, int? page)
         {
             IEnumerable<Product> product;
             string currentSubCategory;
 
-            if (string.IsNullOrEmpty(category))
+            if (string.IsNullOrEmpty(subcategory))
             {
                 product = productService.ListAllProduct();
                 currentSubCategory = "All Product";
             }
             else
             {
-                product = productService.ListAllProduct().Where(c => c.Category.CategoryName == category);
+                product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory);
 
-                currentSubCategory = categoryService.ListAllCategory().FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+                currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
             }
 
             return View(product.ToList().ToPagedList(page ?? 1 , 3) );
         }
 
+
+
+
+        public ViewResult ListSubcategory(string category,int? page)
+        {
+            IEnumerable<Subcategorie> subcategory;
+
+            if (string.IsNullOrEmpty(category))
+            {
+                subcategory = subcategoryService.ListAllSubCategory();
+            }
+
+            subcategory = subcategoryService.ListAllSubCategory().Where(c => c.Categories.CategoryName == category);
+
+            return View(subcategory.ToList().ToPagedList(page ?? 1,3));
+        }
         // [HttpPost, ActionName("Delete")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteProduct(int id)
@@ -186,7 +203,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 Nume = product.ProductName,
                 Pret = product.Pret,
                 Descriere = product.ProductDescription,
-                Categories = product.Category
+                Subcategories = product.Subcategorie
             };
 
             return View("EditProduct", model);
@@ -236,8 +253,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
             if (!String.IsNullOrEmpty(SearchString))
             {
-                product = product.Where(c => c.ProductName.ToLower().Contains(SearchString) || c.Category.CategoryName.ToLower().Contains(SearchString) || c.ProductName.Contains(SearchString) || c.Category.CategoryName.Contains(SearchString)
-                || c.Category.CategoryName.ToUpper().Contains(SearchString) || c.ProductName.ToUpper().Contains(SearchString));
+                product = product.Where(c => c.ProductName.ToLower().Contains(SearchString) || c.Subcategorie.Nume.ToLower().Contains(SearchString) || c.ProductName.Contains(SearchString) || c.Subcategorie.Nume.Contains(SearchString)
+                || c.Subcategorie.Nume.ToUpper().Contains(SearchString) || c.ProductName.ToUpper().Contains(SearchString));
             }
 
 

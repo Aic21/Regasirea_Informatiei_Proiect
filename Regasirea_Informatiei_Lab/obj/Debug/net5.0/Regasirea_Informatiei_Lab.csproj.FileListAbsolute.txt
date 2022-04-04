@@ -92,7 +92,6 @@ C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Category\ListCategory.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\CreateProduct.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\EditProduct.cshtml.g.cs
-C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\List.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\ListProduct.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Shared\_productCard.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Shared\Components\CategoryMenu\Default.cshtml.g.cs
@@ -115,3 +114,7 @@ C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Blog\Details.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\Search.cshtml.g.cs
 C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\bin\Debug\net5.0\X.PagedList.Web.Common.dll
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\ListSubcategory.cshtml.g.cs
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Subcategory\CreateSubcategory.cshtml.g.cs
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Subcategory\ListSubcategory.cshtml.g.cs
+C:\Users\Andrei\source\repos\Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\ListProducts.cshtml.g.cs

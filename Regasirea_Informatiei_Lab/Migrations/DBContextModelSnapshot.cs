@@ -383,8 +383,17 @@ namespace Regasirea_Informatiei_Lab.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Furnizor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsInStock")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsOnSale")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Pret")
                         .HasColumnType("int");
@@ -407,9 +416,14 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Property<string>("ProductVideo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SubCategorieID")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductId");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("SubCategorieID");
 
                     b.ToTable("Products");
                 });
@@ -435,6 +449,29 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.HasIndex("ProdusProductId");
 
                     b.ToTable("ShoppingCartItems");
+                });
+
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Subcategorie", b =>
+                {
+                    b.Property<int>("SubCategorieID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nume")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Picture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubCategorieID");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Subcategories");
                 });
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.UserAdress", b =>
@@ -578,13 +615,17 @@ namespace Regasirea_Informatiei_Lab.Migrations
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Product", b =>
                 {
-                    b.HasOne("Regasirea_Informatiei_Lab.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
+                    b.HasOne("Regasirea_Informatiei_Lab.Models.Category", null)
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("Regasirea_Informatiei_Lab.Models.Subcategorie", "Subcategorie")
+                        .WithMany("Products")
+                        .HasForeignKey("SubCategorieID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("Subcategorie");
                 });
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.ShoppingCartItem", b =>
@@ -594,6 +635,17 @@ namespace Regasirea_Informatiei_Lab.Migrations
                         .HasForeignKey("ProdusProductId");
 
                     b.Navigation("Produs");
+                });
+
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Subcategorie", b =>
+                {
+                    b.HasOne("Regasirea_Informatiei_Lab.Models.Category", "Categories")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.User", b =>
@@ -607,9 +659,19 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Navigation("UserAddress");
                 });
 
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Category", b =>
+                {
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Subcategorie", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

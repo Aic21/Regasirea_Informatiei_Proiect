@@ -25,4 +25,9 @@
     <Folder Include="wwwroot\video\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Subcategory\CreateSubcategory.cshtml" />
+    <None Include="Views\Subcategory\ListSubcategory.cshtml" />
+  </ItemGroup>
+
 </Project>

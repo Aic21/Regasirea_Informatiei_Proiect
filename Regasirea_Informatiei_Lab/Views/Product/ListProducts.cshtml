@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<User> signInManager;
+@inject UserManager<User> userManager
+@using X.PagedList;
+
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common;
+
+
+@model IPagedList<Product>
+<h2 class="" style="margin-left:45%">
+    <span class="fa fa-bullhorn"></span>
+    Produse
+</h2>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        var photoPath = "/images/" + (product.ProductPicture ?? "img.png");
+        <div class="col-4">
+            <div class="container-fluid text-center container-content">
+
+                <div class="card mb-3">
+
+                    <div class="card-body">
+                        <h5 class="card-title">@product.ProductName</h5>
+                        <img src="@photoPath" alt="Alternate Text" style="width: 200px; height: 200px" />
+                        <p class="card-text">
+                            @product.ProductDescription
+                        </p>
+                        <p class="card-text">
+                            @product.Pret Euro
+                        </p>
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                        {
+
+                            var user = await userManager.GetUserAsync(signInManager.Context.User);
+                            <div class="addToCart">
+                                <p class="button">
+                                    <a class="btn btn-primary"
+                                       asp-controller="ShoppingCart"
+                                       asp-action="AddToShoppingCart"
+                                       asp-route-productId="@product.ProductId">Add to Cart</a>
+                                </p>
+                            </div>
+                            <div class="addToWishlist">
+                                <p class="button">
+                                    <a class="btn btn-primary"
+                                       asp-controller="Wishlist"
+                                       asp-action="AddToWishlist"
+                                       asp-route-productId="@product.ProductId">Add to wishlist</a>
+                                </p>
+
+                            </div>
+
+                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
+                                <img src="https://img.icons8.com/ios/50/000000/details-pane.png" style="height:30px;width:30px" />
+                                Details
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
+                                <img src="https://img.icons8.com/ios/50/000000/details-pane.png" style="height:30px;width:30px" />
+                                Details
+                            </a>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+    @Html.PagedListPager(Model, page => Url.Action("List", new { page }), new PagedListRenderOptions
+    {
+        DisplayLinkToIndividualPages = true,
+    DisplayPageCountAndCurrentLocation = false,
+    MaximumPageNumbersToDisplay = 100,
+    LiElementClasses = new string[] { "page-item" },
+    PageClasses = new string[] { "page-link" },
+})
+</div>
