@@ -252,10 +252,15 @@ namespace Regasirea_Informatiei_Lab.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CategoryId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("CategoryName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CategoryId");
+
+                    b.HasIndex("CategoryId1");
 
                     b.ToTable("Categories");
                 });
@@ -579,6 +584,13 @@ namespace Regasirea_Informatiei_Lab.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Category", b =>
+                {
+                    b.HasOne("Regasirea_Informatiei_Lab.Models.Category", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("CategoryId1");
+                });
+
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Order", b =>
                 {
                     b.HasOne("Regasirea_Informatiei_Lab.Models.User", "User")
@@ -640,7 +652,7 @@ namespace Regasirea_Informatiei_Lab.Migrations
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Subcategorie", b =>
                 {
                     b.HasOne("Regasirea_Informatiei_Lab.Models.Category", "Categories")
-                        .WithMany()
+                        .WithMany("Subcategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -661,7 +673,11 @@ namespace Regasirea_Informatiei_Lab.Migrations
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Category", b =>
                 {
+                    b.Navigation("Categories");
+
                     b.Navigation("Products");
+
+                    b.Navigation("Subcategories");
                 });
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Order", b =>

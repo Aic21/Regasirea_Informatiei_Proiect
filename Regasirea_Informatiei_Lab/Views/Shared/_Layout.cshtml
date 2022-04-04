@@ -21,101 +21,128 @@
 </head>
 <body>
 
+
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar" class="active">
+        <nav id="sidebar" >
             <h1><a href="index.html" class="logo"><img src="/css/img_website/logo.png" style="height:80%;width:80%" /></a></h1>
             <ul class="list-unstyled components mb-5">
-                <li class="active">
-                    <a asp-action="Index" asp-controller="Home"><span class="fa fa-home"></span> Home</a>
-                </li>
-                <li>
-                    <a asp-action="BlogList" asp-controller="Blog"><span class="fa fa-user"></span> Artcole   </a>
-                </li>
-                <li>
-                    <a  asp-action="CreateContact" asp-controller="Contact"><span class="fa fa-solid fa-address-book"></span> Contact</a>
-                </li>
-                @await Component.InvokeAsync("CategoryMenu")
+
                 @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
                 {
+                    @await Component.InvokeAsync("CategoryMenu")
+
 
                     var user = await userManager.GetUserAsync(signInManager.Context.User);
 
                     var photoPath = "/images/" + (user.ProfilePicture ?? "profile.png");
-    <ul class="navbar-nav ml-auto">
-        <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                <img src="@photoPath" width="40" height="40" class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu" style="margin-left:3px;background-color:white;">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                <img src="@photoPath" width="40" height="40" class="rounded-circle">
+
+                            </a>
+
+                            <ul class="dropdown-menu" style="margin-left:3px;background-color:white;">
+                                <li>
+                                    <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="shoppingcart" asp-action="Index">ShoppingCart</a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="wishlist" asp-action="Index">Wishlist</a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="order" asp-action="listorder">MyOrder</a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="profile" asp-action="personaldata">Account</a>
+                                </li>
+                                <form method="post" style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="account" asp-action="logout">
+                                    <button type="submit"
+                                            class="btn ">
+                                        <span class="fa fa-sign-out-alt"></span> Logout
+                                    </button>
+                                </form>
+                            </ul>
+                        </li>
+
+                        <li class="active">
+                            <a asp-action="Index" asp-controller="Home"><span class="fa fa-home"></span> Home</a>
+                        </li>
+                        <li>
+                            <a asp-action="BlogList" asp-controller="Blog"><span class="fa fa-user"></span> Artcole   </a>
+                        </li>
+                        <li>
+                            <a asp-action="CreateContact" asp-controller="Contact"><span class="fa fa-solid fa-address-book"></span> Contact</a>
+                        </li>
+                    </ul>
+                }
                 @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                 {
-            <li>
-                <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="product" asp-action="ListProduct">Manage Products</a>
-            </li>
-                                <li>
-                                    <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="category" asp-action="CategoryList">Manage Category</a>
-                                </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white; " asp-controller="product" asp-action="ListProduct">List Product</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white; " asp-controller="product" asp-action="CreateProduct">Create Product</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white; " asp-controller="category" asp-action="CategoryList">List Category</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white; " asp-controller="category" asp-action="CreateCategory">Create Category</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white;" asp-controller="subcategory" asp-action="SubcategoryList">List Subcategory</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white; " asp-controller="subcategory" asp-action="CreateSubcategory">Create Subcategory</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white; " asp-controller="blog" asp-action="AdminListBlog">List Blog</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white; " asp-controller="blog" asp-action="CreateBlog">Create Blog</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white; " asp-controller="administration" asp-action="ListRoles">Manage Roles</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white; " asp-controller="administration" asp-action="ListUsers">Manage Users</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white; " asp-controller="order" asp-action="List">Manage Order</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 20px; color: white;" asp-controller="contact" asp-action="ContactList">Manage Contacts</a>
+                    </li>
+                }
 
-                                                    <li>
-                                                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="blog" asp-action="AdminListBlog">Manage Blog</a>
-                                                    </li>
+                else
+                {
+                    @await Component.InvokeAsync("CategoryMenu")
 
-                                                                        <li>
-                                                                            <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="administration" asp-action="ListRoles">Manage Roles</a>
-                                                                        </li>
-                                                                                            <li>
-                                                                                                <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="administration" asp-action="ListUsers">Manage Users</a>
-                                                                                            </li>
-                                                                                                                <li>
-                                                                                                                    <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="order" asp-action="List">Manage Order</a>
-                                                                                                                </li>
-                                                                                                                                    <li>
-                                                                                                                                        <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="contact" asp-action="ContactList">Manage Contacts</a>
-                                                                                                                                    </li>}
-
-
-                <li>
-                    <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="shoppingcart" asp-action="Index">ShoppingCart</a>
-                </li>
-                <li>
-                    <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="wishlist" asp-action="Index">Wishlist</a>
-                </li>
-                <li>
-                    <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="order" asp-action="listorder">MyOrder</a>
-                </li>
-                <li>
-                    <i class="fas fa-sign-out-alt"></i>  <a style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="profile" asp-action="personaldata">Account</a>
-                </li>
-                <form method="post" style="text-decoration:none; color:black;margin-left:10px; font-size:16px;" asp-controller="account" asp-action="logout">
-                    <button type="submit"
-                            class="btn ">
-                        <span class="fa fa-sign-out-alt"></span> Logout
-                    </button>
-                </form>
-            </ul>
-        </li>
-    </ul>
- }
+                    <li class="active">
+                        <a asp-action="Index" asp-controller="Home"><span class="fa fa-home"></span> Home</a>
+                    </li>
+                    <li>
+                        <a asp-action="BlogList" asp-controller="Blog"><span class="fa fa-user"></span> Artcole   </a>
+                    </li>
+                    <li>
+                        <a asp-action="CreateContact" asp-controller="Contact"><span class="fa fa-solid fa-address-book"></span> Contact</a>
+                    </li>
+                    <li>
+                        <a asp-action="register" asp-controller="account">
+                            <span class="fa modal-dialog"></span>
+                            Register
+                        </a>
+                    </li>
 
 
-else
-{
-
-<li>
-    <a asp-action="register" asp-controller="account">
-        <span class="fa modal-dialog"></span>
-        Register
-    </a>
-</li>
-
-
-                <li>
-                    <a asp-action="login" asp-controller="account">
-                        <span class="glyphicon glyphicon-log-out"></span>
-                        Login
-                    </a>
-                </li>
-}
+                    <li>
+                        <a asp-action="login" asp-controller="account">
+                            <span class="glyphicon glyphicon-log-out"></span>
+                            Login
+                        </a>
+                    </li>
+                }
 
             </ul>
 
@@ -133,8 +160,8 @@ else
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5" ">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light"">
-                <div class="container-fluid" >
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" ">
+                <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-primary">
                         <i class="fa fa-bars"></i>
@@ -166,7 +193,7 @@ else
                                     <input type="submit" value="Filter" />
                                 </p>
                             </form>
-                          
+
                         </ul>
                     </div>
                 </div>
@@ -183,7 +210,6 @@ else
 
         </div>
     </div>
-
 
 
     <script src="~/js/jquery.min.js"></script>

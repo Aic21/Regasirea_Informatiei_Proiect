@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FJwNpkMj6gWUsDGQXF4ub37OnkycbE8tU/LE8YXYjU1N8JJcKrCJ878iCCrnd2a/w7Oy8D1RIu/zL2+Suq5qKQ==",
+  "dgSpecHash": "ReQxg/HY5wG8R2dXWcRej8wAxZdpkHpfRLLUe4/SFmA3KV1ePYAqhwtvY36sm7/+0HB97ZEt8VV59FNJGtxDfg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Andrei\\source\\repos\\Regasirea_Informatiei_Lab\\Regasirea_Informatiei_Lab\\Regasirea_Informatiei_Lab.csproj",
   "expectedPackageFiles": [
@@ -50,6 +50,7 @@
     "C:\\Users\\Andrei\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\Andrei\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Andrei\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
+    "C:\\Users\\Andrei\\.nuget\\packages\\microsoft.office.interop.outlook\\15.0.4797.1003\\microsoft.office.interop.outlook.15.0.4797.1003.nupkg.sha512",
     "C:\\Users\\Andrei\\.nuget\\packages\\microsoft.visualstudio.web.browserlink\\2.2.0\\microsoft.visualstudio.web.browserlink.2.2.0.nupkg.sha512",
     "C:\\Users\\Andrei\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Andrei\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
@@ -158,5 +159,16 @@
     "C:\\Users\\Andrei\\.nuget\\packages\\x.pagedlist.mvc.core\\8.1.0\\x.pagedlist.mvc.core.8.1.0.nupkg.sha512",
     "C:\\Users\\Andrei\\.nuget\\packages\\x.pagedlist.web.common\\8.0.7\\x.pagedlist.web.common.8.0.7.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Office.Interop.Outlook 15.0.4797.1003' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Office.Interop.Outlook",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

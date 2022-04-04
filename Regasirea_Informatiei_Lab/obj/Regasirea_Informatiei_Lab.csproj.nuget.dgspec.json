@@ -68,6 +68,10 @@
               "target": "Package",
               "version": "[5.0.14, )"
             },
+            "Microsoft.Office.Interop.Outlook": {
+              "target": "Package",
+              "version": "[15.0.4797.1003, )"
+            },
             "Microsoft.VisualStudio.Web.BrowserLink": {
               "target": "Package",
               "version": "[2.2.0, )"
