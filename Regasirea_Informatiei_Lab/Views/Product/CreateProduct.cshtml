@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdn.tiny.cloud/1/ja6qu9x0grbsnjzskpayyrbzzh62mbx8wkw8or6q8orke2oy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="/lib/jquery/dist/jquery.js"></script>
 </head>
 <body>
     <div class="content container-fluid">
@@ -68,12 +69,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label > Serie Produs</label>
-                            <input type="text"  class="form-control" id="inputAddress2" placeholder="Nume articol">
+                            <label> Serie Produs</label>
+                            <input type="text" class="form-control" id="inputAddress2" placeholder="Nume articol">
                         </div>
+
                         <div class="form-group">
-                            <label asp-for="SubCategory" class="form-label">Categorie</label>
-                            <select asp-for="SubCategory" class="form-select" asp-items="@(new SelectList(Model.Subcategories))">
+                            <label asp-for="SubCategory" class="form-label">Subcategorie</label>
+                            <select id="SubCategorieID" name="SubCategorieID" asp-for="SubCategory" class="form-select" asp-items="@(new SelectList(Model.Subcategories))">
                                 <option selected>Alege...</option>
                             </select>
                         </div>
@@ -114,6 +116,23 @@
             toolbar_mode: 'floating',
             tinycomments_mode: 'embedded',
             tinycomments_author: 'Author name',
+        });
+
+    </script>
+    <script>
+          $(document).ready(function)()
+        {
+            $('#CategoryId').change(function () {
+                var url = '@Url.Content("~/")' + "Product/GetSubCategory";
+                var ddlsource = "#Category";
+                $.getJSON(url, { CategoryId: $(ddlsource).val() }, function (data) {
+                    var items = '';
+                    $("#SubCategorieID").empty();
+                    $.each(data, function (i, subcategorie) {
+                        items += "<option value'" + subcategorie.value + "'>" + subcategorie.text + "</option>";
+                    });
+                });
+            });
         });
     </script>
 </body>

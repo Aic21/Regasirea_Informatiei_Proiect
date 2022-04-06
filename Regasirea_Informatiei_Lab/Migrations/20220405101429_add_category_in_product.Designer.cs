@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Regasirea_Informatiei_Lab.Models;
 
 namespace Regasirea_Informatiei_Lab.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20220405101429_add_category_in_product")]
+    partial class add_category_in_product
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -388,7 +390,7 @@ namespace Regasirea_Informatiei_Lab.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int?>("CategoriesCategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Furnizor")
@@ -402,9 +404,6 @@ namespace Regasirea_Informatiei_Lab.Migrations
 
                     b.Property<int>("Pret")
                         .HasColumnType("int");
-
-                    b.Property<string>("ProductColor")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductDescription")
                         .HasColumnType("nvarchar(max)");
@@ -424,18 +423,12 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Property<string>("ProductVideo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ShortDescription")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("SubCategorieID")
                         .HasColumnType("int");
 
-                    b.Property<string>("TrnasportType")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("ProductId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CategoriesCategoryId");
 
                     b.HasIndex("SubCategorieID");
 
@@ -636,15 +629,17 @@ namespace Regasirea_Informatiei_Lab.Migrations
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Product", b =>
                 {
-                    b.HasOne("Regasirea_Informatiei_Lab.Models.Category", null)
+                    b.HasOne("Regasirea_Informatiei_Lab.Models.Category", "Categories")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoriesCategoryId");
 
                     b.HasOne("Regasirea_Informatiei_Lab.Models.Subcategorie", "Subcategorie")
                         .WithMany("Products")
                         .HasForeignKey("SubCategorieID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Categories");
 
                     b.Navigation("Subcategorie");
                 });

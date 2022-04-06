@@ -40,6 +40,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "5.0.14",
           "Microsoft.Office.Interop.Outlook": "15.0.4797.1003",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.2.0",
+          "Rotativa": "1.7.3",
           "X.PagedList": "8.1.0",
           "X.PagedList.Mvc.Core": "8.1.0",
           "X.PagedList.Web.Common": "8.0.7",
@@ -368,6 +369,62 @@
         },
         "compile": {
           "lib/netstandard2.0/JetBrains.Annotations.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Mvc/5.2.3": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "3.2.3",
+          "Microsoft.AspNet.WebPages": "3.2.3"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Mvc.dll": {
+            "assemblyVersion": "5.2.3.0",
+            "fileVersion": "5.2.30128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/3.2.3": {
+        "runtime": {
+          "lib/net45/System.Web.Razor.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.30128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebPages/3.2.3": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "3.2.3",
+          "Microsoft.Web.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Helpers.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.30128.0"
+          },
+          "lib/net45/System.Web.WebPages.Deployment.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.30128.0"
+          },
+          "lib/net45/System.Web.WebPages.Razor.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.30128.0"
+          },
+          "lib/net45/System.Web.WebPages.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.30128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/5.0.14": {
@@ -850,6 +907,17 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.BrowserLink.dll": {}
         }
       },
+      "Microsoft.Web.Infrastructure/1.0.0": {
+        "runtime": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.20105.407"
+          }
+        },
+        "compile": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
+        }
+      },
       "Microsoft.Win32.Primitives/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -953,6 +1021,20 @@
         },
         "compile": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Rotativa/1.7.3": {
+        "dependencies": {
+          "Microsoft.AspNet.Mvc": "5.2.3"
+        },
+        "runtime": {
+          "lib/net461/Rotativa.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net461/Rotativa.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
@@ -3585,6 +3667,27 @@
       "path": "jetbrains.annotations/2021.1.0",
       "hashPath": "jetbrains.annotations.2021.1.0.nupkg.sha512"
     },
+    "Microsoft.AspNet.Mvc/5.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-i8jZf5QrbcFmjiYWRD7o7qTak/oXKxV80MgP4cZ33A8GC0RBtBIdZ1VHaloGUg+qsHUz5rVkGpwenM+ugDz5PA==",
+      "path": "microsoft.aspnet.mvc/5.2.3",
+      "hashPath": "microsoft.aspnet.mvc.5.2.3.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Razor/3.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-leta+Q73O7+pR8ThTqXmwaNMSqwZQQ3BHfpUHd8S1XaUWe1jRVLitMHqo1AmY7wPNLyankPA1beiUKEGj8Q3Dw==",
+      "path": "microsoft.aspnet.razor/3.2.3",
+      "hashPath": "microsoft.aspnet.razor.3.2.3.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebPages/3.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zbtxBERla5RE/mhftwbrXOzc0r6lh8WcnjpGW7QQe+PvSDDx1BgsTUGzfCXO/vJznHNpY5oCSYLt8Q5vUu7F0g==",
+      "path": "microsoft.aspnet.webpages/3.2.3",
+      "hashPath": "microsoft.aspnet.webpages.3.2.3.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/5.0.14": {
       "type": "package",
       "serviceable": true,
@@ -3900,6 +4003,13 @@
       "path": "microsoft.visualstudio.web.browserlink/2.2.0",
       "hashPath": "microsoft.visualstudio.web.browserlink.2.2.0.nupkg.sha512"
     },
+    "Microsoft.Web.Infrastructure/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
+      "path": "microsoft.web.infrastructure/1.0.0",
+      "hashPath": "microsoft.web.infrastructure.1.0.0.nupkg.sha512"
+    },
     "Microsoft.Win32.Primitives/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -3934,6 +4044,13 @@
       "sha512": "sha512-ebWzW9j2nwxQeBo59As2TYn7nYr9BHicqqCwHOD1Vdo+50HBtLPuqdiCYJcLdTRknpYis/DSEOQz5KmZxwrIAg==",
       "path": "newtonsoft.json/10.0.1",
       "hashPath": "newtonsoft.json.10.0.1.nupkg.sha512"
+    },
+    "Rotativa/1.7.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MdLzud1Tt9JYLG3aNZHQcEITbT2r829rZAm96iLZAUlilXTsZkReKzyfjaIfwDZ9+++TRUKwWPKjI+WPHVz0ZA==",
+      "path": "rotativa/1.7.3",
+      "hashPath": "rotativa.1.7.3.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",

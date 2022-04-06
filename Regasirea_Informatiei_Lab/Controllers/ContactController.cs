@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using Regasirea_Informatiei_Lab.DAL.Interfaces;
 using Regasirea_Informatiei_Lab.Models;
 using Regasirea_Informatiei_Lab.ViewModels;
+using System.Net.Mail;
+using Rotativa;
+using Grpc.Core;
 
 namespace Regasirea_Informatiei_Lab.Controllers
 {
@@ -19,16 +22,18 @@ namespace Regasirea_Informatiei_Lab.Controllers
         private readonly IContactService contactService;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<User> userManager;
+        private readonly DBContext context;
         public UserManager<User> UserManager { get; }
 
         public ContactController(IWebHostEnvironment _hostingEnvironment, IContactService _contactService,
             RoleManager<IdentityRole> _roleManager,
-               UserManager<User> _userManager)
+               UserManager<User> _userManager,DBContext _context)
         {
             hostingEnvironment = _hostingEnvironment;
             contactService = _contactService;
             roleManager = _roleManager;
             userManager = _userManager;
+            context = _context;
         }
         [HttpGet]
         [Authorize(Roles = "Admin")]
@@ -37,6 +42,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
             var contact = contactService.ListAllContact();
             return View("ListContact", contact);
         }
+
+
 
         [HttpGet]
         [Authorize(Roles = "User")]
@@ -60,6 +67,20 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     Problem = model.Problem
 
                 };
+                MailMessage mail = new MailMessage();
+                mail.To.Add(model.Email);
+                mail.From = new MailAddress("ionandreicristian1998@gmail.com");
+                mail.Subject = "Echipa OnlineShop";
+                mail.Body = "Salut! Am primit email-ul tau si cat de curand o sa te contactam!";
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.UseDefaultCredentials = false;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.Credentials = new System.Net.NetworkCredential("ionandreicristian1998@gmail.com", "Maximagic21");
+                smtp.EnableSsl=true;
+                smtp.Send(mail);
+
 
                 await contactService.AddContactAsync(contact);
 

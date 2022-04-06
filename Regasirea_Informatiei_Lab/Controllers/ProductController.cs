@@ -12,6 +12,7 @@ using Regasirea_Informatiei_Lab.Models;
 using Regasirea_Informatiei_Lab.ViewModels;
 using X.PagedList;
 using X.PagedList.Mvc.Core;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Regasirea_Informatiei_Lab.Controllers
 {
@@ -24,11 +25,12 @@ namespace Regasirea_Informatiei_Lab.Controllers
         private readonly IProductService productService;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<User> userManager;
+        private readonly DBContext context;
         public UserManager<User> UserManager { get; }
 
         public ProductController(IWebHostEnvironment _hostingEnvironment,   ICategoryServices _categoryServices, IProductService _productService,
             RoleManager<IdentityRole> _roleManager,
-               UserManager<User> _userManager,ISubcategoryServices _subcategoryService)
+               UserManager<User> _userManager,ISubcategoryServices _subcategoryService, DBContext _context)
         {
             hostingEnvironment = _hostingEnvironment;
             categoryService = _categoryServices;
@@ -36,6 +38,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
             roleManager = _roleManager;
             userManager = _userManager;
             subcategoryService = _subcategoryService;
+            context = _context;
         }
 
         [HttpGet]
@@ -55,8 +58,22 @@ namespace Regasirea_Informatiei_Lab.Controllers
             {
                 model.Subcategories.Add(sub.Nume);
             }
+            foreach (Category cat in categoryService.ListAllCategory())
+            {
+                model.Categories.Add(cat.CategoryName);
+            }
 
             return View("CreateProduct", model);
+        }
+
+        public JsonResult GetSubCategory(int CategoryId)
+        {
+            List<Subcategorie> subcategorieList = new List<Subcategorie>();
+            subcategorieList = (from Subcategorie in context.Subcategories
+                                where Subcategorie.CategoryId == CategoryId
+                                select Subcategorie).ToList();
+            subcategorieList.Insert(0, new Subcategorie { SubCategorieID = 0,Nume="Select" });
+            return Json(new SelectList(subcategorieList, "SubCategorieID", "Nume"));
         }
 
         [HttpPost]
@@ -64,6 +81,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
         public async Task<IActionResult> CreateProduct(CreateProductViewModel model)
         {
             var subcat = subcategoryService.GetSubCategoryByName(model.SubCategory);
+            var cat = categoryService.GetCategoryByName(model.Category);
 
             if (ModelState.IsValid)
             {

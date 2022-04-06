@@ -13,8 +13,10 @@ namespace Regasirea_Informatiei_Lab.ViewModels
         public CreateProductViewModel()
         {
             Subcategories = new List<string>();
+            Categories = new List<string>();
         }
         public List<string> Subcategories { get; set; }
+        public List<string> Categories { get; set; }
 
         [DataType(DataType.Upload)]
         public IFormFile Photo { get; set; }
@@ -35,5 +37,7 @@ namespace Regasirea_Informatiei_Lab.ViewModels
         public int Stoc { get; set; }
         public int SubCategoryId { get; set; }
         public string SubCategory { get; set; }
+        public string Category { get; set; }
+        public int CategoryId { get; set; }
     }
 }
