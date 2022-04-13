@@ -54,34 +54,19 @@ namespace Regasirea_Informatiei_Lab.Controllers
         public IActionResult CreateProduct()
         {
             CreateProductViewModel model = new CreateProductViewModel { };
-            foreach (Subcategorie sub in subcategoryService.ListAllSubCategory())
+            foreach (Subcategorie cat in subcategoryService.ListAllSubCategory())
             {
-                model.Subcategories.Add(sub.Nume);
-            }
-            foreach (Category cat in categoryService.ListAllCategory())
-            {
-                model.Categories.Add(cat.CategoryName);
+                model.Subcategories.Add(cat.Nume);
             }
 
             return View("CreateProduct", model);
-        }
-
-        public JsonResult GetSubCategory(int CategoryId)
-        {
-            List<Subcategorie> subcategorieList = new List<Subcategorie>();
-            subcategorieList = (from Subcategorie in context.Subcategories
-                                where Subcategorie.CategoryId == CategoryId
-                                select Subcategorie).ToList();
-            subcategorieList.Insert(0, new Subcategorie { SubCategorieID = 0,Nume="Select" });
-            return Json(new SelectList(subcategorieList, "SubCategorieID", "Nume"));
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateProduct(CreateProductViewModel model)
         {
-            var subcat = subcategoryService.GetSubCategoryByName(model.SubCategory);
-            var cat = categoryService.GetCategoryByName(model.Category);
+            var cat = subcategoryService.GetSubCategoryByName(model.SubCategory);
 
             if (ModelState.IsValid)
             {
@@ -120,12 +105,12 @@ namespace Regasirea_Informatiei_Lab.Controllers
                         model.Photo2.CopyTo(fs);
                     }
                 }
-                string uniqueVideoFileName = null;
+                string uniquePhotoFileName3 = null;
                 if (model.Video != null)
                 {
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "video");
-                    uniqueVideoFileName = Guid.NewGuid().ToString() + "_" + model.Video.FileName;
-                    string filePath = Path.Combine(uploadsFolder, uniqueVideoFileName);
+                    uniquePhotoFileName1 = Guid.NewGuid().ToString() + "_" + model.Video.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniquePhotoFileName3);
                     using (FileStream fs = new FileStream(filePath, FileMode.Create))
                     {
                         model.Video.CopyTo(fs);
@@ -138,11 +123,12 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     ProductId = model.ProdusId,
                     ProductDescription = model.Descriere,
                     Pret = model.Pret,
+                    //Categories = productCategorie[0],
                     ProductPicture = uniquePhotoFileName,
                     ProductPicture2 = uniquePhotoFileName1,
                     ProductPicture3 = uniquePhotoFileName2,
-                    ProductVideo = uniqueVideoFileName,
-                    Subcategorie = subcat[0]
+                    ProductVideo = uniquePhotoFileName3,
+                    Subcategorie = cat[0]
                 };
 
                 await productService.AddProductAsync(produs);
@@ -271,6 +257,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
             if (!String.IsNullOrEmpty(SearchString))
             {
+               
                 product = product.Where(c => c.ProductName.ToLower().Contains(SearchString) || c.Subcategorie.Nume.ToLower().Contains(SearchString) || c.ProductName.Contains(SearchString) || c.Subcategorie.Nume.Contains(SearchString)
                 || c.Subcategorie.Nume.ToUpper().Contains(SearchString) || c.ProductName.ToUpper().Contains(SearchString));
             }
@@ -280,6 +267,20 @@ namespace Regasirea_Informatiei_Lab.Controllers
             {
                 Products = product
             });
+        }
+
+        [HttpPost]
+        public JsonResult AutoComplete(string prefix)
+        {
+            var product = (from Product in this.context.Products
+                             where Product.ProductName.Contains(prefix)
+                             select new
+                             {
+                                 label = Product.ProductName,
+                                 val = Product.ProductId
+                             }).ToList();
+
+            return Json(product);
         }
         public async Task<IActionResult> Details(int id)
         {
@@ -292,6 +293,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
             return View(product);
         }
+
+
 
     }
 }

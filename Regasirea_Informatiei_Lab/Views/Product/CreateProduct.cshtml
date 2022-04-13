@@ -73,12 +73,12 @@
                             <input type="text" class="form-control" id="inputAddress2" placeholder="Nume articol">
                         </div>
 
-                        <div class="form-group">
-                            <label asp-for="SubCategory" class="form-label">Subcategorie</label>
-                            <select id="SubCategorieID" name="SubCategorieID" asp-for="SubCategory" class="form-select" asp-items="@(new SelectList(Model.Subcategories))">
-                                <option selected>Alege...</option>
-                            </select>
-                        </div>
+                    <div class="col">
+                        <label asp-for="SubCategory" class="form-label">Categorie</label>
+                        <select asp-for="SubCategory" class="form-select" asp-items="@(new SelectList(Model.Subcategories))">
+                            <option selected>Alege...</option>
+                        </select>
+                    </div>
 
                         <div class="col-auto">
                             <button type="submit" class="btn btn-primary" id="buton">
@@ -119,21 +119,6 @@
         });
 
     </script>
-    <script>
-          $(document).ready(function)()
-        {
-            $('#CategoryId').change(function () {
-                var url = '@Url.Content("~/")' + "Product/GetSubCategory";
-                var ddlsource = "#Category";
-                $.getJSON(url, { CategoryId: $(ddlsource).val() }, function (data) {
-                    var items = '';
-                    $("#SubCategorieID").empty();
-                    $.each(data, function (i, subcategorie) {
-                        items += "<option value'" + subcategorie.value + "'>" + subcategorie.text + "</option>";
-                    });
-                });
-            });
-        });
-    </script>
+   
 </body>
 </html>

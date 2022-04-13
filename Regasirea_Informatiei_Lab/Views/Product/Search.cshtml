@@ -1,13 +1,19 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @inject SignInManager<User> signInManager;
 @inject UserManager<User> userManager
+@model Regasirea_Informatiei_Lab.ViewModels.SearchListViewModel
 
 @{ 
     ViewData["Title"] = "Search";
 
 }
 
-@model Regasirea_Informatiei_Lab.ViewModels.SearchListViewModel
+<html>
+    <head>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
+
+    <body>
 <h2 class="" style="margin-left:45%">
     <span class="fa fa-bullhorn"></span>
     Produse
@@ -80,3 +86,8 @@
         }
     }
 </div>
+
+
+</body>
+
+</html>
