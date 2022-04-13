@@ -77,7 +77,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 smtp.UseDefaultCredentials = false;
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
-                smtp.Credentials = new System.Net.NetworkCredential("ionandreicristian1998@gmail.com", "Maximagic21");
+                smtp.Credentials = new System.Net.NetworkCredential("ionandreicristian1998@gmail.com", "xxxx");
                 smtp.EnableSsl=true;
                 smtp.Send(mail);
 
