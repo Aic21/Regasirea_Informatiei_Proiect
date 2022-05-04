@@ -6,6 +6,7 @@
     var photoPath2 = "/images/" + (Model.ProductPicture2 ?? "img.png");
     var photoPath3 = "/images/" + (Model.ProductPicture3 ?? "img.png");
     var videoPath = "/video/" + (Model.ProductVideo ?? "img.png");
+     var doc = "/images/" + (Model.DocumentPath ?? "img.png");
 }
 
 
@@ -111,6 +112,8 @@
                     <h1 style="margin-top:50%; position:absolute; margin-left:25%; ">
                         Pret: @Model.Pret RON
                     </h1>
+
+                    <a href="@doc"  download>Test</a>
 
 
 

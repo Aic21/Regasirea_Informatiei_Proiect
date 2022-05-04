@@ -44,6 +44,22 @@
               "target": "Package",
               "version": "[2.45.0, )"
             },
+            "Lucene.Net": {
+              "target": "Package",
+              "version": "[4.8.0-beta00016, )"
+            },
+            "Lucene.Net.Analysis.Common": {
+              "target": "Package",
+              "version": "[4.8.0-beta00016, )"
+            },
+            "Lucene.Net.Queries": {
+              "target": "Package",
+              "version": "[4.8.0-beta00016, )"
+            },
+            "Lucene.Net.QueryParser": {
+              "target": "Package",
+              "version": "[4.8.0-beta00016, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.14, )"

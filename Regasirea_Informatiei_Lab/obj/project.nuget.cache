@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iB8iB75sMFIks86yLo9bl0cKv5wKSknPcqWNaq0oBZRp1f6NZEvNMTu8OdmlqE5Kkd33OEQYRJCtZ6GtEodMCQ==",
+  "dgSpecHash": "cB1xA7FZs+EwdhBaWkQwCrnbv/95cNa5bMsdqQOwnAyIk/14l9GqLvJ/W9T2XmNi8le1DlDNw8Pcpm/fEDb+xA==",
   "success": true,
   "projectFilePath": "D:\\Licenta\\Regasirea_Informatiei_Lab\\Regasirea_Informatiei_Lab.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,13 @@
     "C:\\Users\\nerog\\.nuget\\packages\\grpc.core\\2.45.0\\grpc.core.2.45.0.nupkg.sha512",
     "C:\\Users\\nerog\\.nuget\\packages\\grpc.core.api\\2.45.0\\grpc.core.api.2.45.0.nupkg.sha512",
     "C:\\Users\\nerog\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\nerog\\.nuget\\packages\\j2n\\2.0.0\\j2n.2.0.0.nupkg.sha512",
     "C:\\Users\\nerog\\.nuget\\packages\\jetbrains.annotations\\2021.1.0\\jetbrains.annotations.2021.1.0.nupkg.sha512",
+    "C:\\Users\\nerog\\.nuget\\packages\\lucene.net\\4.8.0-beta00016\\lucene.net.4.8.0-beta00016.nupkg.sha512",
+    "C:\\Users\\nerog\\.nuget\\packages\\lucene.net.analysis.common\\4.8.0-beta00016\\lucene.net.analysis.common.4.8.0-beta00016.nupkg.sha512",
+    "C:\\Users\\nerog\\.nuget\\packages\\lucene.net.queries\\4.8.0-beta00016\\lucene.net.queries.4.8.0-beta00016.nupkg.sha512",
+    "C:\\Users\\nerog\\.nuget\\packages\\lucene.net.queryparser\\4.8.0-beta00016\\lucene.net.queryparser.4.8.0-beta00016.nupkg.sha512",
+    "C:\\Users\\nerog\\.nuget\\packages\\lucene.net.sandbox\\4.8.0-beta00016\\lucene.net.sandbox.4.8.0-beta00016.nupkg.sha512",
     "C:\\Users\\nerog\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.3\\microsoft.aspnet.mvc.5.2.3.nupkg.sha512",
     "C:\\Users\\nerog\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.3\\microsoft.aspnet.razor.3.2.3.nupkg.sha512",
     "C:\\Users\\nerog\\.nuget\\packages\\microsoft.aspnet.webpages\\3.2.3\\microsoft.aspnet.webpages.3.2.3.nupkg.sha512",

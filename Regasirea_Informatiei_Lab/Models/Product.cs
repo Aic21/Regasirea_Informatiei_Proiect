@@ -20,6 +20,7 @@ namespace Regasirea_Informatiei_Lab.Models
         public string ProductVideo { get; set; }
         public string Furnizor { get; set; }
         public string TrnasportType { get; set; }
+        public string DocumentPath { get; set; }
         public int Pret { get; set; }
         public bool IsOnSale { get; set; }
 

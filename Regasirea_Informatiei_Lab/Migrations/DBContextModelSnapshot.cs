@@ -391,6 +391,9 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("DocumentPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Furnizor")
                         .HasColumnType("nvarchar(max)");
 

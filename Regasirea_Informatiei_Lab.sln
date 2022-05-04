@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regasirea_Informatiei_Lab", "Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab.csproj", "{A0AD6FC5-B4F7-4AC9-895F-FA49D4279AF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Regasirea_Informatiei_Lab", "Regasirea_Informatiei_Lab\Regasirea_Informatiei_Lab.csproj", "{A0AD6FC5-B4F7-4AC9-895F-FA49D4279AF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

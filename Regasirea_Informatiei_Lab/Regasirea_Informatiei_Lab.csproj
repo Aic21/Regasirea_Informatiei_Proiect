@@ -6,6 +6,10 @@
 
   <ItemGroup>
     <PackageReference Include="Grpc.Core" Version="2.45.0" />
+    <PackageReference Include="Lucene.Net" Version="4.8.0-beta00016" />
+    <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00016" />
+    <PackageReference Include="Lucene.Net.Queries" Version="4.8.0-beta00016" />
+    <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00016" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.14" />
@@ -23,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Lucene\Index\" />
     <Folder Include="wwwroot\blog\" />
     <Folder Include="wwwroot\home_images\" />
     <Folder Include="wwwroot\video\" />

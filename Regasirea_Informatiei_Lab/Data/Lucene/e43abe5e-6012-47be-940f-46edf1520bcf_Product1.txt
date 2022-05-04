@@ -1,0 +1,3 @@
+ProductId:16
+ProductName:Samsung GalaxyS22
+ProductSpecification:Camera Ultra Wide de 12 MP,1980,Dual SIM, 128GB, 8GB RAM, 5G, Phantom Black

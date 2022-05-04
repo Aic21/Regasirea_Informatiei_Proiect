@@ -1,0 +1,3 @@
+ProductId:18
+ProductName:Huawei P50 Pro
+ProductSpecification:Camera Ultra Wide de 12 MP,1980,Dual SIM, 256GB, 12GB RAM, 5G, Phantom Black

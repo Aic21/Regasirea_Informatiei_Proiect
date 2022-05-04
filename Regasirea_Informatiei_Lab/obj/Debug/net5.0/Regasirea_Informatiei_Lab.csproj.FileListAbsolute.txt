@@ -269,3 +269,9 @@ D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\refint\Regasirea_Informati
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Regasirea_Informatiei_Lab.pdb
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Regasirea_Informatiei_Lab.genruntimeconfig.cache
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\ref\Regasirea_Informatiei_Lab.dll
+D:\Licenta\Regasirea_Informatiei_Lab\bin\Debug\net5.0\J2N.dll
+D:\Licenta\Regasirea_Informatiei_Lab\bin\Debug\net5.0\Lucene.Net.dll
+D:\Licenta\Regasirea_Informatiei_Lab\bin\Debug\net5.0\Lucene.Net.Analysis.Common.dll
+D:\Licenta\Regasirea_Informatiei_Lab\bin\Debug\net5.0\Lucene.Net.Queries.dll
+D:\Licenta\Regasirea_Informatiei_Lab\bin\Debug\net5.0\Lucene.Net.QueryParser.dll
+D:\Licenta\Regasirea_Informatiei_Lab\bin\Debug\net5.0\Lucene.Net.Sandbox.dll

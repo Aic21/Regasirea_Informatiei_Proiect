@@ -1,0 +1,3 @@
+ProductId:17
+ProductName:Iphone13 Pro Max
+ProductSpecification:Camera Ultra Wide de 12 MP,1980,Dual SIM, 256GB, 8GB RAM, 5G, Phantom Black

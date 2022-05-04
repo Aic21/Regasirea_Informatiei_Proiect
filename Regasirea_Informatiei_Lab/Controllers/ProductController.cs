@@ -13,6 +13,16 @@ using Regasirea_Informatiei_Lab.ViewModels;
 using X.PagedList;
 using X.PagedList.Mvc.Core;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Lucene.Net.Util;
+using Lucene.Net.Store;
+using Lucene.Net.Analysis;
+using Lucene.Net.Index;
+using Lucene.Net.Documents;
+using Lucene.Net.Search;
+using Lucene.Net.Analysis.Standard;
+using Microsoft.EntityFrameworkCore;
+using Regasirea_Informatiei_Lab.Data;
+using Lucene.Net.QueryParsers.Classic;
 
 namespace Regasirea_Informatiei_Lab.Controllers
 {
@@ -26,6 +36,12 @@ namespace Regasirea_Informatiei_Lab.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<User> userManager;
         private readonly DBContext context;
+        private static IndexWriterConfig _indexConfig;
+        private static FSDirectory _indexDir;
+        private string _documentsDirectoryPath= @"";
+
+
+
         public UserManager<User> UserManager { get; }
 
         public ProductController(IWebHostEnvironment _hostingEnvironment,   ICategoryServices _categoryServices, IProductService _productService,
@@ -94,6 +110,18 @@ namespace Regasirea_Informatiei_Lab.Controllers
                         model.Photo1.CopyTo(fs);
                     }
                 }
+
+                string uniqueDoc = null;
+                if (model.Doc != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.ContentRootPath, "Data","Lucene");
+                    uniqueDoc = Guid.NewGuid().ToString() + "_" + model.Doc.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueDoc);
+                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Doc.CopyTo(fs);
+                    }
+                }
                 string uniquePhotoFileName2 = null;
                 if (model.Photo2 != null)
                 {
@@ -128,7 +156,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     ProductPicture2 = uniquePhotoFileName1,
                     ProductPicture3 = uniquePhotoFileName2,
                     ProductVideo = uniquePhotoFileName3,
-                    Subcategorie = cat[0]
+                    Subcategorie = cat[0],
+                    DocumentPath = uniqueDoc
                 };
 
                 await productService.AddProductAsync(produs);
@@ -250,7 +279,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
             }
             return View("ListProduct", model);
         }
-        [HttpPost]
+       /* [HttpPost]
         public IActionResult Search(string SearchString)
         {
             var product =  productService.ListAllProductWith() ;
@@ -267,7 +296,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
             {
                 Products = product
             });
-        }
+        }*/
 
         [HttpPost]
         public JsonResult AutoComplete(string prefix)
@@ -295,6 +324,84 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
 
 
+        public async Task<IActionResult> Search(string SearchString)
+        {
+            const LuceneVersion luceneVersion = LuceneVersion.LUCENE_48;
+
+            string indexPath = Path.Combine(hostingEnvironment.ContentRootPath,"Data","Lucene","Index");
+            _documentsDirectoryPath = Path.Combine(hostingEnvironment.ContentRootPath,"Data","Lucene");    
+
+            _indexDir = FSDirectory.Open(indexPath);
+
+            Analyzer standardAnalyzer = new StandardAnalyzer(luceneVersion);
+            FileParser file_parser = new FileParser();
+
+            //Create an index writer
+            _indexConfig = new IndexWriterConfig(luceneVersion, standardAnalyzer);
+
+            List<Document> documents_list = new List<Document>();
+            IndexWriter writer = new IndexWriter(_indexDir, _indexConfig);
+
+            foreach (string file in System.IO.Directory.EnumerateFiles(_documentsDirectoryPath, "*.txt"))
+            {
+                documents_list.Add(file_parser.ParseDocument(file));
+            }
+
+            writer.DeleteAll();
+            writer.Commit();
+
+
+            foreach (var document in documents_list)
+            {
+                writer.AddDocument(document);
+            }
+
+            writer.Flush(true,true);
+            writer.Commit();
+
+            string[] searchFields = { "ProductId", "ProductName", "ProductSpecification" };
+
+            using DirectoryReader reader = DirectoryReader.Open(_indexDir);
+            IndexSearcher searcher = new IndexSearcher(reader);
+
+            var parser = new MultiFieldQueryParser(LuceneVersion.LUCENE_48, searchFields, standardAnalyzer);
+            parser.DefaultOperator=Operator.OR;
+
+            //Query query = new TermQuery(new Term("componentName", term));
+            if (SearchString == null)
+            {
+                return RedirectToAction("ListProducts");
+            }
+        
+                var query = parser.Parse(SearchString);
+            
+
+            var hits = searcher.Search(query, 100).ScoreDocs;
+            var documents = new List<Document>();
+            foreach (var hit in hits)
+            {
+                documents.Add(searcher.Doc(hit.Doc));
+            }
+
+            List<Product> results = new List<Product>();
+            foreach (var result in documents)
+            {
+                int productId = int.Parse(result.Get("ProductId"));
+                var product = await context.Products.FindAsync(productId);
+
+                results.Add(product);
+            }
+
+            writer.Dispose();
+
+            return View(new SearchListViewModel
+            {
+                Products = results
+            });
+
+            
+        }
+
 
     }
-}
+    }

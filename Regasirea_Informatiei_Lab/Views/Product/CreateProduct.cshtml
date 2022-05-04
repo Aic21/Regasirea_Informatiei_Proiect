@@ -73,6 +73,12 @@
                             <input type="text" class="form-control" id="inputAddress2" placeholder="Nume articol">
                         </div>
 
+                        <div class="form-group">
+                            <input asp-for="Doc" type="file" class="form-control custom-file-input" id="inputGroupFile06">
+                                <label asp-for="Doc" class="input-group-text" for="inputGroupFile06">Document</label>
+                                <span asp-validation-for="Doc" class="text-danger"></span>
+                        </div>
+
                     <div class="col">
                         <label asp-for="SubCategory" class="form-label">Categorie</label>
                         <select asp-for="SubCategory" class="form-select" asp-items="@(new SelectList(Model.Subcategories))">
