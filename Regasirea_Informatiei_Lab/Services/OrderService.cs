@@ -17,6 +17,7 @@ namespace Regasirea_Informatiei_Lab.Services
         {
             _appDbContext = appDbContext;
             _shoppingCart = shoppingCart;
+         
 
 
         }

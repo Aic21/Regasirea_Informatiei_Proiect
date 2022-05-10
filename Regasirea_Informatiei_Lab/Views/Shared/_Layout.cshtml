@@ -187,10 +187,10 @@
                             </li>
                             @await Component.InvokeAsync("ShoppingCartSummary")
 
-                            <form asp-controller="product" asp-action="Search">
+                            <form  action="/Product/Search" method="get">
                                 <p>
-                                    <input type="text" name="SearchString" id="SearchString" />
-                                    <input type="submit" value="Filter" />
+                                    <input type="text" name="SearchString" id="SearchString"  value="@ViewBag.SearchString" />
+                                    <input type="submit" value="Search" />
                                 </p>
                             </form>
 

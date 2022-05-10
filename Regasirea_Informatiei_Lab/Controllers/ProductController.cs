@@ -24,6 +24,7 @@ using Microsoft.EntityFrameworkCore;
 using Regasirea_Informatiei_Lab.Data;
 using Lucene.Net.QueryParsers.Classic;
 
+
 namespace Regasirea_Informatiei_Lab.Controllers
 {
     public class ProductController : Controller
@@ -77,12 +78,29 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
             return View("CreateProduct", model);
         }
+       
 
+        public static string GetSerialKeyAlphaNumaric(int keyLength)
+        {
+            string newSerialNumber = "";
+            string SerialNumber = Guid.NewGuid().ToString("N").Substring(0, (int)keyLength).ToUpper();
+            for (int iCount = 0; iCount < (int)keyLength; iCount += 4)
+                newSerialNumber = newSerialNumber + SerialNumber.Substring(iCount, 4) + "-";
+            newSerialNumber = newSerialNumber.Substring(0, newSerialNumber.Length - 1);
+            return newSerialNumber;
+        }
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateProduct(CreateProductViewModel model)
         {
+            int keyLength = 12;
+
             var cat = subcategoryService.GetSubCategoryByName(model.SubCategory);
+            string newSerialNumber = "";
+            string SerialNumber = Guid.NewGuid().ToString("N").Substring(0, keyLength).ToUpper();
+            for (int iCount = 0; iCount < (int)keyLength; iCount += 4)
+                newSerialNumber = newSerialNumber + SerialNumber.Substring(iCount, 4) + "-";
+            newSerialNumber = newSerialNumber.Substring(0, newSerialNumber.Length - 1);
 
             if (ModelState.IsValid)
             {
@@ -157,7 +175,9 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     ProductPicture3 = uniquePhotoFileName2,
                     ProductVideo = uniquePhotoFileName3,
                     Subcategorie = cat[0],
-                    DocumentPath = uniqueDoc
+                    DocumentPath = uniqueDoc,
+                    SerialNo = newSerialNumber
+                    //de adaugat Model No
                 };
 
                 await productService.AddProductAsync(produs);
@@ -323,9 +343,31 @@ namespace Regasirea_Informatiei_Lab.Controllers
             return View(product);
         }
 
-
-        public async Task<IActionResult> Search(string SearchString)
+        [AllowAnonymous]
+        public async Task<IActionResult> Search(string SearchString,string sortOrder)
         {
+            ViewBag.SearchString = SearchString;
+
+            if (SearchString == null)
+            {
+                return RedirectToAction("ListProducts");
+            }
+
+            Sort sort;
+            switch (sortOrder)
+            {
+                case "ascending":
+
+                    sort = new Sort(new SortField[] { new SortField(null, SortFieldType.SCORE, true), new SortField(null, SortFieldType.DOC, true) });
+                    break;
+                case "descending":
+                    sort = new Sort(new SortField[] { SortField.FIELD_SCORE, SortField.FIELD_DOC, });
+
+                    break;
+                default:
+                    sort = new Sort(new SortField[] { SortField.FIELD_SCORE, SortField.FIELD_DOC, });
+                    break;
+            }
             const LuceneVersion luceneVersion = LuceneVersion.LUCENE_48;
 
             string indexPath = Path.Combine(hostingEnvironment.ContentRootPath,"Data","Lucene","Index");
@@ -368,15 +410,11 @@ namespace Regasirea_Informatiei_Lab.Controllers
             parser.DefaultOperator=Operator.OR;
 
             //Query query = new TermQuery(new Term("componentName", term));
-            if (SearchString == null)
-            {
-                return RedirectToAction("ListProducts");
-            }
         
                 var query = parser.Parse(SearchString);
             
 
-            var hits = searcher.Search(query, 100).ScoreDocs;
+            var hits = searcher.Search(query, 100,sort).ScoreDocs;
             var documents = new List<Document>();
             foreach (var hit in hits)
             {

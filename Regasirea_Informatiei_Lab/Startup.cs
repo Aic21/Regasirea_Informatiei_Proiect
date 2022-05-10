@@ -52,6 +52,7 @@ namespace Regasirea_Informatiei_Lab
             //services.AddScoped<ShoppingCart>(sc => ShoppingCart.GetCart(sc));
             //services.AddScoped<Wishlist>(sc => Wishlist.GetWishlist(sc));
 
+
             services.AddHttpContextAccessor();
             services.AddSession();
             services.AddRazorPages();

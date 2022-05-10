@@ -1,1 +1,40 @@
-﻿<h1>@ViewBag.CheckoutCompleteMessage</h1>
+﻿@model Order;
+
+
+<html>
+    <head>
+
+    </head>
+
+    <body>
+
+         @Html.HiddenFor(n => n.OrderId, new { @id = "orderid" })            
+            <hr />            
+            <button class="btn btn-success" type="submit">
+            <span>Confirm payment - </span>
+            </button>  
+    </body>
+<script src="https://js.braintreegateway.com/web/dropin/1.22.0/js/dropin.min.js"></script>
+<script>
+    var client_token = "@ViewBag.ClientToken";
+    var form = document.querySelector('#payment-form');
+
+    braintree.dropin.create({
+        authorization: client_token,
+        container: '#bt-dropin'
+    }, function (createErr, instance) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            instance.requestPaymentMethod(function (err, payload) {
+                if (err) {
+                    return;
+                }
+              
+                document.querySelector('#orderid').value = payload.nonce;
+                form.submit();
+            });
+        });
+    });
+</script>
+</html>

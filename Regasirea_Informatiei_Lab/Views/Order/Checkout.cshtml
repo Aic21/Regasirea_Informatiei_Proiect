@@ -1,5 +1,7 @@
 ﻿@model Order
-
+@using Microsoft.Extensions.Options
+@inject IOptions<Regasirea_Informatiei_Lab.Data.StripeSettings> Stripe
+<html>
 <form asp-action="Checkout" method="Post" class="form-horizontal" role="form">
     <h4>You're one step away from ordering your products</h4>
 
@@ -57,9 +59,16 @@
         </div>
     </div>
 
+
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
             <input type="submit" class="btn btn-primary" value="Complete Order" />
         </div>
     </div>
+
+
+
 </form>
+
+</html>

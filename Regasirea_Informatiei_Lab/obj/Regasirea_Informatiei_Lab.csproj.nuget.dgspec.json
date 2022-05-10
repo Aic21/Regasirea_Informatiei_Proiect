@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "BarbezDotEu.License.Generation": {
+              "target": "Package",
+              "version": "[1.2.1, )"
+            },
             "Grpc.Core": {
               "target": "Package",
               "version": "[2.45.0, )"
@@ -93,6 +97,14 @@
             "Rotativa": {
               "target": "Package",
               "version": "[1.7.3, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[39.110.0, )"
+            },
+            "System.Security.Cryptography.Cng": {
+              "target": "Package",
+              "version": "[6.0.0-preview.4.21253.7, )"
             },
             "X.PagedList": {
               "target": "Package",

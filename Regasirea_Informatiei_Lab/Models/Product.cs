@@ -27,6 +27,7 @@ namespace Regasirea_Informatiei_Lab.Models
         public bool IsInStock { get; set; }
         public int SubCategorieID { get; set; }
         public virtual Subcategorie Subcategorie { get; set; }
+        public string SerialNo { get; set; }
 
     }
 }

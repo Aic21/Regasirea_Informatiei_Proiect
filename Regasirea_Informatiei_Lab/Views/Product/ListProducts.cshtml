@@ -5,6 +5,8 @@
 
 @using X.PagedList.Mvc.Core
 @using X.PagedList.Web.Common;
+@using System.Net
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
 @model IPagedList<Product>
@@ -26,7 +28,8 @@
                         <h5 class="card-title">@product.ProductName</h5>
                         <img src="@photoPath" alt="Alternate Text" style="width: 200px; height: 200px" />
                         <p class="card-text">
-                            @product.ProductDescription
+                                   @Html.Raw(@WebUtility.HtmlDecode(product.ProductDescription))
+
                         </p>
                         <p class="card-text">
                             @product.Pret Euro
