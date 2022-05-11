@@ -36,6 +36,8 @@
                                 <th scope="col">Subcategorie</th>
                                 <th scope="col">Pret</th>
                                 <th scope="col">SerialNO</th>
+                                <th scope="col">Stock</th>
+
 
 
 
@@ -52,6 +54,7 @@
                                     <td>@product.Subcategorie.Nume/td>
                                     <td>@product.Pret</td>
                                     <td>@product.SerialNo</td>
+                                    <td>@product.ProductStock</td>
 
 
                                     <td>
@@ -63,6 +66,10 @@
                                             <i class="fas fa-edit"></i>
                                             Delete
                                         </a>
+                                         <a class="btn btn-primary" asp-action="ConvertToPdf" asp-controller="product" asp-route-productId="@product.ProductId">
+                                        <i class="fas fa-edit"></i>
+                                        Convert
+                                         </a>
                                     </td>
                                 </tr>
                             </tbody>

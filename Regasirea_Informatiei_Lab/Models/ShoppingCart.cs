@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Regasirea_Informatiei_Lab.Models
 {
@@ -53,6 +54,8 @@ namespace Regasirea_Informatiei_Lab.Models
 
             _appDbContext.SaveChanges();
         }
+
+
 
         public void Update(Product product, int amount)
         {

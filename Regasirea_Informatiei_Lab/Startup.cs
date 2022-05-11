@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Regasirea_Informatiei_Lab.DAL.Interfaces;
 using Regasirea_Informatiei_Lab.DAL.Repositories;
+using Regasirea_Informatiei_Lab.Filter;
 using Regasirea_Informatiei_Lab.Models;
 using Regasirea_Informatiei_Lab.Services;
 using System;
@@ -68,6 +69,9 @@ namespace Regasirea_Informatiei_Lab
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             }).AddEntityFrameworkStores<DBContext>();
+            services.AddControllersWithViews(options => {
+                options.Filters.Add(typeof(UserFilterAttribute));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

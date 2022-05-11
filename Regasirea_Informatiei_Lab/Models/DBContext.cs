@@ -25,5 +25,6 @@ namespace Regasirea_Informatiei_Lab.Models
 
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<UserActivity> userActivities { get; set; }
     }
 }

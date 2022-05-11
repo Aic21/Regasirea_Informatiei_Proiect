@@ -34,6 +34,12 @@
                         <p class="card-text">
                             @product.Pret Euro
                         </p>
+                        @if(product.ProductStock<=0)
+                        {
+                            <p>Produs scos din stock</p>
+                        }
+                        else
+                        {
                         @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
                         {
 
@@ -68,7 +74,7 @@
                                 Details
                             </a>
                         }
-
+                        }
 
                     </div>
                 </div>

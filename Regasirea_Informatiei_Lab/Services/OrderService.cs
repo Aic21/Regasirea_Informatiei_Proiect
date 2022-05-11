@@ -42,9 +42,12 @@ namespace Regasirea_Informatiei_Lab.Services
                     //UserID = order.User.Id
                 };
 
+                var productid = _appDbContext.Products.Where(p => p.ProductId == shoppingCartItem.Produs.ProductId).FirstOrDefault();
+                var orderDetail2 = _appDbContext.OrderDetails.Where(p => p.ProductId == shoppingCartItem.Produs.ProductId).FirstOrDefault();
+                productid.ProductStock -= orderDetail.Amount;
+
                 _appDbContext.OrderDetails.Add(orderDetail);
             }
-
             _appDbContext.SaveChanges();
         }
 

@@ -37,5 +37,7 @@ namespace Regasirea_Informatiei_Lab.ViewModels
         public int Stoc { get; set; }
         public int SubCategoryId { get; set; }
         public string SubCategory { get; set; }
+
+        public int Stock { get; set; }
     }
 }

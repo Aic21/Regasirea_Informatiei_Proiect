@@ -23,7 +23,11 @@ using Lucene.Net.Analysis.Standard;
 using Microsoft.EntityFrameworkCore;
 using Regasirea_Informatiei_Lab.Data;
 using Lucene.Net.QueryParsers.Classic;
-
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Drawing;
+using System.IO;
+using Syncfusion.Pdf.Grid;
 
 namespace Regasirea_Informatiei_Lab.Controllers
 {
@@ -176,7 +180,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     ProductVideo = uniquePhotoFileName3,
                     Subcategorie = cat[0],
                     DocumentPath = uniqueDoc,
-                    SerialNo = newSerialNumber
+                    SerialNo = newSerialNumber,
+                    ProductStock = model.Stock
                     //de adaugat Model No
                 };
 
@@ -341,6 +346,44 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 return NotFound();
 
             return View(product);
+        }
+
+        public async Task<IActionResult> ConvertToPdf(int productId)
+        {
+        
+
+            var product = await productService.GetProductByIdAsync(productId);
+
+            PdfDocument doc = new PdfDocument();
+            //Add a page.
+            PdfPage page = doc.Pages.Add();
+            //Create a PdfGrid.
+            PdfGrid pdfGrid = new PdfGrid();
+            //Add values to list
+            List<object> data = new List<object>();
+            Object row1 = new { ID = product.ProductId, Name = product.ProductName, Price = product.Pret, SerialNo=product.SerialNo };
+   
+            data.Add(row1);
+
+            //Add list to IEnumerable
+            IEnumerable<object> dataTable = data;
+            //Assign data source.
+            pdfGrid.DataSource = dataTable;
+            //Draw grid to the page of PDF document.
+            pdfGrid.Draw(page, new Syncfusion.Drawing.PointF(10, 10));
+            //Save the PDF document to stream
+            MemoryStream stream = new MemoryStream();
+            doc.Save(stream);
+            //If the position is not set to '0' then the PDF will be empty.
+            stream.Position = 0;
+            //Close the document.
+            doc.Close(true);
+            //Defining the ContentType for pdf file.
+            string contentType = "application/pdf";
+            //Define the file name.
+            string fileName = "Output.pdf";
+            //Creates a FileContentResult object by using the file contents, content type, and file name.
+            return File(stream, contentType, fileName);
         }
 
         [AllowAnonymous]

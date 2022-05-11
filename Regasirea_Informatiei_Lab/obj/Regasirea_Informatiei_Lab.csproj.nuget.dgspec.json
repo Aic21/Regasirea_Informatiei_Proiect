@@ -102,6 +102,10 @@
               "target": "Package",
               "version": "[39.110.0, )"
             },
+            "Syncfusion.Pdf.Net.Core": {
+              "target": "Package",
+              "version": "[20.1.0.52, )"
+            },
             "System.Security.Cryptography.Cng": {
               "target": "Package",
               "version": "[6.0.0-preview.4.21253.7, )"

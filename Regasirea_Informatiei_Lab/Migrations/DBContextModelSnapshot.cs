@@ -424,6 +424,9 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Property<string>("ProductPicture3")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ProductStock")
+                        .HasColumnType("int");
+
                     b.Property<string>("ProductVideo")
                         .HasColumnType("nvarchar(max)");
 
@@ -492,6 +495,33 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Subcategories");
+                });
+
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.UserActivity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ActivityDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Data")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IpAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("userActivities");
                 });
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.UserAdress", b =>
