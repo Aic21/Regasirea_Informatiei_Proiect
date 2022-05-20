@@ -32,6 +32,9 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
+      "FontAwesome/4.7.0": {
+        "type": "package"
+      },
       "Grpc.Core/2.45.0": {
         "type": "package",
         "dependencies": {
@@ -2131,6 +2134,27 @@
         "lib/netstandard1.5/Castle.Core.dll",
         "lib/netstandard1.5/Castle.Core.xml",
         "readme.txt"
+      ]
+    },
+    "FontAwesome/4.7.0": {
+      "sha512": "n4H/brfszElyoZ4kmGh8E75uqvLzLvFr3h2PFVdPH1LwUmWIpeqdaW2pcC4oZAhg7sESyObh0IZpAI8COCNeUg==",
+      "type": "package",
+      "path": "fontawesome/4.7.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Content/font-awesome.css",
+        "Content/Content/font-awesome.min.css",
+        "Content/fonts/FontAwesome.otf",
+        "Content/fonts/fontawesome-webfont.eot",
+        "Content/fonts/fontawesome-webfont.svg",
+        "Content/fonts/fontawesome-webfont.ttf",
+        "Content/fonts/fontawesome-webfont.woff",
+        "Content/fonts/fontawesome-webfont.woff2",
+        "fontawesome.4.7.0.nupkg.sha512",
+        "fontawesome.nuspec",
+        "tools/install.ps1"
       ]
     },
     "Grpc.Core/2.45.0": {
@@ -7330,6 +7354,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "BarbezDotEu.License.Generation >= 1.2.1",
+      "FontAwesome >= 4.7.0",
       "Grpc.Core >= 2.45.0",
       "Lucene.Net >= 4.8.0-beta00016",
       "Lucene.Net.Analysis.Common >= 4.8.0-beta00016",
@@ -7393,6 +7418,10 @@
           "BarbezDotEu.License.Generation": {
             "target": "Package",
             "version": "[1.2.1, )"
+          },
+          "FontAwesome": {
+            "target": "Package",
+            "version": "[4.7.0, )"
           },
           "Grpc.Core": {
             "target": "Package",

@@ -215,6 +215,21 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
 
 
+        [Authorize(Roles = "Admin")]
+
+        public RedirectToActionResult UpdateStock   (int productId, int amount)
+        {
+            var selectedProduct = productService.ListAllProduct().FirstOrDefault(c => c.ProductId == productId);
+            if (selectedProduct != null)
+            {
+
+                selectedProduct.ProductStock = amount;
+
+            }
+            context.SaveChanges();
+
+            return RedirectToAction("ListProducts");
+        }
 
 
         public ViewResult ListSubcategory(string category,int? page)

@@ -10,6 +10,7 @@ using Regasirea_Informatiei_Lab.DAL.Interfaces;
 using Regasirea_Informatiei_Lab.Models;
 using Regasirea_Informatiei_Lab.ViewModels;
 using System.Security.Claims;
+using Stripe;
 
 namespace Regasirea_Informatiei_Lab.Controllers
 {
@@ -65,8 +66,10 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
         [HttpPost]
         [Authorize(Roles = "User")]
-        public IActionResult Checkout(Order order)
+        public IActionResult Checkout(string stripeToken,Models.Order order)
         {
+            StripeConfiguration.ApiKey = "sk_test_51KxrJpAx2jxQPuhdkXkvVMm7ssUc8EjvXt932n8uKKhKQTCxmS6PRfP6uvcOBFLjjKySKTgh4SlyXf9cKGB6ruE200KsMqI8rM";
+
             _shoppingCart.ShoppingCartItems = _shoppingCart.GetShoppingCartItems();
 
             if (_shoppingCart.ShoppingCartItems.Count == 0)
@@ -79,8 +82,23 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId
                 order.UserId = userId;
                 _orderRepository.CreateOrder(order);
+
+                var options = new ChargeCreateOptions
+                {
+                    Amount = (long?)order.OrderTotal*100,
+                    Customer = order.LastName,
+                    Currency = "RON",
+                    Source = stripeToken
+                };
+                var service = new ChargeService();
+                var charge = service.Create(options);
+
+
+                var model = new ChangeViewModel();
+                model.ChargeId = charge.Id;
+
                 _shoppingCart.ClearCart();
-                return RedirectToAction("CheckoutComplete");
+                return View("CheckoutComplete", model);
             }
 
             return View(order);

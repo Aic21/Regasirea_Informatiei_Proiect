@@ -34,6 +34,7 @@
       "Regasirea_Informatiei_Lab/1.0.0": {
         "dependencies": {
           "BarbezDotEu.License.Generation": "1.2.1",
+          "FontAwesome": "4.7.0",
           "Grpc.Core": "2.45.0",
           "Lucene.Net": "4.8.0-beta00016",
           "Lucene.Net.Analysis.Common": "4.8.0-beta00016",
@@ -371,6 +372,7 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
+      "FontAwesome/4.7.0": {},
       "Grpc.Core/2.45.0": {
         "dependencies": {
           "Grpc.Core.Api": "2.45.0",
@@ -3559,6 +3561,13 @@
       "sha512": "sha512-zanbjWC0Y05gbx4eGXkzVycOQqVOFVeCjVsDSyuao9P4mtN1w3WxxTo193NGC7j3o2u3AJRswaoC6hEbnGACnQ==",
       "path": "castle.core/4.4.1",
       "hashPath": "castle.core.4.4.1.nupkg.sha512"
+    },
+    "FontAwesome/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n4H/brfszElyoZ4kmGh8E75uqvLzLvFr3h2PFVdPH1LwUmWIpeqdaW2pcC4oZAhg7sESyObh0IZpAI8COCNeUg==",
+      "path": "fontawesome/4.7.0",
+      "hashPath": "fontawesome.4.7.0.nupkg.sha512"
     },
     "Grpc.Core/2.45.0": {
       "type": "package",

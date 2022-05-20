@@ -1,8 +1,45 @@
 ﻿@model Order
 @using Microsoft.Extensions.Options
-@inject IOptions<Regasirea_Informatiei_Lab.Data.StripeSettings> Stripe
 <html>
-<form asp-action="Checkout" method="Post" class="form-horizontal" role="form">
+    <body>
+
+    @section stripe{
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('pk_test_51KxrJpAx2jxQPuhdZG1ue0qDdXsTC3MS9ydIryYCNSgaLfZn0hztZrsrjIYAnAy21sgxVP2VbaQR0X9HfoX03H6l00LpF4vdyP');
+        var elements = stripe.elements();
+        var style = {
+            base: {
+                fontSize: '16px',
+                color: '#32325d',
+            },
+        };
+        var card = elements.create('card', { style: style });
+        card.mount('#card-element');
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            stripe.createToken(card).then(function (result) {
+                if (result.error) {
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+        function stripeTokenHandler(token) {
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+            form.submit();
+        }
+    </script>
+}
+<form asp-action="Checkout" method="Post" class="form-horizontal" role="form" id="payment-form">
     <h4>You're one step away from ordering your products</h4>
 
     <div asp-validation-summary="All" class="danger"></div>
@@ -60,15 +97,19 @@
     </div>
 
 
+    <div id="card-element">
+    </div>
+
+    <div id="card-errors" role="alert"></div>
+    </div>
+    <br />
+
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
             <input type="submit" class="btn btn-primary" value="Complete Order" />
         </div>
     </div>
-
-
-
 </form>
-
+</body>
 </html>

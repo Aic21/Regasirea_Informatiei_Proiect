@@ -1,5 +1,6 @@
 ﻿using Regasirea_Informatiei_Lab.DAL.Interfaces;
 using Regasirea_Informatiei_Lab.Models;
+using Regasirea_Informatiei_Lab.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace Regasirea_Informatiei_Lab.Services
 
         public async void CreateOrder(Order order)
         {
+
             order.OrderPlaced = DateTime.Now;
             order.OrderTotal = _shoppingCart.GetShoppingCartTotal();
             _appDbContext.Orders.Add(order);
@@ -41,6 +43,7 @@ namespace Regasirea_Informatiei_Lab.Services
                     Nume_Produs = shoppingCartItem.Produs.ProductName
                     //UserID = order.User.Id
                 };
+                
 
                 var productid = _appDbContext.Products.Where(p => p.ProductId == shoppingCartItem.Produs.ProductId).FirstOrDefault();
                 var orderDetail2 = _appDbContext.OrderDetails.Where(p => p.ProductId == shoppingCartItem.Produs.ProductId).FirstOrDefault();

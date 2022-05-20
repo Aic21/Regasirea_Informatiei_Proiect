@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="BarbezDotEu.License.Generation" Version="1.2.1" />
+    <PackageReference Include="FontAwesome" Version="4.7.0" />
     <PackageReference Include="Grpc.Core" Version="2.45.0" />
     <PackageReference Include="Lucene.Net" Version="4.8.0-beta00016" />
     <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00016" />

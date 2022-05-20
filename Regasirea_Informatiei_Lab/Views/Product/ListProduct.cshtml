@@ -4,9 +4,13 @@
 @{
     ViewData["Title"] = " - Produs";
 }
+<html>
+    <head>
 
-
-@if (Model.Any())
+    </head>
+    <body>
+        <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+        @if (Model.Any())
 {
     int i = 1;
     <div class="content container-fluid">
@@ -17,10 +21,10 @@
                 Administreaza Produse
             </h2>
         </div>
-        <div class="container-fluid text-center container-content">
+        <div class="container-lg text-center container-content">
             <hr>
             <div class="card mb-3">
-                <div class="card-header bg-custom text-white">
+                <div class="card-header bg-custom text-white"style="color:black;">
                     <i class="fas fa-sign-in-alt"></i> Lista Produse
                 </div>
                 <div class="card-body mx-auto">
@@ -33,10 +37,12 @@
                                 <th scope="col">#</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Nume</th>
+                                <th scope="col">Categorie</th>
                                 <th scope="col">Subcategorie</th>
                                 <th scope="col">Pret</th>
                                 <th scope="col">SerialNO</th>
                                 <th scope="col">Stock</th>
+                                <th scope ="col">Update stock</th>
 
 
 
@@ -46,32 +52,79 @@
                         </thead>
                         @foreach (var product in Model)
                         {
-                            <tbody>
-                                <tr>
-                                    <th scope="row">@i</th>
-                                    <td>@product.ProductId</td>
-                                    <td>@product.ProductName</td>
-                                    <td>@product.Subcategorie.Nume/td>
-                                    <td>@product.Pret</td>
-                                    <td>@product.SerialNo</td>
-                                    <td>@product.ProductStock</td>
+                                <tbody>
+                                    <tr>
+                                        @if (product.ProductStock == 0)
+                                        {
+                                            <th  style="background-color:#F62817"scope="row">@i</th>
+                                            <td style="background-color:#F62817">@product.ProductId</td>
+                                            <td style="background-color:#F62817">@product.ProductName</td>
+                                            <td style="background-color:#F62817">@product.Subcategorie.Categories.CategoryName</td>
+                                            <td style="background-color:#F62817">@product.Subcategorie.Nume</td>
+                                            <td style="background-color:#F62817">@product.Pret</td>
+                                            <td style="background-color:#F62817">@product.SerialNo</td>
+                                            <td style="background-color:#F62817">@product.ProductStock</td>
+                                            <td style="background-color:#F62817">
+                                                <form method="post" asp-controller="Product" asp-action="UpdateStock" asp-route-productId="@product.ProductId">
+                                                    <div class="row" style="margin-left:1px; margin-right:0; height:40px; width:150px;">
+                                                        <input name="amount" placeholder="@product.ProductStock" value="@product.ProductStock" style="height:40px; width:30px;" />
+                                                        <button type="submit" class="btn btn-primary" style="margin-left:5px;" >Update</button>
+                                                    </div>
+                                                </form>
+                                            </td>
 
 
-                                    <td>
-                                        <a class="btn btn-primary" asp-action="EditProduct" asp-controller="product" asp-route-id="@product.ProductId">
-                                            <i class="fas fa-edit"></i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-primary" asp-action="DeleteProduct" asp-controller="product" asp-route-id="@product.ProductId">
-                                            <i class="fas fa-edit"></i>
-                                            Delete
-                                        </a>
-                                         <a class="btn btn-primary" asp-action="ConvertToPdf" asp-controller="product" asp-route-productId="@product.ProductId">
-                                        <i class="fas fa-edit"></i>
-                                        Convert
-                                         </a>
-                                    </td>
-                                </tr>
+                                            <td style="width:fit-content;background-color:#F62817">
+                                                <a class="btn btn-primary" asp-action="EditProduct" asp-controller="product" asp-route-id="@product.ProductId">
+
+                                                    Edit
+                                                </a>
+                                                <a class="btn btn-primary" asp-action="DeleteProduct" asp-controller="product" asp-route-id="@product.ProductId">
+
+                                                    Delete
+                                                </a>
+                                                <a class="btn btn-primary" asp-action="ConvertToPdf" asp-controller="product" asp-route-productId="@product.ProductId" style="margin-top:5px;">
+
+                                                    Convert
+                                                </a>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                                             <th scope="row">@i</th>
+                                            <td >@product.ProductId</td>
+                                            <td >@product.ProductName</td>
+                                            <td >@product.Subcategorie.Categories.CategoryName</td>
+                                            <td >@product.Subcategorie.Nume</td>
+                                            <td >@product.Pret</td>
+                                            <td >@product.SerialNo</td>
+                                            <td >@product.ProductStock</td>
+                                            <td >
+                                                <form method="post" asp-controller="Product" asp-action="UpdateStock" asp-route-productId="@product.ProductId">
+                                                    <div class="row" style="margin-left:1px; margin-right:0; height:40px; width:150px;">
+                                                        <input name="amount" placeholder="@product.ProductStock" value="@product.ProductStock" style="height:40px; width:30px;" />
+                                                        <button type="submit" class="btn btn-primary"style="margin-left:5px;" >Update</button>
+                                                    </div>
+                                                </form>
+                                            </td>
+
+
+                                            <td style="width:fit-content;">
+                                                <a class="btn btn-primary" asp-action="EditProduct" asp-controller="product" asp-route-id="@product.ProductId">
+
+                                                    Edit
+                                                </a>
+                                                <a class="btn btn-primary" asp-action="DeleteProduct" asp-controller="product" asp-route-id="@product.ProductId">
+
+                                                    Delete
+                                                </a>
+                                                <a class="btn btn-primary" asp-action="ConvertToPdf" asp-controller="product" asp-route-productId="@product.ProductId" style="margin-top:5px;">
+
+                                                    Convert
+                                                </a>
+                                            </td>
+                                        }
+                                    </tr>
                             </tbody>
                             i++;
                         }
@@ -79,7 +132,26 @@
                 </div>
             </div>
             <div class="card mb-3">
-                <div class="card-header bg-custom text-white">
+                <div class="card-header bg-custom text-white"style="color:black;">
+                    <i class="far fa-question-circle"></i> Adaugare categorie noua
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        <br>
+
+                        <br>
+                        Folositi butonul de mai jos pentru a adauga o categorie noua
+                    </p>
+                    <a class="btn btn-outline-dark" asp-action="CreateCategory" asp-controller="category">
+                        <i class="fas fa-user-plus"></i>
+                        Creaza o categorie noua
+                    </a>
+                </div>
+            </div>
+            <hr>
+                        <div class="card mb-3">
+                <div class="card-header bg-custom text-white" style="color:black;">
                     <i class="far fa-question-circle"></i> Adaugare produs nou
                 </div>
                 <div class="card-body">
@@ -96,7 +168,7 @@
                     </a>
                 </div>
             </div>
-            <hr>
+
         </div>
     </div>
 }
@@ -160,3 +232,6 @@ else
         </div>
     </div>
 }
+    </body>
+</html>
+
