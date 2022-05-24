@@ -31,5 +31,8 @@ namespace Regasirea_Informatiei_Lab.Models
 
         public int ProductStock { get; set; }
 
+        public string Specifications { get; set; }
+
+
     }
 }

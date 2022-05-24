@@ -86,7 +86,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 var options = new ChargeCreateOptions
                 {
                     Amount = (long?)order.OrderTotal*100,
-                    Customer = order.LastName,
+                    Description = order.FirstName,
+                    Customer = userId,
                     Currency = "RON",
                     Source = stripeToken
                 };

@@ -147,7 +147,7 @@ namespace Regasirea_Informatiei_Lab.Models
             var total = _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
                 .Select(c => c.Produs.Pret * c.Amount).Sum();
 
-            return total;
+            return (decimal)(total + 16.99);
         }
     }
 }

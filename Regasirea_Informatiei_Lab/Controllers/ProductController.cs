@@ -27,6 +27,7 @@ using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Drawing;
 using System.IO;
+using System.Web;
 using Syncfusion.Pdf.Grid;
 
 namespace Regasirea_Informatiei_Lab.Controllers
@@ -64,10 +65,10 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
         [HttpGet]
         [Authorize(Roles = "User")]
-        public IActionResult ListProduct()
+        public IActionResult ListProduct(int?page)
         {
             var product = productService.ListAllProductWith();
-            return View("ListProduct", product);
+            return View("ListProduct", product.ToList().ToPagedList(page ?? 1, 3));
         }
 
         [HttpGet]
@@ -144,6 +145,17 @@ namespace Regasirea_Informatiei_Lab.Controllers
                         model.Doc.CopyTo(fs);
                     }
                 }
+                string spect = null;
+                if (model.Specification != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.ContentRootPath, "Data", "Specifications");
+                    spect = Guid.NewGuid().ToString() + "_" + model.Specification.FileName;
+                    string filePath = Path.Combine(uploadsFolder, spect);
+                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Specification.CopyTo(fs);
+                    }
+                }
                 string uniquePhotoFileName2 = null;
                 if (model.Photo2 != null)
                 {
@@ -181,7 +193,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     Subcategorie = cat[0],
                     DocumentPath = uniqueDoc,
                     SerialNo = newSerialNumber,
-                    ProductStock = model.Stock
+                    ProductStock = model.Stock,
+                    Specifications = spect
                     //de adaugat Model No
                 };
 
@@ -359,6 +372,9 @@ namespace Regasirea_Informatiei_Lab.Controllers
             var product = await productService.GetProductByIdAsync(id);
             if (product == null)
                 return NotFound();
+            string content = Path.Combine(hostingEnvironment.ContentRootPath, "Data", "Specifications", product.Specifications);
+            string[] texts = System.IO.File.ReadAllLines(content);
+            ViewBag.Data = texts;
 
             return View(product);
         }

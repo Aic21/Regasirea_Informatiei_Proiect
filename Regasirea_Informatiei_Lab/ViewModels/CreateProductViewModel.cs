@@ -27,6 +27,8 @@ namespace Regasirea_Informatiei_Lab.ViewModels
 
         [DataType(DataType.Upload)]
         public IFormFile Doc { get; set; }
+        [DataType(DataType.Upload)]
+        public IFormFile Specification { get; set; }
 
         [DataType(DataType.Upload)]
         public IFormFile Video { get; set; }
