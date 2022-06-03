@@ -403,8 +403,14 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Property<bool>("IsOnSale")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsPromoted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Pret")
                         .HasColumnType("int");
+
+                    b.Property<double>("Price_after_discount")
+                        .HasColumnType("float");
 
                     b.Property<string>("ProductColor")
                         .HasColumnType("nvarchar(max)");

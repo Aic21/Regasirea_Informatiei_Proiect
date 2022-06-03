@@ -1,118 +1,85 @@
-﻿@model Regasirea_Informatiei_Lab.ViewModels.HomeViewModel
+﻿@model IEnumerable<Category>
 @using Microsoft.AspNetCore.Identity;
 @inject SignInManager<User> signInManager;
 @inject UserManager<User> userManager
 <html>
 <head>
-    <link rel="stylesheet" href="/css/home.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body style="background-color: #95a6ff;">
+<body>
+    <p>Test</p>
+        
+        @foreach (var category in Model)
+            {
+        
+                <a  style="color:black; margin-top:30%;">@category.CategoryName</a>
 
-    <div class="container-fullwidth" style="position: relative; background-color: #95a6ff; ">
-        <img src="./css/img_website/home background.jpg" style="width:100%; " />
-        <h1 style="position: absolute; top: 30%; left: 20%; transform: translate(-30%, -20%);">Find your Product</h1>
-        <button type="button" class="btn btn-primary" style="position: absolute; top: 70%; left: 30%; transform: translate(-70%, -30%);">Products</button>
+       
+            }
+
+
+
+            <li class="dropdown"style="margin:0;padding:8.3px;color:black;">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: black;">Categories<b class="caret"></b></a>
+        <ul class="dropdown-menu" style="margin-left: 3px; background-color: white;">
+            @foreach (var category in Model)
+            {
+                <li>
+                    <a style="text-decoration: none; color: black; text-align: center; font-size: 19px;">@category.CategoryName</a>
+                </li>
+                foreach (var subcategory in category.Subcategories)
+                {
+                    <li class="has-sub"><a  asp-controller="product" asp-action="ListProducts" asp-route-subcategory="@subcategory.Nume" style="text-decoration: none; color: black; margin-left: 10px; font-size: 16px;">@subcategory.Nume</a></li>
+                }
+            }
+            <li class="divider"></li>
+            <li>
+                <a style="text-decoration: none; color: black; margin-left: 10px; font-size: 16px;" asp-controller="product" asp-action="ListProducts" asp-route-subcategory="">View all product</a>
+            </li>
+        </ul>
+    </li>
+
+        <div class="container-fluid" style="margin-top:400px;">
+    
+        <div class="d-flex justify-content-between align-items-end card-body">
+            <h2 class="mb-1 text-700 fw-normal 1h-1">$47k</h2>
+        </div>
+        
+                        <li class="nav-item dropdown text-center mx-2 mx-lg-1">
+                            <a class="nav-link dropdown-toggle"   data-toggle="dropdown"
+            aria-expanded="false">
+                                <div>
+                                    <i class="fa fa-user fa-lg mb-1"></i>
+                                </div>
+                                Contul tau
+                            </a>
+                            <!-- Dropdown menu -->
+          <ul class="dropdown-menu dropdown-menu-dark" >
+                                <li><a class="dropdown-item" asp-controller="profile" asp-action="personaldata">Profilul meu</a></li>
+                                <li><a class="dropdown-item" asp-controller="order" asp-action="listorder">Comenzile mele</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="account" asp-action="logout">
+                                    <button type="submit" class="dropdown-item" >Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+
     </div>
-
-    <div class="card" style="background-color: #95a6ff; ">
-        <div class="card-header" style="background-color: #007bff;">
-            <p style="font-size:30px; color:black; text-align:center;">Produse de top</p>
-        </div>
-        <div class="card-body" style="background-color: #95a6ff;">
-            <div class="row">
-                <div class="col-4">
-                    <div class="container-fluid text-center container-content">
-
-                        <div class="card mb-3">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Samsung Galaxy S22</h5>
-                                <a class="rotate-link"><img src="~/PHONE/s22_1.png" class="rotate" alt="Alternate Text" style="width: 200px; height: 200px" /></a>
-                                <p class="card-text">
-
-                                </p>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="container-fluid text-center container-content">
-
-                        <div class="card mb-3">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Huawei P50</h5>
-                                <a class="rotate-link">
-                                    <img src="~/PHONE/huawei_p50_1.png" class="rotate" alt="Alternate Text" style="width: 200px; height: 200px" />
-                                </a>
-                                <p class="card-text">
-
-                                </p>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="container-fluid text-center container-content">
-
-                        <div class="card mb-3">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Iphone 13 Pro Max</h5>
-                                <a class="rotate-link">
-                                    <img src="~/PHONE/iphone13_1.png" class="rotate" alt="Alternate Text" style="width: 200px; height: 200px" />
-                                </a>
-                                <p class="card-text">
-
-                                </p>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <div class="card-header"style="background-color: #007bff;">
-            <p style="font-size:30px; color:black; text-align:center;">Unde ne gasiti</p>
-        </div>
-        <div class="card-body">
-            <div id="map"></div>
-
-        </div>
-    </div>
-    <script>
-        function initMap() {
-            // The location of Uluru
-            const uluru = { lat: 44.318378, lng: 23.796400 };
-            // The map, centered at Uluru
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 4,
-                center: uluru,
-            });
-            // The marker, positioned at Uluru
-            const marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-            });
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaohcMidg_jxrXcFRFtlB-yMwUoBCE8C0&callback=initMap"
-            ></script>
-
+     <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.js"></script>
+    <script src="~/css/bootstrap.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.5/af-2.3.7/b-2.2.2/r-2.2.9/sl-1.3.4/datatables.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
 </body>
 </html>

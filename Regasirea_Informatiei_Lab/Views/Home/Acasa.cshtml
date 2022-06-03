@@ -1,0 +1,265 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<User> signInManager;
+@inject UserManager<User> userManager
+@model IEnumerable<Category>
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common;
+@using System.Net
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+}
+
+<html>
+    <head>
+            <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/acasa.css" />
+    </head>
+    <body>
+<div class="container-fluid h-100" style="margin-top:100px;" >
+    <div class="row h-100" >
+
+       
+
+
+        <div class="col-2 collapse d-md-flex bg-dark pt-1 h-100 w-auto" id="sidebar">
+            <ul class="nav nav-pills flex-column w-auto">
+                <li class="nav-item">
+                    @foreach(var category in Model)
+                    {
+                    <a class="nav-link collapsed" href="#submenu1" data-toggle="collapse" >@category.CategoryName</a>
+                    <div class="collapse" id="submenu1" aria-expanded="false">
+                        <ul class="flex-column pl-2 nav">
+                            @foreach(var subcategoru in category.Subcategories)
+                            {
+                            <li class="nav-item"><a class="nav-link py-0" href="">@subcategoru.Nume</a></li>
+                            }
+                        </ul>
+                    </div>
+                    }
+                </li>
+            </ul>
+        </div>
+        <div class="col pt-1">
+            <!--Carousel Wrapper-->
+<div id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-2" data-slide-to="1"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <div class="view">
+        <img class="d-block w-100 img-responsive" src="/css/img_website/car-amd.webp"  style="object-fit:contain;" alt="First slide">
+        <div class="mask rgba-black-light"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">This is the first title</h3>
+        <p>First text</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <!--Mask color-->
+      <div class="view">
+        <img class="d-block w-100 img-responsive" src="https://s1.cel.ro/images/bner/car-gp-games-bundle-banner-multiformat-ro.jpg"  style="object-fit:cover; alt="Second slide">
+        <div class="mask rgba-black-light"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">Thir is the second title</h3>
+        <p>Secondary text</p>
+      </div>
+    </div>
+  </div>
+  <!--/.Slides-->
+  <!--Controls-->
+  <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <!--/.Controls-->
+</div>
+<!--/.Carousel Wrapper-->
+        </div>
+    </div>
+</div>
+            <section style="background-color: #fff;">
+ <div class="text-center container py-5">
+     <h4 class="mt-4 mb-5"><strong>Produse promovate</strong></h4>
+     <div class="row">
+@foreach(var product in Model)
+    {
+        @foreach(var sub in product.Subcategories)
+        {
+
+            @foreach(var prod in sub.Products)
+            {
+                 var photoPath = "/images/" + (prod.ProductPicture ?? "img.png");
+
+                 if(prod.IsPromoted == true)
+                {
+
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light">
+            <img src="@photoPath"
+              class="w-100" />
+            <a href="#!">
+              <div class="mask">
+                <div class="d-flex justify-content-start align-items-end h-100">
+                  <h5><span class="badge bg-primary ms-2">Nou</span></h5>
+                </div>
+              </div>
+              <div class="hover-overlay">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+            </a>
+          </div>
+          <div class="card-body">
+            <a href="" class="text-reset">
+              <h5 class="card-title mb-3">@prod.ProductName<h5>
+            </a>
+            <a href="" class="text-reset">
+              <p>@prod.Subcategorie.Nume</p>
+            </a>
+            <h6 class="mb-3">@prod.Pret RON</h6>
+          </div>
+        </div>
+      </div>
+
+                }
+
+    }
+        }
+
+    }
+     </div>
+
+    </section>
+
+  <!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Unde ne poti gasi:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fa fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fa fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fa fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fa fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fa fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fa fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>OnlineShop
+          </h6>
+          <p>
+            Tehnologia reprezinta evolutia omenirii.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Link-uri utile
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Produse</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Contact</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Despre noi</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Contul meu</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> Craiova, DJ 200552, RO</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@onlineshop.ro
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 40 786 378 799 </p>
+          <p><i class="fas fa-print me-3"></i> + 40 786 378 799</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold" href="">OnlineShop.ro</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->  
+</body>
+</html>

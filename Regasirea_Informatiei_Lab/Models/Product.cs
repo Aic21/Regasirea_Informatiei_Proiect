@@ -22,6 +22,8 @@ namespace Regasirea_Informatiei_Lab.Models
         public string TrnasportType { get; set; }
         public string DocumentPath { get; set; }
         public int Pret { get; set; }
+
+        public double Price_after_discount { get; set; }
         public bool IsOnSale { get; set; }
 
         public bool IsInStock { get; set; }
@@ -32,6 +34,7 @@ namespace Regasirea_Informatiei_Lab.Models
         public int ProductStock { get; set; }
 
         public string Specifications { get; set; }
+        public bool IsPromoted { get; set; }
 
 
     }

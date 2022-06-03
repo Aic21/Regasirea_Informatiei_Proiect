@@ -1,23 +1,10 @@
 ﻿body {
     margin: 0;
     padding: 0;
-    background-color: #95a6ff;
 }
 
-.rotate {
-    -webkit-transition: -webkit-transform 0.3s ease-out;
-    -moz-transition: -moz-transform 0.3s ease-out;
-    -transition: transform 0.3s ease-out;
-}
-
-.rotate-link:hover .rotate{
-    -webkit-transform:rotate(360deg);
-    -moz-transform:rotate(360deg);
-    -transform:rotate(360deg);
-}
-#map {
-    height: 400px;
-    /* The height is 400 pixels */
-    width: 100%;
-    /* The width is the width of the web page */
+@media screen and (min-width: 768px) {
+    .custom-collapse .collapse {
+        display: block;
+    }
 }

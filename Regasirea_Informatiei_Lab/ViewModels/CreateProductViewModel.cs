@@ -41,5 +41,6 @@ namespace Regasirea_Informatiei_Lab.ViewModels
         public string SubCategory { get; set; }
 
         public int Stock { get; set; }
+        public bool IsPromoted { get; set; }
     }
 }

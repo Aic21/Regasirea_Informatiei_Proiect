@@ -102,7 +102,7 @@ namespace Regasirea_Informatiei_Lab
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Acasa}/{id?}");
             });
         }
     }

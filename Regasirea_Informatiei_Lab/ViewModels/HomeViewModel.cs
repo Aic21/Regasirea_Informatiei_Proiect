@@ -9,6 +9,8 @@ namespace Regasirea_Informatiei_Lab.ViewModels
     public class HomeViewModel
     {
         public IEnumerable<Product> Produs { get; set; }
+        public IEnumerable<Category> Cat { get; set; }
+
 
     }
 }

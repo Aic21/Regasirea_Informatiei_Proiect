@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Regasirea_Informatiei_Lab.DAL.Interfaces;
 using Regasirea_Informatiei_Lab.Models;
 using System;
 using System.Collections.Generic;
@@ -12,16 +13,27 @@ namespace Regasirea_Informatiei_Lab.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ICategoryServices _categoryRepository;
+        private readonly DBContext _dbContext;
+        public HomeController(ILogger<HomeController> logger,ICategoryServices categoryServices,DBContext dBContext)
         {
+            _categoryRepository = categoryServices; 
             _logger = logger;
+            _dbContext = dBContext;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var categories = _categoryRepository.ListAllCategory().OrderBy(c => c.CategoryName);
+            return View(categories);
         }
+        public IActionResult Acasa()
+        {
+            var categories = _categoryRepository.ListAllCategory().OrderBy(c => c.CategoryName);
+            return View(categories);
+        }
+
+
 
         public IActionResult Privacy()
         {

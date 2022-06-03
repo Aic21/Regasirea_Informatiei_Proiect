@@ -194,7 +194,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     DocumentPath = uniqueDoc,
                     SerialNo = newSerialNumber,
                     ProductStock = model.Stock,
-                    Specifications = spect
+                    Specifications = spect,
+                    IsPromoted = model.IsPromoted
                     //de adaugat Model No
                 };
 
@@ -289,7 +290,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 Nume = product.ProductName,
                 Pret = product.Pret,
                 Descriere = product.ProductDescription,
-                Subcategories = product.Subcategorie
+                Subcategories = product.Subcategorie,
+                IsPromoted = product.IsPromoted,
             };
 
             return View("EditProduct", model);
