@@ -42,7 +42,7 @@
                         <ul class="flex-column pl-2 nav">
                             @foreach(var subcategoru in category.Subcategories)
                             {
-                            <li class="nav-item"><a class="nav-link py-0" href="">@subcategoru.Nume</a></li>
+                            <li class="nav-item"><a class="nav-link py-0"asp-controller="product" asp-action="ListProducts" asp-route-subcategory="@subcategoru.Nume">@subcategoru.Nume</a></li>
                             }
                         </ul>
                     </div>
@@ -66,10 +66,7 @@
         <img class="d-block w-100 img-responsive" src="/css/img_website/car-amd.webp"  style="object-fit:contain;" alt="First slide">
         <div class="mask rgba-black-light"></div>
       </div>
-      <div class="carousel-caption">
-        <h3 class="h3-responsive">This is the first title</h3>
-        <p>First text</p>
-      </div>
+
     </div>
     <div class="carousel-item">
       <!--Mask color-->
@@ -77,10 +74,7 @@
         <img class="d-block w-100 img-responsive" src="https://s1.cel.ro/images/bner/car-gp-games-bundle-banner-multiformat-ro.jpg"  style="object-fit:cover; alt="Second slide">
         <div class="mask rgba-black-light"></div>
       </div>
-      <div class="carousel-caption">
-        <h3 class="h3-responsive">Thir is the second title</h3>
-        <p>Secondary text</p>
-      </div>
+
     </div>
   </div>
   <!--/.Slides-->
@@ -101,7 +95,7 @@
 </div>
             <section style="background-color: #fff;">
  <div class="text-center container py-5">
-     <h4 class="mt-4 mb-5"><strong>Produse promovate</strong></h4>
+     <h4 class="mt-4 mb-5"><strong><i class="fa fa-star"></i>Produse promovate<i class="fa fa-star"></i></strong></h4>
      <div class="row">
 @foreach(var product in Model)
     {

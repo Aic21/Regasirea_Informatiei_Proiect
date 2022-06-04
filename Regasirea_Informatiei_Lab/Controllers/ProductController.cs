@@ -208,24 +208,80 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
         [AllowAnonymous]
 
-        public ViewResult ListProducts(string subcategory, int? page)
+        public ViewResult ListProducts(string subcategory, int? page,string sortOrder,int price_interval)
         {
             IEnumerable<Product> product;
             string currentSubCategory;
 
-            if (string.IsNullOrEmpty(subcategory))
-            {
-                product = productService.ListAllProduct();
-                currentSubCategory = "All Product";
-            }
-            else
-            {
-                product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory);
+            ViewBag.PriceDescParam = string.IsNullOrEmpty(sortOrder) ? "price_desc":"";
+            ViewBag.PriceAscParam = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
+            ViewBag.PriceFilter = string.IsNullOrEmpty(sortOrder) ? "price_interval" : "";
 
-                currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+
+
+
+            switch (sortOrder)
+            {
+                case "price_desc":
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct().OrderByDescending(s => s.Pret);
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory).OrderByDescending(s => s.Pret);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+                    }
+                    break;
+                case "price_interval":
+
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct().Where(s=>s.Pret<price_interval);
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory).Where(s => s.Pret < price_interval);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+                    }
+                    break;
+                case "price_asc":
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct().OrderBy(s => s.Pret);
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory).OrderBy(s => s.Pret);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+                    }
+                    break;
+
+                default:
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct();
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+
+
+                    }
+                    break;
             }
 
-            return View(product.ToList().ToPagedList(page ?? 1 , 3) );
+
+            return View(product.ToList().ToPagedList(page ?? 1 , 8) );
         }
 
 

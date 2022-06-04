@@ -8,82 +8,39 @@
 @using System.Net
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
+@{
+    var category = ViewBag.curent;
+}
 
 @model IPagedList<Product>
-<h2 class="" style="margin-left:45%">
-    <span class="fa fa-bullhorn"></span>
-    Produse
-</h2>
 
-<div class="row">
-    @foreach (var product in Model)
-    {
-        var photoPath = "/images/" + (product.ProductPicture ?? "img.png");
-        <div class="col-4">
-            <div class="container-fluid text-center container-content">
+    <div class="container " style="margin-top:100px;">
 
-                <div class="card mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light pl-lg-0 pl-auto">
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation" onclick="chnageIcon()" id="icon"> 
+<span class="navbar-toggler-icon"></span> 
+</button> <div class="collapse navbar-collapse" id="mynav"> 
+            <ul class="navbar-nav d-lg-flex align-items-lg-center"> 
+ <div class="dropdown " style="margin-left:30px;">
+  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sortare:
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <a class="dropdown-item" type="button" asp-action="ListProducts" asp-route-sortOrder="@ViewBag.PriceDescParam"  asp-route-subcategory="@ViewData["curent"]">Scump</a>
+    <a class="dropdown-item" type="button" asp-action="ListProducts" asp-route-sortOrder="@ViewBag.PriceAscParam" asp-route-subcategory="@ViewData["curent"]">Ieftin</a>
+  </div>
+</div>
 
-                    <div class="card-body">
-                        <h5 class="card-title">@product.ProductName</h5>
-                        <img src="@photoPath" alt="Alternate Text" style="width: 200px; height: 200px" />
-                        <p class="card-text">
-                                   @Html.Raw(@WebUtility.HtmlDecode(product.ProductDescription))
-
-                        </p>
-                        <p class="card-text">
-                            @product.Pret Euro
-                        </p>
-                        @if(product.ProductStock<=0)
-                        {
-                            <p>Produs scos din stock</p>
-                        }
-                        else
-                        {
-                        @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
-                        {
-
-                            var user = await userManager.GetUserAsync(signInManager.Context.User);
-                            <div class="addToCart">
-                                <p class="button">
-                                    <a class="btn btn-primary"
-                                       asp-controller="ShoppingCart"
-                                       asp-action="AddToShoppingCart"
-                                       asp-route-productId="@product.ProductId">Add to Cart</a>
-                                </p>
-                            </div>
-                            <div class="addToWishlist">
-                                <p class="button">
-                                    <a class="btn btn-primary"
-                                       asp-controller="Wishlist"
-                                       asp-action="AddToWishlist"
-                                       asp-route-productId="@product.ProductId">Add to wishlist</a>
-                                </p>
-
-                            </div>
-
-                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
-                                <img src="https://img.icons8.com/ios/50/000000/details-pane.png" style="height:30px;width:30px" />
-                                Details
-                            </a>
-                        }
-                        else
-                        {
-                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
-                                <img src="https://img.icons8.com/ios/50/000000/details-pane.png" style="height:30px;width:30px" />
-                                Details
-                            </a>
-                        }
-                        }
-
-                    </div>
-                </div>
-            </div>
-        </div>
+<li class="nav-item d-inline-flex align-items-center justify-content-between mb-lg-0 mb-3"> 
+<div class="d-inline-flex align-items-center mx-lg-2" id="select2"> 
+</li>
+ <li class="nav-item d-lg-none d-inline-flex"> 
+</li> 
 
 
-    }
-    @Html.PagedListPager(Model, page => Url.Action("ListProducts", new { page }), new PagedListRenderOptions
+</ul>
+<ul class="navbar-nav d-lg-flex align-items-lg-end " style="margin-left:75%; margin-right:10px;" >
+     @Html.PagedListPager(Model, page => Url.Action("ListProducts",  new { page, subcategory=@ViewData["curent"]  }), new PagedListRenderOptions
     {
         DisplayLinkToIndividualPages = true,
     DisplayPageCountAndCurrentLocation = false,
@@ -91,4 +48,105 @@
     LiElementClasses = new string[] { "page-item" },
     PageClasses = new string[] { "page-link" },
 })
+    </ul>
+            </nav>
+
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        var photoPath = "/images/" + (product.ProductPicture ?? "img.png");
+
+         <div class="col-lg-3 col-md-12 mb-4">
+        <div class="card" >
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light">
+            <img src="@photoPath"
+              class="w-100" />
+            <a href="#!">
+              <div class="mask">
+                <div class="d-flex justify-content-start align-items-end h-100">
+                    @if(@product.ProductStock>0)
+                                    {
+                                        <h5><span class="badge bg-primary ms-2">In stoc</span></h5>
+                                    }
+
+                                    else
+                                    {
+                                        <h5><span class="badge bg-danger ms-2">Lipsa stoc</span></h5>
+                                    }
+
+                </div>
+              </div>
+              <div class="hover-overlay">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+            </a>
+          </div>
+          <div class="card-body " style="height:350px;">
+            <a href="" class="text-reset">
+              <h5 class="card-title mb-3">@product.ProductName<h5>
+            </a>
+            <a href="" class="text-reset">
+              <p>@product.Subcategorie.Nume</p>
+            </a>
+            <h6 class="mb-3">@product.Pret RON</h6>
+            @if(@product.ProductStock==0)
+                        {
+                            
+                        }
+                        else
+                        {
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                        {
+
+                            var user = await userManager.GetUserAsync(signInManager.Context.User);
+                            <div class="row">
+                                <div class="col">
+                            <div class="addToCart">
+                                <p class="button">
+                                    <a class="btn btn-danger"
+                                       asp-controller="ShoppingCart"
+                                       asp-action="AddToShoppingCart"
+                                       asp-route-productId="@product.ProductId"><i class="fa fa-cart-plus"></i></a>
+                                </p>
+                            </div>
+                            </div>
+                            <div class="col">
+                            <div class="addToWishlist" style="margin-left:60%;">
+                                <p class="button">
+                                    <a class="btn btn-info"
+                                       asp-controller="Wishlist"
+                                       asp-action="AddToWishlist"
+                                       asp-route-productId="@product.ProductId"><i class="fa fa-heart"></i></a>
+                                </p>
+
+                            </div>
+                                                            </div>
+
+                            </div>
+
+                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
+                                <img src="https://img.icons8.com/ios/50/000000/details-pane.png" style="height:30px;width:30px" />
+                                Details
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-outline-dark">
+                                <img src="https://img.icons8.com/ios/50/000000/details-pane.png" style="height:30px;width:30px" />
+                                Details
+                            </a>
+                        }
+                        }
+          </div>
+        </div>
+      </div>
+
+       
+
+
+    }
+   
+</div>
 </div>
