@@ -1,0 +1,45 @@
+CARACTERISTICI GENERALE
+Tip telefon           		Smartphone
+Sloturi SIM           		Dual SIM
+Tip SIM               		Nano SIM
+Sistem de operare     		Android
+Model procesor        		Exynos 2200
+Tehnologii            		5G
+Conectivitate         		Wi-Fi
+                      		Bluetooth
+                      		Incarcare wireless
+Senzori               		Amprenta
+Continut pachet       		Telefon
+                      		Cheie SIM
+                      		Cablu de date USB Type-C
+Culoare               		Verde
+Dimenisiuni           		75.8 x 7.6 x 157.4 mm
+Greutate              		196 g
+SAR (W/kg)            		Cap 0.573 W/kg
+                      		Corp 1.399 W/kg
+An aparitie           		2022
+RO-Alert              		Da
+
+AFISARE
+Dimensiune ecran      		6.6 inch
+Tip display           		Dynamic AMOLED
+Rezolutie (pixeli)    		2340 x 1080
+Functii display       		120 Hz
+
+MEMORIE
+Memorie interna       		256 GB
+Memorie RAM           		8 GB
+
+CONECTIVITATE
+Porturi               		USB Type-C
+
+FOTO VIDEO
+Numar camere          		3
+Rezolutie camera principala     12 MP Ultrawide
+                                50 MP Wide
+                                10 MP Telephoto
+Rezolutie camera frontala       10 Mpx
+Blit                            Da
+
+ALIMENTARE
+Capacitate baterie              4500 mAh

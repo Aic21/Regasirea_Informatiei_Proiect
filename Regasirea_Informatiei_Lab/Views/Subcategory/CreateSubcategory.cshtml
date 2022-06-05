@@ -6,7 +6,7 @@
 
 <div class="content container-fluid">
     <button type="button" id="sidebarCollapse" class="sidebarCollapse btn btn-outline-dark hide-on-desktop">
-        <i class="fas fa-align-left"></i>
+        <i class="fa fa-align-left"></i>
     </button>
     <div class="container-fluid text-center container-content">
         <h2 class="">
@@ -18,7 +18,7 @@
         <hr>
         <div class="card mb-3">
             <div class="card-header bg-custom text-white">
-                <i class="fas fa-sign-in-alt"></i> Categorie
+                <i class="fas fa-sign-in-alt"></i> Subcategorie
             </div>
             <div class="card-body mx-auto">
                 <h5 class="card-title"></h5>
@@ -26,26 +26,21 @@
 
                 </p>
                 <form enctype="multipart/form-data" class="row gx-3 gy-2 align-items-center" method="post">
-                    <div class="col">
-                        <label asp-for="Nume">Nume Categorie</label>
-                        <input asp-for="Nume" type="text" class="form-control" style="width: auto" placeholder="Option Name" required>
-                        <span asp-validation-for="Nume" class="text-danger"></span>
 
-                        <div class="col">
-                            <input asp-for="Photo" type="file" class="form-control custom-file-input" id="inputGroupFile02">
-                            <label asp-for="Photo" class="input-group-text" for="inputGroupFile02">Poza de Profil</label>
-                            <span asp-validation-for="Photo" class="text-danger"></span>
+                      <div class="form-group">
+                            <label asp-for="Nume" class="input-group-text">Nume subcategorie</label>
+                                <input asp-for="Nume" type="text" class="form-control">
                         </div>
-                        <div class="col">
+                       <div class="col">
                             <label asp-for="Category" class="form-label">Categorie</label>
                             <select asp-for="Category" class="form-select" asp-items="@(new SelectList(Model.Categories))">
                                 <option selected>Alege...</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="col align-self-end">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-sign-in-alt"></i>
+
+                    <div class="col-auto ">
+                        <button type="submit" class="btn btn-info">
+                            <i class="fa fa-plus"></i>
                             Adauga
                         </button>
                     </div>

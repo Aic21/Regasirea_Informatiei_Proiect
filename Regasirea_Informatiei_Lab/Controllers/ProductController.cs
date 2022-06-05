@@ -188,8 +188,6 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     //Categories = productCategorie[0],
                     ProductPicture = uniquePhotoFileName,
                     ProductPicture2 = uniquePhotoFileName1,
-                    ProductPicture3 = uniquePhotoFileName2,
-                    ProductVideo = uniquePhotoFileName3,
                     Subcategorie = cat[0],
                     DocumentPath = uniqueDoc,
                     SerialNo = newSerialNumber,

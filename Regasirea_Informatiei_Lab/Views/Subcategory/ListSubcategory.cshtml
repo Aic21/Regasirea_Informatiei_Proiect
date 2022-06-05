@@ -31,8 +31,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Category Id</th>
-                                <th scope="col">Category Name</th>
+                                <th scope="col">Subcategory Id</th>
+                                <th scope="col">Subcategory Name</th>
+                                 <th scope="col">Category Name</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -45,12 +46,12 @@
                                     <td>@option.Nume</td>
                                     <td>@option.Categories.CategoryName</td>
                                     <td>
-                                        <a class="btn btn-primary" asp-action="EditSubCategory" asp-controller="subcategory" asp-route-id="@option.SubCategorieID">
-                                            <i class="fas fa-edit"></i>
+                                        <a class="btn btn-info" asp-action="EditSubCategory" asp-controller="subcategory" asp-route-id="@option.SubCategorieID">
+                                            <i class="fa fa-edit"></i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-primary" asp-action="DeleteSubCategory" asp-controller="subcategory" asp-route-id="@option.SubCategorieID">
-                                            <i class="fas fa-delete"></i>
+                                        <a class="btn btn-danger" asp-action="DeleteSubCategory" asp-controller="subcategory" asp-route-id="@option.SubCategorieID">
+                                            <i class="fa fa-delete"></i>
                                             Delete
                                         </a>
                                 </tr>

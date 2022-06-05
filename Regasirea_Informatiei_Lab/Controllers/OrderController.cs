@@ -78,28 +78,37 @@ namespace Regasirea_Informatiei_Lab.Controllers
             }
 
             if (ModelState.IsValid)
-            {
+            { 
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId
+                var user = User.Identity.Name;
                 order.UserId = userId;
                 _orderRepository.CreateOrder(order);
+
+                var optionsCust = new CustomerCreateOptions
+                {
+                    Email = User.Identity.Name,
+                    Name = order.FirstName
+                };
+                var serviceCust = new CustomerService();
+                Customer customer = serviceCust.Create(optionsCust);
 
                 var options = new ChargeCreateOptions
                 {
                     Amount = (long?)order.OrderTotal*100,
                     Description = order.FirstName,
-                    Customer = userId,
                     Currency = "RON",
-                    Source = stripeToken
+                    Source = stripeToken,
+                    ReceiptEmail = customer.Email
                 };
                 var service = new ChargeService();
-                var charge = service.Create(options);
+                 Charge charge = service.Create(options);
+                
+                    var model = new ChangeViewModel();
+                    model.ChargeId = charge.Id;
 
-
-                var model = new ChangeViewModel();
-                model.ChargeId = charge.Id;
-
-                _shoppingCart.ClearCart();
-                return View("CheckoutComplete", model);
+                    _shoppingCart.ClearCart();
+                    return View("CheckoutComplete", model);
+                   
             }
 
             return View(order);

@@ -42,14 +42,15 @@
                                 <tr>
                                     <th scope="row">@i</th>
                                     <td>@option.CategoryId</td>
+                                    <td>@option.CategoryName</td>
 
                                     <td>
-                                        <a class="btn btn-primary" asp-action="EditCaTEGORY" asp-controller="category" asp-route-id="@option.CategoryId">
-                                            <i class="fas fa-edit"></i>
+                                        <a class="btn btn-info" asp-action="EditCaTEGORY" asp-controller="category" asp-route-id="@option.CategoryId">
+                                            <i class="fa fa-edit"></i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-primary" asp-action="DeleteCategory" asp-controller="category" asp-route-id="@option.CategoryId">
-                                            <i class="fas fa-delete"></i>
+                                        <a class="btn btn-danger" asp-action="DeleteCategory" asp-controller="category" asp-route-id="@option.CategoryId">
+                                            <i class="fa fa-delete"></i>
                                             Delete
                                         </a>
                                 </tr>

@@ -28,18 +28,12 @@
                 <form class="row gx-3 gy-2 align-items-center" method="post">
                     <div class="col">
                         <label asp-for="Nume">Nume Categorie</label>
-                        <input asp-for="Nume" type="text" class="form-control" style="width: auto" placeholder="Option Name" required>
+                        <input asp-for="Nume" type="text" class="form-control" style="width: auto" placeholder="Nume categorie" required>
                         <span asp-validation-for="Nume" class="text-danger"></span>
-
-                        <div class="col">
-                            <input asp-for="ProfilePhoto" type="file" class="form-control custom-file-input" id="inputGroupFile02">
-                            <label asp-for="ProfilePhoto" class="input-group-text" for="inputGroupFile02">Poza de Profil</label>
-                            <span asp-validation-for="ProfilePhoto" class="text-danger"></span>
-                        </div>
                     </div>
                     <div class="col align-self-end">
-                        <button type="submit"  class="btn btn-primary">
-                            <i class="fas fa-sign-in-alt"></i>
+                        <button type="submit"  class="btn btn-info">
+                            <i class="fa fa-plus"></i>
                             Adauga
                         </button>
                     </div>
