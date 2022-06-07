@@ -376,6 +376,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
                         model.Photo.CopyTo(fs);
                     }
                 }
+                uniquePhotoFileName = product.ProductPicture;
+
                 product.ProductName = model.Nume;
                 product.ProductDescription = model.Descriere;
                 product.Pret = model.Pret;

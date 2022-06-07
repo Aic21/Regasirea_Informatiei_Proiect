@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/acasa.css" />
     </head>
-    <body>
+    <body style="background-color:#eee;">
 <div class="container-fluid h-100" style="margin-top:100px;" >
     <div class="row h-100" >
 
@@ -37,8 +37,8 @@
                 <li class="nav-item">
                     @foreach(var category in Model)
                     {
-                    <a class="nav-link collapsed" href="#submenu1" data-toggle="collapse" >@category.CategoryName</a>
-                    <div class="collapse" id="submenu1" aria-expanded="false">
+                    <a class="nav-link collapsed" href="#submenu1-@category.CategoryId" data-toggle="collapse" >@category.CategoryName</a>
+                    <div class="collapse" id="submenu1-@category.CategoryId" aria-expanded="false">
                         <ul class="flex-column pl-2 nav">
                             @foreach(var subcategoru in category.Subcategories)
                             {
@@ -93,8 +93,8 @@
         </div>
     </div>
 </div>
-            <section style="background-color: #fff;">
- <div class="text-center container py-5">
+            <section style="background-color: #eee;">
+ <div class="text-center container py-5" style="background-color:#eee;">
      <h4 class="mt-4 mb-5"><strong><i class="fa fa-star"></i>Produse promovate<i class="fa fa-star"></i></strong></h4>
      <div class="row">
 @foreach(var product in Model)
@@ -149,10 +149,10 @@
     </section>
 
   <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted">
+<footer class="text-center text-lg-start bg-light text-muted"style="background-color:#eee;">
   <!-- Section: Social media -->
   <section
-    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"style="background-color:#eee;"
   >
     <!-- Left -->
     <div class="me-5 d-none d-lg-block">
@@ -161,7 +161,7 @@
     <!-- Left -->
 
     <!-- Right -->
-    <div>
+    <div style="background-color:#eee;">
       <a href="" class="me-4 text-reset">
         <i class="fa fa-facebook-f"></i>
       </a>
@@ -232,13 +232,13 @@
           <h6 class="text-uppercase fw-bold mb-4">
             Contact
           </h6>
-          <p><i class="fas fa-home me-3"></i> Craiova, DJ 200552, RO</p>
+          <p><i class="fa fa-home me-3"></i> Craiova, DJ 200552, RO</p>
           <p>
-            <i class="fas fa-envelope me-3"></i>
+            <i class="fa fa-envelope me-3"></i>
             info@onlineshop.ro
           </p>
-          <p><i class="fas fa-phone me-3"></i> + 40 786 378 799 </p>
-          <p><i class="fas fa-print me-3"></i> + 40 786 378 799</p>
+          <p><i class="fa fa-phone me-3"></i> + 40 786 378 799 </p>
+          <p><i class="fa fa-print me-3"></i> + 40 786 378 799</p>
         </div>
         <!-- Grid column -->
       </div>

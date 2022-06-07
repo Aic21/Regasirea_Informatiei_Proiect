@@ -116,6 +116,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
                         model.Photo.CopyTo(fs);
                     }
                 }
+                else
+                    uniquePhotoFileName = user.ProfilePicture;
                 user.Id = model.Id;
                 user.Email = model.Email;
                 user.FirstName = model.FirstName;
@@ -125,7 +127,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 user.ProfilePicture = uniquePhotoFileName;
                 user.UserAddress.Address = model.Address;
                 user.UserAddress.Country = model.Country;
-                user.UserAddress.PostalCode = model.Country;
+                user.UserAddress.PostalCode = model.Postalcode;
 
                 await userManager.UpdateAsync(user);
 

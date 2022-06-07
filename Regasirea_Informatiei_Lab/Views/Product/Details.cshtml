@@ -86,7 +86,8 @@
                 <h4>Descriere</h4>
             </div>
             <div class="col-lg-12 text-center pt-3">
-                @Html.Raw(@WebUtility.HtmlDecode(@Model.ProductDescription))
+                <table>@Html.Raw(@WebUtility.HtmlDecode(@Model.ProductDescription))</table>
+                
             </div>
             
             <div class="col-lg-12 text-center pt-3">

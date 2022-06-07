@@ -51,6 +51,16 @@ namespace Regasirea_Informatiei_Lab.Controllers
             return View(context.OrderDetails.Where(c => c.UserID.Contains(userId)).ToList());
 
         }
+        public async Task<IActionResult> Info(int id)
+        {
+            var order = await context.OrderDetails.FindAsync(id);
+            ViewBag.Nume = order.Order.FirstName;
+            ViewBag.LastName = order.Order.LastName;
+            ViewBag.Produs = order.Nume_Produs;
+            ViewData["id"] = order.OrderId;
+            return (IActionResult)order;
+
+        }
 
         [Authorize(Roles = "Admin")]
 
