@@ -285,3 +285,5 @@ D:\Licenta\Regasirea_Informatiei_Lab\bin\Debug\net5.0\Syncfusion.Licensing.dll
 D:\Licenta\Regasirea_Informatiei_Lab\bin\Debug\net5.0\Syncfusion.Pdf.Portable.dll
 D:\Licenta\Regasirea_Informatiei_Lab\bin\Debug\net5.0\libman.json
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Home\Acasa.cshtml.g.cs
+D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Shared\_ReviewCard.cshtml.g.cs
+D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Administration\AdminPanel.cshtml.g.cs

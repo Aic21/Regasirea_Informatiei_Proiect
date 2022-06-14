@@ -12,6 +12,12 @@ namespace Regasirea_Informatiei_Lab.ViewModels
     {
         [DataType(DataType.Upload)]
         public IFormFile Photo { get; set; }
+        [DataType(DataType.Upload)]
+        public IFormFile Photo1 { get; set; }
+        [DataType(DataType.Upload)]
+        public IFormFile Doc { get; set; }
+        [DataType(DataType.Upload)]
+        public IFormFile Specification { get; set; }
         public int Id { get; set; }
         public string Nume { get; set; }
         public string Descriere { get; set; }
@@ -20,6 +26,7 @@ namespace Regasirea_Informatiei_Lab.ViewModels
         public int Stoc { get; set; }
         public int CategoryId { get; set; }
         public bool IsPromoted { get; set; }
+        public int Stock { get; set; }
         public Subcategorie Subcategories { get; set; }
     }
 }

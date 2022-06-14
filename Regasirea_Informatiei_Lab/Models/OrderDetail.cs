@@ -17,5 +17,7 @@ namespace Regasirea_Informatiei_Lab.Models
         public virtual User User { get; set; }
         public string UserID { get; set; }
         public string Nume_Produs { get; set; }
+
+
     }
 }

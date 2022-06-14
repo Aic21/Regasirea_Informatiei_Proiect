@@ -204,6 +204,9 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
             return View("CreateProduct", model);
         }
+
+
+
         [AllowAnonymous]
 
         public ViewResult ListProducts(string subcategory, int? page,string sortOrder,int price_interval)
@@ -213,7 +216,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
             ViewBag.PriceDescParam = string.IsNullOrEmpty(sortOrder) ? "price_desc":"";
             ViewBag.PriceAscParam = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
-            ViewBag.PriceFilter = string.IsNullOrEmpty(sortOrder) ? "price_interval" : "";
+            ViewBag.SamsungFilter = string.IsNullOrEmpty(sortOrder) ? "samsung" : "";
 
 
 
@@ -233,11 +236,11 @@ namespace Regasirea_Informatiei_Lab.Controllers
                         ViewData["curent"] = currentSubCategory;
                     }
                     break;
-                case "price_interval":
+                case "samsung":
 
                     if (string.IsNullOrEmpty(subcategory))
                     {
-                        product = productService.ListAllProduct().Where(s=>s.Pret<price_interval);
+                        product = productService.ListAllProduct().Where(s=>s.ProductName.Contains("Samsung"));
                     }
                     else
                     {
@@ -346,6 +349,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 Descriere = product.ProductDescription,
                 Subcategories = product.Subcategorie,
                 IsPromoted = product.IsPromoted,
+                Stock = product.ProductStock
             };
 
             return View("EditProduct", model);
@@ -377,11 +381,51 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     }
                 }
                 uniquePhotoFileName = product.ProductPicture;
+                string uniquePhotoFileName1 = null;
+                if (model.Photo1 != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                    uniquePhotoFileName1 = Guid.NewGuid().ToString() + "_" + model.Photo1.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniquePhotoFileName1);
+                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Photo1.CopyTo(fs);
+                    }
+                }
+                uniquePhotoFileName1 = product.ProductPicture2;
+                string uniqueDoc = null;
+                if (model.Doc != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.ContentRootPath, "Data", "Lucene");
+                    uniqueDoc = Guid.NewGuid().ToString() + "_" + model.Doc.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueDoc);
+                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Doc.CopyTo(fs);
+                    }
+                }
+                uniqueDoc = product.DocumentPath;
+                string spect = null;
+                if (model.Specification != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.ContentRootPath, "Data", "Specifications");
+                    spect = Guid.NewGuid().ToString() + "_" + model.Specification.FileName;
+                    string filePath = Path.Combine(uploadsFolder, spect);
+                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Specification.CopyTo(fs);
+                    }
+                }
+                spect = product.Specifications;
 
                 product.ProductName = model.Nume;
                 product.ProductDescription = model.Descriere;
                 product.Pret = model.Pret;
                 product.ProductPicture = uniquePhotoFileName;
+                product.ProductPicture2 = uniquePhotoFileName1;
+                product.Specifications = spect;
+                product.DocumentPath = uniqueDoc;
+                product.ProductStock = model.Stock;
 
                 await productService.UpdateProductAsync(product);
 

@@ -52,6 +52,8 @@ namespace Regasirea_Informatiei_Lab.Services
 			await productRepo.Update(produs);
 		}
 
+
+
 		public IEnumerable<Product> GetAllWhere(string name)
 		{
 			return productRepo.GetByCondition(s => s.ProductName.Contains(name));

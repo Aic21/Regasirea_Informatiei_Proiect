@@ -39,7 +39,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
 		public async Task<IActionResult> Logout()
 		{
 			await signInManager.SignOutAsync();
-			return RedirectToAction("index", "home");
+			return RedirectToAction("acasa", "home");
 		}
 
 		[HttpPost]
@@ -114,7 +114,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
 				{
 					await signInManager.SignInAsync(user, isPersistent: false);
 
-					return RedirectToAction("index", "home");
+					return RedirectToAction("acasa", "home");
 				}
 
 				foreach (var error in result.Errors)

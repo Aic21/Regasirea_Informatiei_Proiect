@@ -36,6 +36,7 @@
     <Folder Include="Data\Specifications\" />
     <Folder Include="wwwroot\blog\" />
     <Folder Include="wwwroot\home_images\" />
+    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\video\" />
   </ItemGroup>
 

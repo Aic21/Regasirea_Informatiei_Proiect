@@ -318,6 +318,9 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Property<DateTime>("OrderPlaced")
                         .HasColumnType("datetime2");
 
+                    b.Property<decimal>("OrderProductNumber")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<decimal>("OrderTotal")
                         .HasColumnType("decimal(18,2)");
 
@@ -436,6 +439,9 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Property<string>("ProductVideo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("int");
+
                     b.Property<string>("SerialNo")
                         .HasColumnType("nvarchar(max)");
 
@@ -458,6 +464,34 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.HasIndex("SubCategorieID");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Review", b =>
+                {
+                    b.Property<int>("ReviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReviewMessage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ReviewId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.ShoppingCartItem", b =>
@@ -694,6 +728,19 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Navigation("Subcategorie");
                 });
 
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Review", b =>
+                {
+                    b.HasOne("Regasirea_Informatiei_Lab.Models.Product", null)
+                        .WithMany("Reviews")
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("Regasirea_Informatiei_Lab.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.ShoppingCartItem", b =>
                 {
                     b.HasOne("Regasirea_Informatiei_Lab.Models.Product", "Produs")
@@ -737,6 +784,11 @@ namespace Regasirea_Informatiei_Lab.Migrations
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Product", b =>
+                {
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Subcategorie", b =>

@@ -12,14 +12,18 @@ namespace Regasirea_Informatiei_Lab.Controllers
 {
     public class HomeController : Controller
     {
+        private const double V = 0.2;
         private readonly ILogger<HomeController> _logger;
         private readonly ICategoryServices _categoryRepository;
+        private readonly IProductService _productService;
+
         private readonly DBContext _dbContext;
-        public HomeController(ILogger<HomeController> logger,ICategoryServices categoryServices,DBContext dBContext)
+        public HomeController(ILogger<HomeController> logger,ICategoryServices categoryServices,DBContext dBContext, IProductService productService)
         {
             _categoryRepository = categoryServices; 
             _logger = logger;
             _dbContext = dBContext;
+            _productService = productService;
         }
 
         public IActionResult Index()
@@ -45,5 +49,8 @@ namespace Regasirea_Informatiei_Lab.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+       
     }
 }

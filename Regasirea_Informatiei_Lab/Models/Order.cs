@@ -53,5 +53,11 @@ namespace Regasirea_Informatiei_Lab.Models
         public DateTime OrderPlaced { get; set; }
         public virtual User User { get; set; }
         public string UserId { get; set; }
+
+        public decimal OrderProductNumber
+        {
+            get;set;
+            
+        }
     }
 }

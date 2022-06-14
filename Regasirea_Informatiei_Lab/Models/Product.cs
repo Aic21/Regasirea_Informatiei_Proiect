@@ -36,6 +36,8 @@ namespace Regasirea_Informatiei_Lab.Models
         public string Specifications { get; set; }
         public bool IsPromoted { get; set; }
 
+        public int ReviewId { get; set; }
 
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

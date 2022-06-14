@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Regasirea_Informatiei_Lab.ViewModels.CreateReviewViewModel
+@{
+}
+<p> test</p>
+
+
+  <form enctype="multipart/form-data" class="text-start" method="post" asp-action="Create" asp-controller="Review">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="ReviewMessage">Nume articol</label>
+                            <input type="text" asp-for="ReviewMessage" class="form-control" id="inputAddress2" placeholder="Mesaj">
+                        </div>
+                       
+                    
+                    <div class="col-auto">
+                            <button type="submit" class="btn btn-primary" id="buton">
+                                <i class="fas fa-user-plus"></i>
+                                Adauga
+                            </button>
+                        </div>
+                    
+                    
+                    
+                    
+                    
+                    
+</form>

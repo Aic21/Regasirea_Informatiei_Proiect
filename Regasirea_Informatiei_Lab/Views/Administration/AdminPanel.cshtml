@@ -1,0 +1,218 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container grey-bg" style="margin-top:130px;">
+
+    <div class="row">
+        <div class="col-12 mt-3 mb-1">
+                    <h4 class="text-uppercase">Statistici</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+<i class="fa fa-solid fa-cart-flatbed-boxes float-left"></i>                </div>
+                <div class="media-body text-right">
+                  <h3>@ViewData["numar_produse"]</h3>
+                  <span>Numar produse</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+
+        <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="fa fa-solid fa-address-book float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>@ViewData["numar_mesaje"]</h3>
+                  <span>Numar mesaje</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+                <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+<i class=" fa fa-solid fa-cart-flatbed-boxes float-left"></i>                </div>
+                <div class="media-body text-right">
+                  <h3>@ViewData["numar_comenzi"]</h3>
+                  <span>Numar comenzi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+                        <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="fa fa-solid fa-circle-dollar float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>@ViewData["suma_comenzi"]</h3>
+                  <span>Suma totala</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+    </div>
+
+        <div class="row">
+        <div class="col-12 mt-3 mb-1">
+                    <h4 class="text-uppercase">Scurtaturi</h4>
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+<i class="fa fa-solid fa-cart-flatbed-boxes float-left"></i>                </div>
+                <div class="media-body text-center">
+                  <h3><a class="btn" asp-action="ListProduct" asp-controller="Product">Lista produse</a></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+                <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+<i class="fa fa-solid fa-cart-flatbed-boxes float-left"></i>                </div>
+                <div class="media-body text-center">
+                  <h3><a class="btn" asp-action="ListCategory" asp-controller="Category">Lista categorii</a></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+                        <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+<i class="fa fa-solid fa-cart-flatbed-boxes float-left"></i>                </div>
+                <div class="media-body text-right">
+                  <h3><a class="btn" asp-action="ListSubcategory" asp-controller="Subcategory">Lista subcategorii</a></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+                                <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+<i class="fa fa-solid fa-cart-flatbed-boxes float-left"></i>                </div>
+                <div class="media-body text-center">
+                  <h3><a class="btn" asp-action="ListContact" asp-controller="Contact">Lista mesaje primite</a></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+          <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+<i class="fa fa-solid fa-cart-flatbed-boxes float-left"></i>                </div>
+                <div class="media-body text-center">
+                  <h3><a class="btn" asp-action="List" asp-controller="Order">Lista comenzi</a></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        </div>
+
+                <div class="row">
+        <div class="col-12 mt-3 mb-1">
+                    <h4 class="text-uppercase">Management</h4>
+        </div>
+    </div>
+
+
+            <div class="row">
+        <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+<i class="fa fa-solid fa-cart-flatbed-boxes float-left"></i>                </div>
+                <div class="media-body text-center">
+                  <h3><a class="btn" asp-action="UpdatePrice" asp-controller="Administration">Reducere pret cu 20 la suta</a></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+             <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+<i class="fa fa-solid fa-cart-flatbed-boxes float-left"></i>                </div>
+                <div class="media-body text-center">
+                  <h3><a class="btn" asp-action="BigPrice" asp-controller="Administration">Marire pret cu 20 la suta</a></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        </div>
+
+</div>

@@ -20,40 +20,59 @@
                 </p>
                 <form enctype="multipart/form-data" class="text-start" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="row mb-3">
-                        <div class="input-group">
-                            <span class="input-group-text">NumeProdus</span>
-                            <input asp-for="Nume" type="text" class="form-control" placeholder="Nume">
-                            <span asp-validation-for="Nume" class="text-danger"></span>
+                    <div class="row group">
+                         <label asp-for="Nume">Nume produs</label>
+                            <input type="text" asp-for="Nume" class="form-control" id="inputAddress2" placeholder="Nume produs">
+                    </div>
+                    <div class="row group">
+                         <label asp-for="Descriere">Descriere</label>
+                         <textarea  class="form-control" asp-for="Descriere" id="editor"></textarea>
+                    </div>
+
+                               <div class="form-row" style="margin-top:60px;">
+                            <div class="form-group col-md-6">
+                                <label asp-for="Pret" class="input-group-text">Pret</label>
+                                <input asp-for="Pret" type="number" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="Stock" class="input-group-text">Stoc</label>
+                                <input asp-for="Stock" type="number" class="form-control">
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label asp-for="Descriere" class="form-label">Descriere</label>
-                        <textarea asp-for="Descriere" class="form-control white_bg" rows="4"></textarea>
-                        <span asp-validation-for="Descriere" class="text-danger"></span>
-                    </div>
 
-                    <div class="row mb-3">
-                        <label asp-for="Pret" class="form-label">Pret</label>
-                        <input asp-for="Pret" type="number" class="form-control" placeholder="Pret" value="">
-                        <span asp-validation-for="Pret" class="text-danger"></span>
-                    </div>
-
-                    <div class="row mb-3">
-                        <input asp-for="Photo" type="file" class="form-control custom-file-input" id="inputGroupFile02">
-                        <label asp-for="Photo" class="input-group-text" for="inputGroupFile02">Poza</label>
-                        <span asp-validation-for="Photo" class="text-danger"></span>
-                    </div>
-
+                    <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <input asp-for="Photo" type="file" class="form-control custom-file-input" id="inputGroupFile02">
+                                <label asp-for="Photo" class="input-group-text" for="inputGroupFile02">Poza 1</label>
+                                <span asp-validation-for="Photo" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input asp-for="Photo1" type="file" class="form-control custom-file-input" id="inputGroupFile03">
+                                <label asp-for="Photo1" class="input-group-text" for="inputGroupFile03">Poza 2</label>
+                                <span asp-validation-for="Photo1" class="text-danger"></span>
+                            </div>
+     
+                        </div>
                                 <div class="form-row" style="margin-top:60px;">
                             <div class="form-group col-md-6">
-                                <label asp-for="IsPromoted" class="input-group-text">Pret</label>
+                                <label asp-for="IsPromoted" class="input-group-text">Promovat</label>
                                 <input asp-for="IsPromoted" type="text" class="form-control">
                             </div>
                         </div>
+                         <div class="form-group">
+                            <input asp-for="Doc" type="file" class="form-control custom-file-input" id="inputGroupFile06">
+                                <label asp-for="Doc" class="input-group-text" for="inputGroupFile06">Document</label>
+                                <span asp-validation-for="Doc" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Specification" type="file" class="form-control custom-file-input" id="inputGroupFile07">
+                                <label asp-for="Specification" class="input-group-text" for="inputGroupFile07">Specificatii</label>
+                                <span asp-validation-for="Specification" class="text-danger"></span>
+                        </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-wrench"></i>
+                        <button type="submit" class="btn btn-info">
+                            <i class="fa fa-wrench"></i>
                             Update
                         </button>
                         <a asp-action="ListProduct" asp-controller="product" class="btn btn-danger">
@@ -66,7 +85,7 @@
         </div>
         <div class="card mb-3">
             <div class="card-header bg-custom text-white">
-                <i class="far fa-question-circle"></i> Adaugare masina
+                <i class="fa fa-question-circle"></i> Editare produse
             </div>
             <div class="card-body">
                 <h5 class="card-title"></h5>
@@ -74,7 +93,7 @@
 
                 </p>
                 <a asp-action="ListProduct" asp-controller="product" class="btn btn-outline-dark">
-                    <i class="fas fa-sign-in-alt"></i>
+                    <i class="fa fa-sign-in-alt"></i>
                     Lista produse
                 </a>
             </div>
@@ -82,3 +101,29 @@
     </div>
 </div>
 
+<script>
+       tinymce.init({
+            selector:'#editor',
+            menubar: false,
+            statusbar: false,
+            plugins: 'autoresize anchor autolink charmap code codesample directionality fullpage help hr image imagetools insertdatetime link lists media nonbreaking pagebreak preview print searchreplace table template textpattern toc visualblocks visualchars',
+            toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help fullscreen ',
+            skin: 'bootstrap',
+            toolbar_drawer: 'floating',
+            min_height: 200,           
+            autoresize_bottom_margin: 16,
+            setup: (editor) => {
+                editor.on('init', () => {
+                    editor.getContainer().style.transition="border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+                });
+                editor.on('focus', () => {
+                    editor.getContainer().style.boxShadow="0 0 0 .2rem rgba(0, 123, 255, .25)",
+                    editor.getContainer().style.borderColor="#80bdff"
+                });
+                editor.on('blur', () => {
+                    editor.getContainer().style.boxShadow="",
+                    editor.getContainer().style.borderColor=""
+                });
+            }
+        });
+        </Script>

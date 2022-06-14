@@ -19,20 +19,27 @@ namespace Regasirea_Informatiei_Lab.Controllers
         private readonly IWebHostEnvironment hostingEnvironment;
 
         private readonly ICategoryServices categoryService;
+        private readonly DBContext dbContext;
         private readonly IProductService productService;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<User> userManager;
+        private readonly IContactService contactService;
         public UserManager<User> UserManager { get; }
 
         public Administration(IWebHostEnvironment _hostingEnvironment,ICategoryServices _categoryServices,IProductService _productService,
             RoleManager<IdentityRole> _roleManager,
-               UserManager<User> _userManager)
+               UserManager<User> _userManager,
+               DBContext _dbContext,
+               IContactService _contactService
+               )
         {
             hostingEnvironment = _hostingEnvironment;
             categoryService = _categoryServices;
             productService = _productService;
             roleManager = _roleManager;
             userManager = _userManager;
+            dbContext = _dbContext;
+            contactService = _contactService;
         }
         
 
@@ -350,5 +357,36 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
             return RedirectToAction("EditRole", "Administration", new { Id = roleId });
         }
+
+        public IActionResult AdminPanel()
+        {
+            ViewData["numar_produse"] = productService.ListAllProduct().Count();
+            ViewData["numar_comenzi"] = dbContext.Orders.Count();
+            ViewData["numar_mesaje"] = contactService.ListAllContact().Count();
+            ViewData["suma_comenzi"] = dbContext.Orders.Sum(i => i.OrderTotal);
+            return View("AdminPanel");
+        }
+
+        public IActionResult UpdatePrice ()
+        {
+            var product = dbContext.Products;
+            foreach(var item in product)
+            {
+                item.Pret = (int)(item.Pret - (item.Pret * 0.2));
+            }
+            dbContext.SaveChanges();
+            return View("AdminPanel");
+        }
+        public IActionResult BigPrice()
+        {
+            var product = dbContext.Products;
+            foreach (var item in product)
+            {
+                item.Pret = (int)(item.Pret + (item.Pret * 0.2));
+            }
+            dbContext.SaveChanges();
+            return View("AdminPanel");
+        }
+
     }
 }
