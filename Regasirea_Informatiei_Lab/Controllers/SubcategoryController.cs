@@ -77,7 +77,6 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 Subcategorie subcategorie = new Subcategorie
                 {
                     Nume = model.Nume,
-                    Picture = uniquePhotoFileName,
                     Categories = cat[0]
 
 

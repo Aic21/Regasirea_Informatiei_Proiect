@@ -217,7 +217,13 @@ namespace Regasirea_Informatiei_Lab.Controllers
             ViewBag.PriceDescParam = string.IsNullOrEmpty(sortOrder) ? "price_desc":"";
             ViewBag.PriceAscParam = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
             ViewBag.SamsungFilter = string.IsNullOrEmpty(sortOrder) ? "samsung" : "";
-
+            ViewBag.IphoneFilter = string.IsNullOrEmpty(sortOrder) ? "iphone" : "";
+            ViewBag.LgFilter = string.IsNullOrEmpty(sortOrder) ? "LG" : "";
+            ViewBag.XiaomiFilter = string.IsNullOrEmpty(sortOrder) ? "Xiaomi" : "";
+            ViewBag.HuaweiFilter = string.IsNullOrEmpty(sortOrder) ? "Huawei" : "";
+            ViewBag.LenovoFilter = string.IsNullOrEmpty(sortOrder) ? "Lenovo" : "";
+            ViewBag.AsusFilter = string.IsNullOrEmpty(sortOrder) ? "Asus" : "";
+            ViewBag.AcerFilter = string.IsNullOrEmpty(sortOrder) ? "Acer" : "";
 
 
 
@@ -241,6 +247,108 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     if (string.IsNullOrEmpty(subcategory))
                     {
                         product = productService.ListAllProduct().Where(s=>s.ProductName.Contains("Samsung"));
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory).Where(s => s.Pret < price_interval);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+                    }
+                    break;
+                case "iphone":
+
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct().Where(s => s.ProductName.Contains("Iphone"));
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory).Where(s => s.Pret < price_interval);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+                    }
+                    break;
+
+                 case "LG":
+
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct().Where(s => s.ProductName.Contains("LG"));
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory).Where(s => s.Pret < price_interval);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+                    }
+                    break;
+
+                case "Xiaomi":
+
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct().Where(s => s.ProductName.Contains("Xiaomi"));
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory).Where(s => s.Pret < price_interval);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+                    }
+                    break;
+
+
+                case "Huawei":
+
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct().Where(s => s.ProductName.Contains("Huawei"));
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory).Where(s => s.Pret < price_interval);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+                    }
+                    break;
+                case "Lenovo":
+
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct().Where(s => s.ProductName.Contains("Lenovo"));
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory).Where(s => s.Pret < price_interval);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+                    }
+                    break;
+                case "Asus":
+
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct().Where(s => s.ProductName.Contains("Asus"));
+                    }
+                    else
+                    {
+                        product = productService.ListAllProduct().Where(c => c.Subcategorie.Nume == subcategory).Where(s => s.Pret < price_interval);
+
+                        currentSubCategory = subcategoryService.ListAllSubCategory().FirstOrDefault(c => c.Nume == subcategory)?.Nume;
+                        ViewData["curent"] = currentSubCategory;
+                    }
+                    break;
+                case "Acer":
+
+                    if (string.IsNullOrEmpty(subcategory))
+                    {
+                        product = productService.ListAllProduct().Where(s => s.ProductName.Contains("Acer"));
                     }
                     else
                     {

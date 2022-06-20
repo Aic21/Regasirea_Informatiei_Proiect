@@ -27,6 +27,7 @@ namespace Regasirea_Informatiei_Lab.Models
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<UserActivity> userActivities { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<WishlistItem> WishlistCartItems { get; set; }
 
     }
 }

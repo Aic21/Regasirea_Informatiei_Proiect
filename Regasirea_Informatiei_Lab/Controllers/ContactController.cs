@@ -77,8 +77,10 @@ namespace Regasirea_Informatiei_Lab.Controllers
                 smtp.UseDefaultCredentials = false;
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
-                smtp.Credentials = new System.Net.NetworkCredential("ionandreicristian1998@gmail.com", "xxxx");
+                smtp.Credentials = new System.Net.NetworkCredential("ionandreicristian1998@gmail.com", "tnplwcjtvtvmmryd");
                 smtp.EnableSsl=true;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+
                 smtp.Send(mail);
 
 
@@ -149,6 +151,42 @@ namespace Regasirea_Informatiei_Lab.Controllers
             }
             return View("ListContact", model);
         }
+        [HttpGet]
+        public async Task<IActionResult> Response (int id)
+        {
+            var contact =  context.Contacts.Where(i=>i.ContactId==id).FirstOrDefault();
+            var model = new CreateResponseViweModel
+            {
+                Id = contact.ContactId,
+                Email = contact.Email
 
+
+            };
+            return View("Response", model);
+
+        }
+    [HttpPost]
+        public async Task<IActionResult> Response(CreateResponseViweModel model)
+        {
+
+            var contact = contactService.GetContactByIdAsync(model.Id);
+
+            MailMessage mail = new MailMessage();
+            mail.To.Add(contact.Result.Email);
+            mail.From = new MailAddress("ionandreicristian1998@gmail.com");
+            mail.Subject = model.Subject;
+            mail.Body = model.Message;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.UseDefaultCredentials = false;
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.Credentials = new System.Net.NetworkCredential("ionandreicristian1998@gmail.com", "tnplwcjtvtvmmryd");
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+
+            return RedirectToAction("ContactList");
+
+        }
     }
 }

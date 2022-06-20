@@ -32,9 +32,13 @@
                 <td>@product.PhoneNumber</td>
                 <td>@product.OrderTotal</td>
                 <td>
-                    <a class="btn btn-primary" asp-action="DeleteOrder" asp-controller="order" asp-route-id="@product.OrderId">
-                        <i class="fas fa-edit"></i>
+                    <a class="btn btn-danger" asp-action="DeleteOrder" asp-controller="order" asp-route-id="@product.OrderId">
+                        <i class="fa fa-trash"></i>
                         Delete
+                    </a>
+                    <a class="btn btn-info" asp-action="ActualizareComanda" asp-controller="order" asp-route-orderid="@product.OrderId">
+                        <i class="fa fa-edit"></i>
+                        Actualizare comanda
                     </a>
                 </td>
             </tr>

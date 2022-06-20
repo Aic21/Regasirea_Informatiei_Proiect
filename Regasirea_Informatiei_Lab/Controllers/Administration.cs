@@ -76,7 +76,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
 
         [HttpPost]
-       //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRole(string id)
         {
             var role = await roleManager.FindByIdAsync(id);
@@ -105,7 +105,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult ListUsers()
         {
             var users = userManager.Users;
@@ -113,7 +113,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditUser(string id)
         {
             var user = await userManager.FindByIdAsync(id);
@@ -137,7 +137,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditUser(EditUserViewModel model)
         {
             var user = await userManager.FindByIdAsync(model.Id);
@@ -171,14 +171,14 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateRole()
         {
             return View("CreateRole");
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole(CreateRoleViewModel model)
         {
             if (ModelState.IsValid)
@@ -201,7 +201,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult ListRoles()
         {
             var roles = roleManager.Roles;
@@ -209,7 +209,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
         }
 
         [HttpGet]
-      // [Authorize(Roles = "Admin")]
+       [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditRole(string id)
         {
             // Find the role by Role ID
@@ -244,7 +244,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
         // This action responds to HttpPost and receives EditRoleViewModel
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
         {
             var role = await roleManager.FindByIdAsync(model.Id);

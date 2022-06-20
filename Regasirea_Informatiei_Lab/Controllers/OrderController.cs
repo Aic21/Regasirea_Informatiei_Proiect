@@ -36,7 +36,10 @@ namespace Regasirea_Informatiei_Lab.Controllers
         {
             return View();
         }
-
+        public IActionResult test()
+        {
+            return View();
+        }
         [Authorize(Roles = "Admin")]
 
         public async Task<IActionResult> List()
@@ -117,8 +120,35 @@ namespace Regasirea_Informatiei_Lab.Controllers
                     model.ChargeId = charge.Id;
 
                     _shoppingCart.ClearCart();
-                    return View("CheckoutComplete", model);
+                    return View("CheckoutCompleteCard", model);
                    
+            }
+
+            return View(order);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        public IActionResult test(Models.Order order)
+        {
+
+            _shoppingCart.ShoppingCartItems = _shoppingCart.GetShoppingCartItems();
+
+            if (_shoppingCart.ShoppingCartItems.Count == 0)
+            {
+                ModelState.AddModelError("", "Your cart is empty");
+            }
+
+            if (ModelState.IsValid)
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId
+                var user = User.Identity.Name;
+                order.UserId = userId;
+                _orderRepository.CreateOrder(order);
+
+                _shoppingCart.ClearCart();
+                return RedirectToAction("CheckoutCompleteRamburs");
+
             }
 
             return View(order);
@@ -126,10 +156,43 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
         [Authorize(Roles = "User")]
 
-        public IActionResult CheckoutComplete()
+        public IActionResult CheckoutCompleteCard()
         {
             ViewBag.CheckoutCompleteMessage = "Thank you for your order. Enjoy your products";
-            return View();
+
+            var orders = context.OrderDetails;
+            foreach(var order in orders)
+            {
+                order.Metoda_Plata = "Card";
+            }
+            context.SaveChanges();
+            return View("CheckoutCompleteCard");
+        }
+
+
+        [Authorize(Roles = "User")]
+
+        public IActionResult CheckoutCompleteRamburs()
+        {
+            ViewBag.CheckoutCompleteMessage = "Thank you for your order. Enjoy your products";
+
+            var orders = context.OrderDetails;
+            foreach (var order in orders)
+            {
+                order.Metoda_Plata = "Ramburs";
+            }
+            context.SaveChanges();
+            return View("CheckoutCompleteRamburs");
+        }
+
+        public void ActualizareComanda(int orderid)
+        {
+
+            var product = context.OrderDetails.Where(i=>i.OrderId==orderid).FirstOrDefault();
+
+            product.Status_Comanda = "Comanda finalizata";
+
+            context.SaveChanges();
         }
 
 

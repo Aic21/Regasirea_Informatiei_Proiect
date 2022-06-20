@@ -71,9 +71,9 @@ namespace Regasirea_Informatiei_Lab.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var car = await categoryService.GetCategoryByIdAsync(id);
+            var cat = await categoryService.GetCategoryByIdAsync(id);
 
-            await categoryService.DeleteCategoryAsync(car);
+            await categoryService.DeleteCategoryAsync(cat);
 
             return RedirectToAction("CategoryList", "category");
         }

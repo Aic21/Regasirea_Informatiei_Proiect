@@ -40,13 +40,14 @@ namespace Regasirea_Informatiei_Lab.Services
                     ProductId = shoppingCartItem.Produs.ProductId,
                     OrderId = order.OrderId,
                     UserID = order.UserId,
-                    Nume_Produs = shoppingCartItem.Produs.ProductName
+                    Nume_Produs = shoppingCartItem.Produs.ProductName,
+                    Status_Comanda = "In asteptare",
+                    Metoda_Plata = "In asteptare"
                     //UserID = order.User.Id
                 };
                 
 
                 var productid = _appDbContext.Products.Where(p => p.ProductId == shoppingCartItem.Produs.ProductId).FirstOrDefault();
-                var orderDetail2 = _appDbContext.OrderDetails.Where(p => p.ProductId == shoppingCartItem.Produs.ProductId).FirstOrDefault();
                 productid.ProductStock -= orderDetail.Amount;
 
                 _appDbContext.OrderDetails.Add(orderDetail);

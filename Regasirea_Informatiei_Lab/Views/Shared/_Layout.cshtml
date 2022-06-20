@@ -90,25 +90,16 @@
           <a class="nav-link" asp-controller="ShoppingCart" asp-action="Index">
             <div style="color:black;">
               <i class="fa fa-cart-plus fa-lg mb-1"></i>
-                  @if(@test.ShoppingCartId.Count() == 0)
-                                    {
-                                        <span class="badge rounded-pill badge-notification bg-info">0</span>
-                                    }
-                                    else
-                                    {
-                                    <span class="badge rounded-pill badge-notification bg-info">@test.ShoppingCartId.Count()</span>
-                                    }
             </div>
             Cos
           </a>
         </li>
         <li class="nav-item text-center mx-2 mx-lg-1">
-          <a class="nav-link" href="#!">
+          <a class="nav-link" asp-controller="Wishlist" asp-action="Index">
             <div style="color:black;">
               <i class="fa fa-heart fa-lg mb-1"></i>
-              <span class="badge rounded-pill badge-notification bg-success">11</span>
             </div>
-            Wishlist
+            Favorite
           </a>
         </li>
       </ul>

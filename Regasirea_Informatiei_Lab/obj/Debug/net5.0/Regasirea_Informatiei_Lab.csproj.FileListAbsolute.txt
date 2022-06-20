@@ -236,7 +236,6 @@ D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Contact\ListCo
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Order\Checkout.cshtml.g.cs
-D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Order\CheckoutComplete.cshtml.g.cs
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Order\List.cshtml.g.cs
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Order\ListOrder.cshtml.g.cs
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Product\CreateProduct.cshtml.g.cs
@@ -287,3 +286,8 @@ D:\Licenta\Regasirea_Informatiei_Lab\bin\Debug\net5.0\libman.json
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Home\Acasa.cshtml.g.cs
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Shared\_ReviewCard.cshtml.g.cs
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Administration\AdminPanel.cshtml.g.cs
+D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Order\test.cshtml.g.cs
+D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Wishlist\Index.cshtml.g.cs
+D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Order\CheckoutCompleteCard.cshtml.g.cs
+D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Order\CheckoutCompleteRamburs.cshtml.g.cs
+D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Contact\Response.cshtml.g.cs

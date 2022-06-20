@@ -12,9 +12,10 @@
     <thead>
         <tr>
             <th scope="col">Nr.Comanda</th>
-                        <th scope="col">Produs</th>
+            <th scope="col">Produs</th>
 
             <th scope="col">Informatii</th>
+            <th scope="col">Status comanda</th>
 
 
 
@@ -23,13 +24,24 @@
     @foreach (var product in Model)
     {
         <tbody>
-            <tr  >
+            <tr>
                 <td style="color:white;font-weight:bold;">@product.OrderId</td>
                 <td style="color:white;font-weight:bold;">@product.Nume_Produs</td>
 
                 <td>
                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal-@product.OrderId" > Informatii </button>
                 </td>
+                @if(@product.Status_Comanda == "In asteptare")
+                {
+
+                        <td class="text-warning" style="font-weight:bold;">@product.Status_Comanda</td>
+
+                    }
+                    else
+                    {
+                        <td  class="text-success" style="font-weight:bold;">@product.Status_Comanda</td>
+                    }
+                    
 
                 
                <div class="modal fade" id="exampleModal-@product.OrderId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -105,6 +117,15 @@
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">@product.Order.OrderTotal </p>
+              </div>
+            </div>
+            <hr>
+           <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Metoda de plata</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">@product.Metoda_Plata </p>
               </div>
             </div>
       </div>

@@ -52,9 +52,11 @@ namespace Regasirea_Informatiei_Lab
             services.AddScoped<IGenericRepository<Review>, GenericRepository<Review>>();
             services.AddScoped<IReviewServices, ReviewService>();
 
+            services.AddScoped<Wishlist>(sc => Wishlist.GetWishlist(sc));
+
+
             //services.AddScoped<IOrderService, OrderService>();
             //services.AddScoped<ShoppingCart>(sc => ShoppingCart.GetCart(sc));
-            //services.AddScoped<Wishlist>(sc => Wishlist.GetWishlist(sc));
 
 
             services.AddHttpContextAccessor();

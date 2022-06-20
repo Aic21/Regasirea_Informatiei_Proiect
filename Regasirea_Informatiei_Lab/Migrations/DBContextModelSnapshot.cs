@@ -358,6 +358,9 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Metoda_Plata")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nume_Produs")
                         .HasColumnType("nvarchar(max)");
 
@@ -369,6 +372,9 @@ namespace Regasirea_Informatiei_Lab.Migrations
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Status_Comanda")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(450)");
@@ -591,6 +597,26 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.ToTable("UserAdresses");
                 });
 
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.WishlistItem", b =>
+                {
+                    b.Property<int>("WhishlistItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ProdusProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WhishlistId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("WhishlistItemId");
+
+                    b.HasIndex("ProdusProductId");
+
+                    b.ToTable("WishlistCartItems");
+                });
+
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -759,6 +785,15 @@ namespace Regasirea_Informatiei_Lab.Migrations
                         .IsRequired();
 
                     b.Navigation("Categories");
+                });
+
+            modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.WishlistItem", b =>
+                {
+                    b.HasOne("Regasirea_Informatiei_Lab.Models.Product", "Produs")
+                        .WithMany()
+                        .HasForeignKey("ProdusProductId");
+
+                    b.Navigation("Produs");
                 });
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.User", b =>

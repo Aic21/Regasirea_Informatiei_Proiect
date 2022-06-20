@@ -1,8 +1,12 @@
 ﻿@model Regasirea_Informatiei_Lab.ViewModels.ShoppingCartViewModel
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    
 
-
-<div class="container" style="margin-top:200px;">
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container" style="margin-top:200px;">
 <h2><i class="fa fa-cart-plus"></i>Cos</h2>
 <table class="table table-bordered table-striped">
     <thead>
@@ -23,7 +27,7 @@
                 <form method="post" asp-controller="ShoppingCart" asp-action="UpdateCart" asp-route-productId="@item.Produs.ProductId">
                     <div class="row" style="margin-left:1px; margin-right:0;">
                         <input name="amount" placeholder="@item.Amount" value="@item.Amount" style="height:38px; width:30px;" />
-                        <button type="submit" class="btn btn-primary" style="margin-left:10px; ">Modifica</button>
+                        <button type="submit" class="btn btn-info" style="margin-left:10px; ">Modifica</button>
                     </div>
                 </form>
             </td>
@@ -50,6 +54,69 @@
 
 <div class="text-center">
     <a class="btn btn-danger" asp-controller="ShoppingCart" asp-action="ClearCart">Clear Cart</a>
-    <a class="btn btn-info" asp-controller="Order" asp-action="Checkout">Checkout</a>
+     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" > Catre plata </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Alege metoda de plata</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="dropdown">
+        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Alege metoda de plata
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <button type="button" class="dropdown-item" onclick="PlataCard()">Card</button>
+    <button type="button" class="dropdown-item" onclick="PlataRamburs()">Ramburs</button>
+  </div>
+</div>
+      </div>
+      <div class="modal-footer">
+          <div id="div1">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+
+          <div id="div2" style="display:none;">
+               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <a type="button" class="btn btn-info"  asp-controller="Order" asp-action="Checkout">Plata card </a>
+          </div>
+
+          <div id="div3" style="display:none;">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <a type="button" class="btn btn-info" asp-controller="Order" asp-action="test" >Plata ramburs </a>
+          </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
 </div>
 </div>
+
+
+
+<script>
+
+function PlataRamburs()
+{
+    document.getElementById('div1').style.display="none";
+    document.getElementById('div2').style.display="none";
+    document.getElementById('div3').style.display="block";
+
+}
+function PlataCard()
+{
+    document.getElementById('div1').style.display="none";
+    document.getElementById('div2').style.display="block";
+    document.getElementById('div3').style.display="none";
+
+}
+</script>
+    </body>
+</html>

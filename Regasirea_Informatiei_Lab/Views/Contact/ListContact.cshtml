@@ -31,12 +31,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Contact Id</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Subject</th>
-                                <th scope="col">Problem</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Nr. Contact</th>
+                                <th scope="col">Informatii</th>
+                                <th scope="col">Actiuni</th>
                             </tr>
                         </thead>
                         @foreach (var contacts in Model)
@@ -45,19 +42,76 @@
                                 <tr>
                                     <th scope="row">@i</th>
                                     <td>@contacts.ContactId</td>
-                                    <td>@contacts.Name</td>
-                                    <td>@contacts.Email</td>
-                                    <td>@contacts.Subject</td>
-                                    <td>@contacts.Problem</td>
+                                    <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal-@contacts.ContactId"> Informatii </button></td>
                                     <td>
 
-                                        <a class="btn btn-primary" asp-action="DeleteContact" asp-controller="contact" asp-route-id="@contacts.ContactId">
-                                            <i class="fas fa-delete"></i>
+                                        <a class="btn btn-danger" asp-action="DeleteContact" asp-controller="contact" asp-route-id="@contacts.ContactId">
+                                            <i class="fa fa-delete"></i>
                                             Delete
+                                        </a>
+                                       <a class="btn btn-info" asp-action="Response" asp-controller="contact" asp-route-id="@contacts.ContactId">
+                                            <i class="fa fa-envelope"></i>
+                                            Raspunde
                                         </a>
                                 </tr>
                             </tbody>
                             i++;
+<div class="modal fade" id="exampleModal-@contacts.ContactId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informatii mesaj cu numarul @contacts.ContactId</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+           
+                    <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">@contacts.Email</p>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Nume</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">@contacts.Name </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Subiect</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">@contacts.Subject </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Problema</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">@contacts.Problem </p>
+              </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+                         
                         }
                     </table>
                 </div>
@@ -84,23 +138,15 @@ else
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Contact Id</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Subject</th>
-                                <th scope="col">Problem</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Nr. Contact </th>
+                                <th scope="col">Informatii </th>
+                                <th scope="col">Actiuni </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+
                             </tr>
                         </tbody>
                     </table>

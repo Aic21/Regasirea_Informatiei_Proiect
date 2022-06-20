@@ -27,12 +27,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
 			hostingEnvironment = _hostingEnvironment;
 		}
 
-		[HttpGet]
-		[AllowAnonymous]
-		public IActionResult Login()
-		{
-			return View();
-		}
+
 
 		[HttpPost]
 		[AllowAnonymous]
@@ -40,6 +35,13 @@ namespace Regasirea_Informatiei_Lab.Controllers
 		{
 			await signInManager.SignOutAsync();
 			return RedirectToAction("acasa", "home");
+		}
+
+		[HttpGet]
+		[AllowAnonymous]
+		public IActionResult Login()
+		{
+			return View();
 		}
 
 		[HttpPost]
@@ -52,7 +54,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
 				if (result.Succeeded)
 				{
-					return RedirectToAction("index", "home");
+					return RedirectToAction("acasa", "home");
 				}
 
 				ModelState.AddModelError(string.Empty, "Invalid login attempt");
