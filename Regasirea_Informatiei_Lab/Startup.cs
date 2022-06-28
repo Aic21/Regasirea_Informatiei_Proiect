@@ -64,7 +64,7 @@ namespace Regasirea_Informatiei_Lab
             services.AddRazorPages();
 
             services.AddDbContext<DBContext>
-                (options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                (options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),ServiceLifetime.Transient);
             services.AddControllersWithViews();
 
             services.AddIdentity<User, IdentityRole>(options =>

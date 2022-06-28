@@ -39,6 +39,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
         private readonly ICategoryServices categoryService;
         private readonly ISubcategoryServices subcategoryService;
         private readonly IProductService productService;
+        private readonly IReviewServices reviewServices;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<User> userManager;
         private readonly DBContext context;
@@ -52,7 +53,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
 
         public ProductController(IWebHostEnvironment _hostingEnvironment,   ICategoryServices _categoryServices, IProductService _productService,
             RoleManager<IdentityRole> _roleManager,
-               UserManager<User> _userManager,ISubcategoryServices _subcategoryService, DBContext _context)
+               UserManager<User> _userManager,ISubcategoryServices _subcategoryService, DBContext _context, IReviewServices _reviewServices)
         {
             hostingEnvironment = _hostingEnvironment;
             categoryService = _categoryServices;
@@ -61,6 +62,7 @@ namespace Regasirea_Informatiei_Lab.Controllers
             userManager = _userManager;
             subcategoryService = _subcategoryService;
             context = _context;
+            reviewServices = _reviewServices;
         }
 
         [HttpGet]
@@ -579,14 +581,46 @@ namespace Regasirea_Informatiei_Lab.Controllers
             if (id == null)
                 return NotFound();
 
+
+
             var product = await productService.GetProductByIdAsync(id);
+
+
             if (product == null)
                 return NotFound();
             string content = Path.Combine(hostingEnvironment.ContentRootPath, "Data", "Specifications", product.Specifications);
             string[] texts = System.IO.File.ReadAllLines(content);
             ViewBag.Data = texts;
+            var review = reviewServices.GetAllProduct().Where(r => r.Product.ProductId == id).ToList();
+            if(review.Count() > 0)
+            {
+                var rate = review.Sum(r=>r.Rate)/review.Count();
+                product.Price_after_discount = rate; ;
+                productService.UpdateProductAsync(product);
+            }
+            else
+                product.Price_after_discount=0;
 
-            return View(product);
+            var producsubcat = subcategoryService.GetSubCategoryByIdAsync(product.SubCategorieID);
+            var user = await userManager.GetUserAsync(HttpContext.User);
+
+            var productmodel = new ProductViewModel()
+            {
+                ProductId = product.ProductId,
+                ProductDescription = product.ProductDescription,
+                ProductName = product.ProductName,
+                ProductPicture = product.ProductPicture,
+                ProductPicture2=  product.ProductPicture2,
+                ProductPicture3= product.ProductPicture3,
+                Pret=product.Pret,
+                AverageRating = (int)product.Price_after_discount,
+                Reviews = review,
+                Subcategorie = await producsubcat,
+                User = user,
+
+            };
+
+            return View(productmodel);
         }
 
         public async Task<IActionResult> ConvertToPdf(int productId)

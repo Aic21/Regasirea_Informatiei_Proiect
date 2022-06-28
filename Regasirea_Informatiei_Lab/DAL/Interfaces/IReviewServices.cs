@@ -16,5 +16,6 @@ namespace Regasirea_Informatiei_Lab.DAL.Interfaces
 		public Task UpdateReviewAsync(Review review);
 		public IEnumerable<Review> ListAllReview();
 		public Task<Review> GetReviewByIdAsync(int id);
+		public List<Review> GetAllProduct();
 	}
 }

@@ -291,3 +291,4 @@ D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Wishlist\Index
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Order\CheckoutCompleteCard.cshtml.g.cs
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Order\CheckoutCompleteRamburs.cshtml.g.cs
 D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Contact\Response.cshtml.g.cs
+D:\Licenta\Regasirea_Informatiei_Lab\obj\Debug\net5.0\Razor\Views\Shared\review.cshtml.g.cs

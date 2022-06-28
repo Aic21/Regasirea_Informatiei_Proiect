@@ -482,20 +482,23 @@ namespace Regasirea_Informatiei_Lab.Migrations
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ReviewDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("ReviewMessage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ReviewId");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
                 });
@@ -756,13 +759,15 @@ namespace Regasirea_Informatiei_Lab.Migrations
 
             modelBuilder.Entity("Regasirea_Informatiei_Lab.Models.Review", b =>
                 {
-                    b.HasOne("Regasirea_Informatiei_Lab.Models.Product", null)
+                    b.HasOne("Regasirea_Informatiei_Lab.Models.Product", "Product")
                         .WithMany("Reviews")
                         .HasForeignKey("ProductId");
 
                     b.HasOne("Regasirea_Informatiei_Lab.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Product");
 
                     b.Navigation("User");
                 });
